@@ -1,0 +1,6 @@
+{
+ "id" : "infoToolbar",
+ "type" : "Toolbar",
+ "title" : "Info",
+ "slots" : []
+}

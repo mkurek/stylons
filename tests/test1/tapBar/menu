@@ -1,0 +1,20 @@
+{
+ "id" : "menuTapBar",
+ "type" : "TabPanel",
+ "dock" : "bottom",
+ "activated" : 0,
+ "list" : 
+ [
+  {
+   "icon" : "bookmarks",
+   "text" : "Menu",
+   "action" : "menu/show"
+  },
+  {
+   "icon" : "info",
+   "text" : "Info",
+   "action" : "info/show"
+  }
+ ]
+}
+  

@@ -1,0 +1,32 @@
+{
+  "slot" : "screen",
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "slot" : "top",
+    "id" : "info",
+    "url" : "info/show",
+    "slots" : [
+      {
+      "slot" : "top",
+      "id" : "infoToolbar",
+      "url" : "info/toolbar",
+      "slots" : []
+      },
+      {
+      "slot" : "bottom",
+      "id" : "infoPanel",
+      "url" : "info/panel",
+      "slots" : []
+      }
+    ]
+    },
+    { 
+    "slot" : "bottom",
+    "id" : "infoTapBar",
+    "url" : "tapBar/info",
+    "slots" : []
+    }
+  ]
+}
