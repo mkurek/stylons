@@ -1,14 +1,14 @@
 {
- "id" : "menuTapBar",
- "type" : "TabPanel",
+ "id" : "menuTabBar",
+ "type" : "TabBar",
  "dock" : "bottom",
- "activated" : 0,
  "list" : 
  [
   {
    "icon" : "bookmarks",
    "text" : "Menu",
-   "action" : "menu/show"
+   "action" : "menu/show",
+   "active" : true
   },
   {
    "icon" : "info",

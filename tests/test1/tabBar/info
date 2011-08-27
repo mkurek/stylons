@@ -1,8 +1,7 @@
 {
- "id" : "menuTapBar",
- "type" : "TabPanel",
+ "id" : "menuTabBar",
+ "type" : "TabBar",
  "dock" : "bottom",
- "activated" : 1,
  "list" : 
  [
   {
@@ -13,7 +12,8 @@
   {
    "icon" : "info",
    "text" : "Info",
-   "action" : "info/show"
+   "action" : "info/show",
+   "active" : "true"
   }
  ]
 }

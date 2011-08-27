@@ -24,8 +24,8 @@
     },
     { 
     "slot" : "bottom",
-    "id" : "infoTapBar",
-    "url" : "tapBar/info",
+    "id" : "infoTabBar",
+    "url" : "tabBar/info",
     "slots" : []
     }
   ]

@@ -1,0 +1,7 @@
+{
+ "id" : "infoPanel",
+ "type" : "Panel",
+ "html" : "Siemka :)",
+ "margin" : true,
+ "slots" : []
+}
