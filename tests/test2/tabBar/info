@@ -1,0 +1,20 @@
+{
+ "id" : "menuTabBar",
+ "type" : "TabBar",
+ "dock" : "bottom",
+ "list" : 
+ [
+  {
+   "icon" : "bookmarks",
+   "text" : "Menu",
+   "action" : "menu/show"
+  },
+  {
+   "icon" : "info",
+   "text" : "Info",
+   "action" : "info/show",
+   "active" : "true"
+  }
+ ]
+}
+  
