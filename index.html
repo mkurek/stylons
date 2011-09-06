@@ -7,15 +7,16 @@
 <link rel="stylesheet" href="lib/sencha/resources/css/apple.css" type="text/css" media="screen"/>
 <script src="lib/sencha/sencha-touch.js" type="text/javascript"></script>
 
-<!-- History API -->
+<!-- HISTORY API
 <script src="lib/History/history.js" type="text/javascript"></script>
 <script src="lib/History/history.adapter.native.js" type="text/javascript"></script>
+-->
 
 <!-- Loading dipatcher files : -->
 <script src="lib/pysencha/dispatcher.js" type="text/javascript"></script>
 <script src="lib/pysencha/SenchaAdapter.js" type="text/javascript"></script> 
 <script src="lib/pysencha/parser.js" type="text/javascript"></script>
-
+<script src="lib/pysencha/History.js" type="text/javascript"></script>
 
 <!-- initial config -->
 <script type="text/javascript">
@@ -119,9 +120,25 @@ var sd3 = {
 		}]
 	};
 
+function randomString(len)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < len; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+function init()
+{
+// proper content
+
 var page = Dispatcher.getPage();
 
 // sencha setup
+/*
 Ext.setup({
 	tabletStartupScreen: 'tablet_startup.png',
 	phoneStartupScreen: 'phone_startup.png',
@@ -135,18 +152,27 @@ Ext.setup({
 		});
 	}
 });	
+*/
 
 
-// history
-History.Adapter.bind(window,'statechange',function(){
-	var State = window.History.getState(); 
-	console.log('statechange:', [State.data, State.title, State.url]);
-});
+// History initialization
+// call Dispatcher.action for current url
+Dispatcher.action(History.cleanToken(window.location.hash /*|| Dispatcher.Config().defaultURL*/), true);
 
+// init history handling
+History.init();
 
+// manually trigger hashchange event handler (could not use hashchange trigger -
+// some browsers still don't have this)
+History.onHashChange();
+}
 </script>
 
-<body>
+<body onload="init();">
+<button id="btn" type="button" onclick="Dispatcher.action(randomString(5));">Change hash</button>
+<div id="a">
+	
+</div>
 </body>
 </head>
 </html>
