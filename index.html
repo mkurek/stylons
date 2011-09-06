@@ -120,11 +120,25 @@ var sd3 = {
 		}]
 	};
 
+function randomString(len)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < len; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+function init()
+{
 // proper content
 
 var page = Dispatcher.getPage();
 
 // sencha setup
+/*
 Ext.setup({
 	tabletStartupScreen: 'tablet_startup.png',
 	phoneStartupScreen: 'phone_startup.png',
@@ -138,7 +152,7 @@ Ext.setup({
 		});
 	}
 });	
-
+*/
 
 
 // History initialization
@@ -150,10 +164,15 @@ History.init();
 
 // manually trigger hashchange event handler (could not use hashchange trigger -
 // some browsers still don't have this)
-History.onHashChange({oldURL: '', newURL: window.location.href});
+History.onHashChange();
+}
 </script>
 
-<body>
+<body onload="init();">
+<button id="btn" type="button" onclick="Dispatcher.action(randomString(5));">Change hash</button>
+<div id="a">
+	
+</div>
 </body>
 </head>
 </html>
