@@ -1,5 +1,5 @@
 {
-slots: [{
+"slots": [{
   "slot" : "screen",
   "id" : "screen",
   "url" : "index",
