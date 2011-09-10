@@ -16,120 +16,11 @@
 <script src="lib/pysencha/dispatcher.js" type="text/javascript"></script>
 <script src="lib/pysencha/SenchaAdapter.js" type="text/javascript"></script> 
 <script src="lib/pysencha/parser.js" type="text/javascript"></script>
+<script src="lib/pysencha/sender.js" type="text/javascript"></script>
 <script src="lib/pysencha/History.js" type="text/javascript"></script>
 
 <!-- initial config -->
 <script type="text/javascript">
-var sd = {
-	slots : [{
-		"slot" : "screen",
-		"id" : "screen",
-		"url" : "index",
-		"slots" : [{
-			"slot" : "top",
-			"id" : "menu",
-			"url" : "menu/show",
-			"slots" : [{
-				"slot" : "top",
-				"id" : "menuToolbar",
-				"url" : "menu/toolbar",
-				"slots" : []
-			}, {
-				"slot" : "bottom",
-				"id" : "menuList",
-				"url" : "menu/list",
-				"slots" : []
-			}]
-		}, {
-			"slot" : "bottom",
-			"id" : "menuTabBar",
-			"url" : "tabBar/menu",
-			"slots" : []
-		}]
-	}]
-};
-var des = {
-	"items" : [{
-		"slot" : "screen",
-		"id" : "screen",
-		"items" : [{
-			"slot" : "top",
-			"id" : "menu",
-			"items" : [{
-				"slot" : "top",
-				"id" : "menuToolbarFromScreen",
-				"items" : [],
-				"dockedItems" : []
-			}, {
-				"slot" : "bottom",
-				"id" : "menuListFromScreen",
-				"items" : [],
-				"dockedItems" : []
-			}],
-			"dockedItems" : []
-		}, {
-			"slot" : "bottom",
-			"id" : "menuTabBarFromScreen",
-			"items" : [],
-			"dockedItems" : []
-		}],
-		"dockedItems" : []
-	}],
-	"dockedItems" : []
-};
-var sd2 = {
-	slots : [{
-		"slot" : "screen",
-		"id" : "screen",
-		"url" : "index",
-		"slots" : [{
-			"slot" : "top",
-			"id" : "menu",
-			"url" : "menu/show",
-			"slots" : [{
-				"slot" : "top",
-				"id" : "menuToolbar",
-				"url" : "menu/toolbar",
-				"slots" : []
-			}]
-		}, {
-			"slot" : "bottom",
-			"id" : "menuTabBar",
-			"url" : "tabBar/menu",
-			"slots" : []
-		}]
-	}]
-};
-
-var sd3 = {
-		slots : [{
-			"slot" : "screen",
-			"id" : "screen2",
-			"url" : "index",
-			"slots" : [{
-				"slot" : "top",
-				"id" : "menu",
-				"url" : "menu/show",
-				"slots" : [{
-					"slot" : "top",
-					"id" : "menuToolbar",
-					"url" : "menu/toolbar",
-					"slots" : []
-				}]
-			}]
-		}]
-	};
-
-function randomString(len)
-{
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < len; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
 
 function init()
 {
@@ -138,21 +29,21 @@ function init()
 var page = Dispatcher.getPage();
 
 // sencha setup
-/*
+
 Ext.setup({
-	tabletStartupScreen: 'tablet_startup.png',
-	phoneStartupScreen: 'phone_startup.png',
-	icon: 'icon.png',
-	glossOnIcon: false,
-	onReady: function(){
-		page = new Ext.Panel({
-			fullscreen : true, 
-			id: 'panel', 
-			slot: 'panel',
-		});
-	}
-});	
-*/
+        tabletStartupScreen: 'tablet_startup.png',
+        phoneStartupScreen: 'phone_startup.png',
+        icon: 'icon.png',
+        glossOnIcon: false,
+        onReady: function(){
+                page = new Ext.Panel({
+                        fullscreen : true, 
+                        id: 'panel', 
+                        slot: 'panel',
+                });
+        }
+});     
+
 
 
 // History initialization
@@ -167,12 +58,7 @@ History.init();
 History.onHashChange();
 }
 </script>
-
 <body onload="init();">
-<button id="btn" type="button" onclick="Dispatcher.action(randomString(5));">Change hash</button>
-<div id="a">
-	
-</div>
 </body>
 </head>
 </html>
