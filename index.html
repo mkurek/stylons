@@ -22,11 +22,25 @@
 <!-- initial config -->
 <script type="text/javascript">
 
-function init()
+function dispatcherInit(){
+	// History initialization
+    // call Dispatcher.action for current url
+    Dispatcher.action(History.cleanToken(window.location.hash /* || Dispatcher.Config().defaultURL */), true);
+
+    // init history handling
+    History.init();
+
+    // manually trigger hashchange event handler (could not use
+	// hashchange trigger -
+    // some browsers still don't have this)
+    History.onHashChange();  
+}
+
+function senchaInit()
 {
 // proper content
 
-var page = Dispatcher.getPage();
+var page;
 
 // sencha setup
 
@@ -36,29 +50,24 @@ Ext.setup({
         icon: 'icon.png',
         glossOnIcon: false,
         onReady: function(){
+				// main slot config
                 page = new Ext.Panel({
                         fullscreen : true, 
                         id: 'panel', 
                         slot: 'panel',
                 });
+                
+                // initial Dispatcher config
+                Dispatcher.setPage(page);
+                
+                // call main Dispatcher init
+                dispatcherInit();  
         }
 });     
 
-
-
-// History initialization
-// call Dispatcher.action for current url
-Dispatcher.action(History.cleanToken(window.location.hash /*|| Dispatcher.Config().defaultURL*/), true);
-
-// init history handling
-History.init();
-
-// manually trigger hashchange event handler (could not use hashchange trigger -
-// some browsers still don't have this)
-History.onHashChange();
 }
 </script>
-<body onload="init();">
+<body onload="senchaInit();">
 </body>
 </head>
 </html>
