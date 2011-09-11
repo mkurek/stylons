@@ -20,8 +20,7 @@
       "id" : "menuList",
       "url" : "menu/list",
       "slots" : []
-      }
-    ]
+      }]
     },
     { 
     "slot" : "bottom",

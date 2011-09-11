@@ -2,6 +2,7 @@
  "id" : "menuTabBar",
  "type" : "TabBar",
  "dock" : "bottom",
+ "slot" : "bottom",
  "list" : 
  [
   {

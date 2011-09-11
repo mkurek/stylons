@@ -2,19 +2,20 @@
  "id" : "menuTabBar",
  "type" : "TabBar",
  "dock" : "bottom",
+ "slot" : "bottom",
  "list" : 
  [
   {
    "icon" : "bookmarks",
    "text" : "Menu",
    "action" : "menu/show",
-   "active" : true
+   "active" : "true"
   },
   {
    "icon" : "info",
    "text" : "Info",
    "action" : "info/show"
+   
   }
  ]
 }
-  
