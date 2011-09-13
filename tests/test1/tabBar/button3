@@ -1,0 +1,8 @@
+{
+   "type": "tab",
+   "slot" : "right",
+   "id" : "TabBarButton3",
+   "icon" : "favorites",
+   "text" : "Fav",
+   "action" : "menu/fav"
+}

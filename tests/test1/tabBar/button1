@@ -1,0 +1,9 @@
+{
+   "type": "tab",
+   "slot" : "left",
+   "id" : "TabBarButton1",
+   "icon" : "bookmarks",
+   "text" : "Menu",
+   "action" : "menu/show",
+   "active" : "true"
+}

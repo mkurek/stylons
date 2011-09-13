@@ -15,7 +15,7 @@
 <!-- Loading dipatcher files : -->
 <script src="lib/pysencha/dispatcher.js" type="text/javascript"></script>
 <script src="lib/pysencha/SenchaAdapter.js" type="text/javascript"></script> 
-<script src="lib/pysencha/parser.js" type="text/javascript"></script>
+<script src="lib/pysencha/parser2.js" type="text/javascript"></script>
 <script src="lib/pysencha/sender.js" type="text/javascript"></script>
 <script src="lib/pysencha/History.js" type="text/javascript"></script>
 
@@ -40,7 +40,7 @@ function senchaInit()
 {
 // proper content
 
-var page;
+var screen;
 
 // sencha setup
 
@@ -51,14 +51,14 @@ Ext.setup({
         glossOnIcon: false,
         onReady: function(){
 				// main slot config
-                page = new Ext.Panel({
+                screen = new Ext.Panel({
                         fullscreen : true, 
-                        id: 'panel', 
-                        slot: 'panel',
+                        id: 'screen', 
+                        slot: 'screen',
                 });
                 
-                // initial Dispatcher config
-                Dispatcher.setPage(page);
+                // set main slot
+                Dispatcher.setScreen(screen);
                 
                 // call main Dispatcher init
                 dispatcherInit();  

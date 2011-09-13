@@ -6,16 +6,26 @@
  "list" : 
  [
   {
+   "slot" : "left",
+   "id" : "TabBarButton1",
    "icon" : "bookmarks",
    "text" : "Menu",
    "action" : "menu/show",
    "active" : "true"
   },
   {
+   "slot" : "middle",
+   "id" : "TabBarButton2",
    "icon" : "info",
    "text" : "Info",
-   "action" : "info/show"
-   
+   "action" : "menu/info"
+  },
+  {
+   "slot" : "right",
+   "id" : "TabBarButton3",
+   "icon" : "favorites",
+   "text" : "Fav",
+   "action" : "menu/fav"
   }
  ]
 }
