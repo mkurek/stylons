@@ -10,22 +10,38 @@
    "id" : "TabBarButton1",
    "icon" : "bookmarks",
    "text" : "Menu",
-   "action" : "menu/show",
+   "action" : {
+   	"tap" : [
+	{
+		"type" : "send",
+		"url" : "/form/submit",
+		"data" : "idFormularza"
+	},
+	{
+		"type" : "special",
+		"url" : "/form/afterSubmitPopup",
+		
+	},
+	{
+		"type" : "load",
+		"url" : "/form/submitOK"
+	}
+	]
+
+   },
    "active" : "true"
   },
   {
    "slot" : "middle",
    "id" : "TabBarButton2",
    "icon" : "info",
-   "text" : "Info",
-   "action" : "menu/info"
+   "text" : "Info"
   },
   {
    "slot" : "right",
    "id" : "TabBarButton3",
    "icon" : "favorites",
-   "text" : "Fav",
-   "action" : "menu/fav"
+   "text" : "Fav"
   }
  ]
 }

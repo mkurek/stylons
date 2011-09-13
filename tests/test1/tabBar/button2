@@ -3,6 +3,5 @@
    "slot" : "middle",
    "id" : "TabBarButton2",
    "icon" : "info",
-   "text" : "Info",
-   "action" : "menu/info"
+   "text" : "Info"
 }
