@@ -25,7 +25,7 @@
 function dispatcherInit(){
 	// History initialization
     // call Dispatcher.action for current url
-    Dispatcher.action(History.cleanToken(window.location.hash /* || Dispatcher.Config().defaultURL */), true);
+    Dispatcher.load(History.cleanToken(window.location.hash /* || Dispatcher.Config().defaultURL */), true);
 
     // init history handling
     History.init();
