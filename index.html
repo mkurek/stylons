@@ -35,7 +35,7 @@ function senchaInit()
 {
 // proper content
 
-var screen;
+var screen, pop;
 
 // sencha setup
 
@@ -46,15 +46,23 @@ Ext.setup({
         glossOnIcon: false,
         onReady: function(){
 				// main slot config
-                screen = new Ext.Panel({
-                        fullscreen : true, 
+                screen = Parser.transform({
+                		type : "Panel",
                         id: 'screen', 
-                        slot: 'screen',
-                        layout: 'fit'
+                        slot: 'screen'
+                });
+                
+                pop = Parser.transform({
+                	type : "Special",
+                	id : 'popup',
+                	slot : 'special'
                 });
                 
                 // set main slot
                 Dispatcher.setScreen(screen);
+                
+                // set popup
+                Dispatcher.setPopup(pop);
                 
                 // call main Dispatcher init
                 dispatcherInit();  
