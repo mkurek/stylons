@@ -1,0 +1,12 @@
+{
+  "slot" : "screen",
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    { 
+    "slot" : "bottom",
+    "id" : "menuTabBar2",
+    "url" : "tabBar/menu2"
+    }
+  ]
+}

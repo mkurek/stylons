@@ -1,0 +1,7 @@
+{
+	"id" : "menuToolbarButton",
+	"slot" : left,
+	"url" : "menu/toolbarButton",
+	"type" : "Button",
+	"text" : "Btn"
+}

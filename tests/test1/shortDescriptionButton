@@ -22,8 +22,8 @@
     },
     { 
     "slot" : "bottom",
-    "id" : "menuTabBar",
-    "url" : "tabBar/menu"
+    "id" : "menuTabBar2",
+    "url" : "tabBar/menu2"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
- "id" : "menuTabBar",
+ "id" : "menuTabBar2",
  "type" : "TabBar",
  "dock" : "bottom",
  "slot" : "bottom",
@@ -9,7 +9,7 @@
    "slot" : "left",
    "id" : "TabBarButton1",
    "icon" : "bookmarks",
-   "text" : "Menu",
+   "text" : "Menu2",
    "action" : {
    	"tap" : {
 		"type" : "send",
@@ -23,7 +23,7 @@
    "slot" : "middle",
    "id" : "TabBarButton2",
    "icon" : "info",
-   "text" : "Info",
+   "text" : "Info2",
    "action" : {
    	"tap" : {
 		"type" : "load",
@@ -35,7 +35,7 @@
    "slot" : "right",
    "id" : "TabBarButton3",
    "icon" : "favorites",
-   "text" : "Fav",
+   "text" : "Fav2",
    "action" : {
    	"tap" : {
 		"type" : "special",
