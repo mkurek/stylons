@@ -1,0 +1,13 @@
+
+syntax: regexp
+^bin$
+syntax: regexp
+^develop-eggs$
+syntax: regexp
+^eggs$
+syntax: regexp
+^include$
+syntax: regexp
+^lib$
+syntax: regexp
+^lib$

@@ -1,0 +1,12 @@
+{
+	"id" : "popup",
+	"slot" : "special",
+	"type" : "Special",
+	"slots" : [
+		{
+			"id" : "popupPanel2",
+			"slot" : "center",
+			"url" : "popup/Panel2"
+		}
+	]
+}

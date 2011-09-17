@@ -1,0 +1,3 @@
+include pysencha/config/deployment.ini_tmpl
+recursive-include pysencha/public *
+recursive-include pysencha/templates *
