@@ -16,7 +16,6 @@ var Parser = function() {
 	 */
 	var defaultType, types, events;
 	
-function init(){	
 	defaultType = "Panel";
 	
 	// link between component type and handler function
@@ -27,8 +26,8 @@ function init(){
 					id : "",
 					slot : "",
 					cls : '', // CSS style class
-					items : [],
-					dockedItems : [],
+					//items : '',
+					//dockedItems : '',
 					type: defaultType
 				}
 			},	
@@ -36,18 +35,22 @@ function init(){
 				fn: makePanel,
 				description : {
 					html : "",
-					layout : 'fit',
+					
 					fullscreen : true,
 					margin : 0, // {Number | String (eg. '10 2 4 5')}
 					padding : 0, // {Number | String (eg. '10 2 4 5')}
 					scroll : 'vertical' // {vertical | horizontal | both | false}
+				},
+				privateDescription : {
+					layout : 'fit',
+					bleble : 'noco'
 				}
 			},
 			"List" : {
 				fn: makeList,
 				description : {
 					itemTpl : '{text}', // {String}
-					store : [],
+					list : '',
 					fullscreen : true, // {true | false}
 					emptyText : 'empty List', // {String}
 					indexBar : false // {true | false}
@@ -62,12 +65,14 @@ function init(){
 				description : {
 					dock : 'bottom', // {'top' | 'bottom' | 'left' | 'right'}
 					ui : 'dark', // {'dark' | 'light'}
-					layout : { // default layout
-						pack : 'center'
-					},
 					fullscreen : false,
 					scroll : false,
-					list: []
+					list: ''
+				},
+				privateDescription : {
+					layout : { // default layout
+						pack : 'center'
+					}
 				},
 				inheritance : "Panel"
 			},
@@ -114,7 +119,7 @@ function init(){
 				fn: makeForm,
 				description : {
 					url : '',	// {String} default url to send form
-					list : []
+					list : ''
 				},
 				inheritance : "Panel"
 			},
@@ -123,7 +128,7 @@ function init(){
 				description : {
 					title : '',	// {String} fields group title, shown above fields in group
 					instructions : '', // {String} optional instructions, shown under title
-					list : []
+					list : ''
 				}
 			},
 			"Field" : {
@@ -152,7 +157,7 @@ function init(){
 			"SelectField" : {
 				fn: makeSelectField,
 				description : {
-					options : [] // select options - array of object with text and value properties
+					options : '' // select options - array of object with text and value properties
 				},
 				inheritance : "TextField"
 			},
@@ -201,7 +206,7 @@ function init(){
 			id : [0, "id"]
 		} 
 	};
-}
+
 	/**
 	 * @private 
 	 * React to event
@@ -406,8 +411,10 @@ function init(){
 		
 		// apply default properites for given type
 		obj = Ext.apply({}, types["Default"].description);
+		
 		// inherit properties
-		obj = inherit(obj, type);	
+		obj = inherit(obj, type);
+		
 		// apply for given highest type
 		obj = Ext.apply(obj, types[type].description);
 		
@@ -424,6 +431,12 @@ function init(){
 			else if (!!sub && property in sub)
 				obj[sub[property]] = specificDescription[property];
 		}
+		
+		// apply private properties
+		if(!!types[type].privateDescription){
+			obj = Ext.apply(obj, types[type].privateDescription);
+		}
+		
 		return obj;
 	}
 	
@@ -441,8 +454,6 @@ function init(){
 	function transform(des) {
 		var result, type, event;
 		
-		init();
-		
 		type = (des.type in types) ? des.type : defaultType;
 		
 		// apply default and specific properties
@@ -453,7 +464,7 @@ function init(){
 		
 		// apply events handlers
 		result = addEvents(result, des);
-
+		
 		return result;
 	}
 	
@@ -500,10 +511,11 @@ function init(){
 	}
 	
 	function makeList(content, des) {
+		console.log("in make list", content, des, typeof content.store);
 		var storeContent, storeModel;
 		
 		storeContent = {
-			data : des.store
+			data : des.list
 		};
 		storeModel = {
 			fields : []

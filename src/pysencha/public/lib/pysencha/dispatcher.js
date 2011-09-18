@@ -1,12 +1,28 @@
 var Dispatcher = function() {
 		// gobal variables, available in whole class
-		var screen = {}, popup = {},
+		var screen = {}, popup = {}, shortDescription, popupShortDescription,
 			Config = {
 				defaultURL : "shortDescription",
 				dirPath : "testy/test1/"
 			};
 		
-
+		function defaultScreen(id, slot){
+			return Parser.transform({
+				type : "Panel",
+                id: id || 'screen', 
+                slot: slot || 'screen'
+			});
+		}
+		
+		function defaultPopup(){
+			return Parser.transform({
+            	type : "Special",
+            	id : 'popup',
+            	slot : 'special'
+            });
+		}
+		
+		
 		/**
 		 * @public Return page object
 		 * 
@@ -173,6 +189,7 @@ var Dispatcher = function() {
 							
 							// parse description to sencha format
 							description = Parser.transform(description);
+							//SenchaAdapter.refresh(description);
 					}
 					else {
 							// set wanted item to final description
@@ -205,7 +222,55 @@ var Dispatcher = function() {
 					SenchaAdapter.clear(itemsCopy[j], true);	  
 			}
 			
+			//SenchaAdapter.refresh(container);
 	};
+	
+		function parse(newCon, oldCon, sd) {
+			var i = 0, j = 0, length = 0, slots = sd["slots"], item = false, newItem = {}, itemFound = false;
+			console.log("parse; ", ["id", newCon.id, "type", newCon.type, "slot", newCon.slot, newCon]);
+			// if there is no slots - break
+			if(!slots){
+				console.log("brak slotów", ["sd", sd]);
+				return ;
+			}
+				
+			// for every slot in short description
+			for (i = 0, length = slots.length; i < length; i++) {
+				// check for item occurrence in old container
+				item = SenchaAdapter.get(oldCon, slots[i].id);
+				console.log(["in for", "id", slots[i].id, "item", item]);
+				
+				// if item was not in old container OR slot names are different
+				if(!item || item.slot !== slots[i].slot){
+					console.log("item "+ slots[i].id +" not found");
+					// get full description from url
+					newItem = getFromURL(slots[i].url);
+					
+					// parse description to sencha format
+					newItem = Parser.transform(newItem);
+					
+					itemFound = false;
+				}
+				else{
+					console.log("item "+ slots[i].id +" found");
+					/*
+					// remove item from old container
+					description = SenchaAdapter.remove(oldCon, item, false);
+					*/
+					
+					// make new instance of item without it's slots
+					newItem = Parser.transform(item.initialConfig || item);
+					
+					itemFound = true;
+				}
+				
+				// add item to new container
+				SenchaAdapter.add(newCon, newItem);
+				
+				// go deeper; if item found in old container - pass it, else pass {}
+				parse(newItem, (itemFound) ? item : {}, slots[i]);
+			} // for end	
+		};
 		
 		/**
 		 * @public handling request for new page components; adds record to history
@@ -234,6 +299,8 @@ var Dispatcher = function() {
 				// console.log("dodałem do hist");
 		}
 		
+		
+		
 		/**
 		 * @public called to reload part of the page
 		 * 
@@ -247,16 +314,42 @@ var Dispatcher = function() {
 		 * @return
 		 */
 		function pageReload(state, newPage) {
+				
+				var newScreen, oldScreen;
+				
+				newScreen = defaultScreen();
+				oldScreen = SenchaAdapter.get(screen, "screen");
+				
+				console.log("After adding:", ["old", oldScreen, "new", newScreen]); 
 				// work with short description, analyze each depth
 				
 				//Ext.get("a").dom.innerHTML += state.shortDescription+"; "+state.title+"; "+state.url+"; "+newPage+"<br />";
 				console.log("in page reload", ["state", state, "newPage", newPage]); 
-				analyzeDepth(screen, state.shortDescription); 
-				SenchaAdapter.refresh(screen, (!!newPage) ? 'left' : 'right'); 
+				//analyzeDepth(screen, state.shortDescription); 
+				
+				parse(newScreen, oldScreen || {}, state.shortDescription);
+				
+				
+				
+				console.log("After adding:", ["old", oldScreen, "new", newScreen]); 
+				
+				if(oldScreen){
+					SenchaAdapter.remove(screen, oldScreen, true);
+				}
+				SenchaAdapter.refresh(screen);
+				SenchaAdapter.add(screen, newScreen);
+				SenchaAdapter.refresh(newScreen);
+				//SenchaAdapter.refresh(newScreen, false);
+				//SenchaAdapter.refresh(screen, (!!newPage) ? 'left' : 'right'); 
 				// page.doLayout();
-				console.log("After adding:", [getScreen()]); 
+				
 		};
 		
+		function init(){
+			screen = defaultScreen('page', 'page');
+			//shortDescription = 
+			popup = defaultPopup();
+		}
 		
 		var obj = {
 				load : loadURL,
@@ -268,7 +361,8 @@ var Dispatcher = function() {
 				send : sendToURL,
 				setScreen : setScreen,
 				setPopup : setPopup,
-				getPopup : getPopup
+				getPopup : getPopup,
+				init : init
 		};
 		
 		return obj;

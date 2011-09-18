@@ -3,7 +3,7 @@
  "slot" : "bottom",
  "type" : "List",
  "itemtpl" : "{firstName} {lastName}",
- "store" : 
+ "list" : 
  [
 	{"firstName": 'Tommy',   "lastName": 'Maintz'},
 	{"firstName": 'Rob',     "lastName": 'Dougan'},

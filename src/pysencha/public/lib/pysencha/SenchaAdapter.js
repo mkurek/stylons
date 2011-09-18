@@ -33,15 +33,21 @@ var SenchaAdapter = function() {
 	 */
 
 	function frefresh(obj, direction) {
-		console.log("refresh!");
 		if (!!obj.doLayout) {
+			console.log("refresh!", ["id", obj.id]);
+			
 			obj.doLayout();
+			/*
 			// run animation
 			if(!!direction){
 				Ext.Anim.run(obj, 'slide', {
 					direction: direction
 				});
 			}
+			*/
+			//if(!!obj.doComponentLayout){
+			//	obj.doComponentLayout();
+			//}
 		}
 		else {
 			return false;
@@ -343,6 +349,65 @@ var SenchaAdapter = function() {
 		return x;
 	}
 	
+	// --------------------------------------------
+	
+	/**
+	 * 
+	 * @param {String | Object} item item to be found
+	 */
+	function get(container, item){
+		var result = false;
+		
+		// if defined getComponent container's method
+		if(!!container.getComponent){
+			result = container.getComponent(item);
+		}
+		
+		return result || false;
+	}
+	
+	function remove(container, item, destroy){
+		result = false;
+		console.log("SA - remove", "con.id", container.id, "item.id", item.id, "destroy", destroy);
+		// check if the item is in container
+		if(!!get(container, item)){
+			// check for occurrence in docked items
+			if(!!container.getDockedComponent && !!container.getDockedComponent(item)){
+				// remove from docked items
+				if(!!container.removeDocked){
+					result = container.removeDocked(item, !!destroy);
+				}
+			}
+			// item is in items
+			else{
+				if(!!container.remove){
+					result = container.remove(item, !!destroy);
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	function add(container, item){
+		console.log("SA.add", "con.id", container.id, "item.id", item.id, "dock", item.dock);
+		// add to docked items if item has dock param and container docked items array
+		if(!!item.dock && !!container.addDocked){
+			console.log("to docked")
+			container.addDocked(item);
+		}
+		// add to items if container has add method
+		else if(!!container.add){
+			console.log("to normal")
+			container.add(item);
+		}
+		else{
+			return false;
+		}
+		
+		return true;
+	}
+	
 	return {
 		destroy : fdestroy,
 		refresh : frefresh,
@@ -356,7 +421,10 @@ var SenchaAdapter = function() {
 		cloneItems : fcloneItems,
 		cloneDockedItems : fcloneDockedItems,
 		findItem : ffindItem,
-		getIds : getIds
+		getIds : getIds,
+		get : get,
+		add : add,
+		remove : remove
 	};
 	
 }();

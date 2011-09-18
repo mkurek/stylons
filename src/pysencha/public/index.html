@@ -18,6 +18,8 @@
 <script type="text/javascript">
 
 function dispatcherInit(){
+	Dispatcher.init();
+
 	// History initialization
     // call Dispatcher.action for current url
     Dispatcher.load(History.cleanToken(window.location.hash /* || Dispatcher.Config().defaultURL */), true);
@@ -45,29 +47,17 @@ Ext.setup({
         icon: 'icon.png',
         glossOnIcon: false,
         onReady: function(){
-				// main slot config
-                screen = Parser.transform({
-                		type : "Panel",
-                        id: 'screen', 
-                        slot: 'screen'
-                });
-                
-                pop = Parser.transform({
-                	type : "Special",
-                	id : 'popup',
-                	slot : 'special'
-                });
-                
-                // set main slot
-                Dispatcher.setScreen(screen);
-                
-                // set popup
-                Dispatcher.setPopup(pop);
-                
-                // call main Dispatcher init
+				// call main Dispatcher init
                 dispatcherInit();  
         }
 });     
+
+button1 = Parser.transform({type: 'Button', id: 'button1', text : 'button1'});
+button2 = Parser.transform({type: 'Button', id: 'button2', text : 'button2'});
+tab1 = Parser.transform({type: 'Tab', id: 'tab1', text : 'tab1', icon: 'add'});
+tab2 = Parser.transform({type: 'Tab', id: 'tab2', text : 'tab2', icon: 'doc'});
+tool1 = Parser.transform({type : 'Toolbar', id : 'tool1', title : 'tool1'});
+tool2 = Parser.transform({type : 'Toolbar', id : 'tool2', title : 'tool2'});
 
 }
 </script>
