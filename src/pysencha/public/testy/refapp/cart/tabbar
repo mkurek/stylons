@@ -1,0 +1,58 @@
+{
+ "id" : "cartTabbar",
+ "type" : "TabBar",
+ "dock" : "bottom",
+ "slot" : "bottom",
+ "list" : 
+ [
+  {
+   "slot" : "left",
+   "id" : "TabbarButton1",
+   "icon" : "home",
+   "text" : "Menu",
+   "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "menu/shortDescription"
+      }
+   }
+  },
+  {
+   "slot" : "middleleft",
+   "id" : "TabbarButton2",
+   "icon" : "cart",
+   "text" : "Koszyk",
+   "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "cart/shortDescription"
+      }
+   },
+   "active" : "true"
+  },
+  {
+   "slot" : "middleright",
+   "id" : "TabbarButton3",
+   "icon" : "favorites",
+   "text" : "Promocje",
+   "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "promotions/shortDescription"
+      }
+   }
+  },
+  {
+   "slot" : "right",
+   "id" : "TabbarButton4",
+   "icon" : "info",
+   "text" : "Info",
+   "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "info/shortDescription"
+      }
+   }
+  }
+ ]
+}

@@ -3,7 +3,7 @@ var Dispatcher = function() {
 		var screen = {}, popup = {}, shortDescription, popupShortDescription,
 			Config = {
 				defaultURL : "shortDescription",
-				dirPath : "testy/test1/"
+				dirPath : "testy/refapp/"
 			};
 		
 		function defaultScreen(id, slot){

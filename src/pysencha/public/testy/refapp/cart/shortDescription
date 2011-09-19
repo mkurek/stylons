@@ -1,0 +1,32 @@
+{
+  "slot" : "screen",
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "slot" : "top",
+    "id" : "cart",
+    "url" : "cart/index",
+    "slots" : [
+      {
+      "slot" : "top",
+      "id" : "cartToolbar",
+      "url" : "cart/toolbar",
+      "slots" : []
+      },
+      {
+      "slot" : "bottom",
+      "id" : "menuList",
+      "url" : "menu/list",
+      "slots" : []
+      }
+    ]
+    },
+    { 
+    "slot" : "bottom",
+    "id" : "cartTabbar",
+    "url" : "cart/tabbar",
+    "slots" : []
+    }
+  ]
+}

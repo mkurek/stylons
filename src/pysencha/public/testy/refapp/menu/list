@@ -1,0 +1,20 @@
+{
+ "id" : "menuList", 
+ "slot" : "bottom",
+ "type" : "List",
+ "itemtpl" : "{dish}",
+ "list" : 
+ [
+    {"dish" : 'Pizza'},
+    {"dish" : 'Zapiekanka'},
+    {"dish" : 'Hot-dog'},
+    {"dish" : 'Tortilla'},
+    {"dish" : 'Kebab'},
+ ],
+ "action" : {
+    "itemtap" : {
+        "type" : "load",
+        "url" : "/menu/list/dishes/{index}/shortDescription"
+    }
+ },
+}
