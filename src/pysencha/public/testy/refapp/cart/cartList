@@ -1,15 +1,15 @@
 {
- "id" : "menuList", 
+ "id" : "cartList", 
  "slot" : "bottom",
  "type" : "List",
  "itemtpl" : "{dish}",
  "list" : 
  [
-    {"dish" : 'Pizza'},
-    {"dish" : 'Zapiekanka'},
-    {"dish" : 'Hot-dog'},
-    {"dish" : 'Tortilla'},
-    {"dish" : 'Kebab'},
+    {"dish" : 'CPizza'},
+    {"dish" : 'CZapiekanka'},
+    {"dish" : 'CHot-dog'},
+    {"dish" : 'CTortilla'},
+    {"dish" : 'CKebab'},
  ],
  "action" : {
     "itemtap" : {

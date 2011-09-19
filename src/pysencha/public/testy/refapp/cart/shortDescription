@@ -5,8 +5,8 @@
   "slots" : [
     {
     "slot" : "top",
-    "id" : "cart",
-    "url" : "cart/index",
+    "id" : "menu",
+    "url" : "menu/index",
     "slots" : [
       {
       "slot" : "top",
@@ -16,8 +16,8 @@
       },
       {
       "slot" : "bottom",
-      "id" : "menuList",
-      "url" : "menu/list",
+      "id" : "cartList",
+      "url" : "cart/cartList",
       "slots" : []
       }
     ]
@@ -25,8 +25,7 @@
     { 
     "slot" : "bottom",
     "id" : "cartTabbar",
-    "url" : "cart/tabbar",
-    "slots" : []
+    "url" : "cart/tabbar"
     }
   ]
 }

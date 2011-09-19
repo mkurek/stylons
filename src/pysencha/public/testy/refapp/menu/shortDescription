@@ -25,8 +25,7 @@
     { 
     "slot" : "bottom",
     "id" : "menuTabbar",
-    "url" : "menu/tabbar",
-    "slots" : []
+    "url" : "menu/tabbar"
     }
   ]
 }

@@ -39,7 +39,7 @@ var Parser = function() {
 					fullscreen : true,
 					margin : 0, // {Number | String (eg. '10 2 4 5')}
 					padding : 0, // {Number | String (eg. '10 2 4 5')}
-					scroll : 'vertical' // {vertical | horizontal | both | false}
+					//scroll : 'vertical' // {vertical | horizontal | both | false}
 				},
 				privateDescription : {
 					layout : 'fit',
@@ -187,7 +187,7 @@ var Parser = function() {
 					floating : true,
 					fullscreen: false,
 					modal : true,
-					centered : true,
+					//centered : true,
 					width : 'auto',
 					height : 'auto',
 					styleHtmlContent : true,

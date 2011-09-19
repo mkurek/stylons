@@ -1,27 +1,10 @@
 var Dispatcher = function() {
 		// gobal variables, available in whole class
-		var screen = {}, popup = {}, shortDescription, popupShortDescription,
+		var screen = {}, popup = {},
 			Config = {
 				defaultURL : "shortDescription",
 				dirPath : "testy/refapp/"
 			};
-		
-		function defaultScreen(id, slot){
-			return Parser.transform({
-				type : "Panel",
-                id: id || 'screen', 
-                slot: slot || 'screen'
-			});
-		}
-		
-		function defaultPopup(){
-			return Parser.transform({
-            	type : "Special",
-            	id : 'popup',
-            	slot : 'special'
-            });
-		}
-		
 		
 		/**
 		 * @public Return page object
@@ -82,11 +65,11 @@ var Dispatcher = function() {
 			// get short description from passed url (sender request)
 			shortDescription = getFromURL(url);
 			
-			// call analyze short Description
-			analyzeDepth(popup, shortDescription);
+			// parse short description
+			parse(popup, shortDescription);
 			
 			// refresh popup
-			SenchaAdapter.refresh(popup, false);
+			SenchaAdapter.refresh(popup);
 			popup.show('pop');
 			
 			return true;
@@ -124,153 +107,85 @@ var Dispatcher = function() {
 		 * 
 		 * @return {object} JSON description - returned value from server
 		 */
-		function getFromURL(url, id, slot) { // TO DO - change params when sender
-				// ready
+		function getFromURL(url) { // TO DO - change params when sender
 				return Sender.getFromURL(Config.dirPath+url);
 		};
 		
+		
 		/**
-		 * @private 
-		 * Check if items of actual level in screen match actual level in short description
+		 * @private parse short description and remodel container (add new items, remove unnecessary)
 		 * 
-		 * @param {object}
-		 *			container - part of the screen array, which represents actual
-		 *			depth
-		 * @param {object}
-		 *			sd - part of short description description
+		 * @param {object} con 
+		 * container to remodel
+		 * 
+		 * @param {object} sd 
+		 * short description to parse
 		 * 
 		 * @return
 		 */
-		function analyzeDepth(container, sd) {
-			var i = 0, j = 0, length = 0, itemsLength = 0, wantedItem = false, description = {}, items = [], itemsCopy = [], slots = sd["slots"], whichItems = 0;
+		
+		function parse(con, sd){
+			var i = 0, length = 0, slots = sd["slots"], tmpCon = [], item;
 			
-		   
+			//console.log(["parse", "id", con.id, "type", con.type, "slot", con.slot]);
+			
 			// if there is no slots - break
 			if(!slots){
-				//console.log("brak slotów", ["sd", sd, "container", container]);
+				//console.log("brak slotów", ["sd", sd]);
 				return ;
 			}
 			
-			// get copy of items and docked items
-			itemsCopy = [SenchaAdapter.cloneItems(container) || [],
-							SenchaAdapter.cloneDockedItems(container) || []];
+			// create temporary container
+			tmpCon = SenchaAdapter.getContainer();
 			
-			// remove items and docked items from container
-			// IMPORTANT: use false parameter to not destroy objects
-			SenchaAdapter.clear(container, false);
-			
-			//console.log(["id", sd.id, "sd", sd, "container", container]);
-			//console.log(["itemsCopy", itemsCopy, "itemCopy len before: ", [(itemsCopy[0].items) ? itemsCopy[0].items.length : false, (itemsCopy[1].items) ? itemsCopy[1].items.length : false]]);
-			//console.log("itemsCopy ids", [SenchaAdapter.getIds(itemsCopy[0]), SenchaAdapter.getIds(itemsCopy[1])]);
-			
-			for (i = 0, length = slots.length; i < length; i++) {
-					// check in items and dockedItems for exact match;
-					// check in both, because short description doesn't contain
-					// information about docking
-					for (j = 0, itemsLength = itemsCopy.length; j < itemsLength; j++) {
-							wantedItem = SenchaAdapter.findItem(itemsCopy[j], [{
-									property : 'slot',
-									value : slots[i].slot
-							}, {
-									property : 'id',
-									value : slots[i].id
-							}]);
-							
-							// if wanted item was found before the loop end break to not
-							// overwrite it
-							if (wantedItem !== false)
-									break;
-					}
-					
-					// if exact item was not found
-					if (wantedItem === false) {
-							// send request for missing component
-							description = getFromURL(slots[i].url);
-							
-							// parse description to sencha format
-							description = Parser.transform(description);
-							//SenchaAdapter.refresh(description);
-					}
-					else {
-							// set wanted item to final description
-							description = wantedItem;
-							
-							// remove item from copy (false to not destroy)
-							SenchaAdapter.removeItem(itemsCopy[j], wantedItem, false);
-					}
-					
-					// set whichItem to dockedItems(1) or items (0)
-					whichItems = (!!description.dock) ? 1 : 0;
-					
-					// add item to proper collection
-					if (whichItems === 1) {
-							SenchaAdapter.addDockedItem(container, description);
-					}
-					else {
-							SenchaAdapter.addItem(container, description);
-					}
-					
-					// recursively go deeper
-					analyzeDepth((whichItems === 1) ? SenchaAdapter
-									.getLastDockedItem(container) : SenchaAdapter
-									.getLastItem(container), slots[i]);
-			} // for end
+			// analyze short description and founded items remove from con (without destroying)
+			for(i = 0, length = slots.length; i<length; i++){
+				item = SenchaAdapter.get(con, slots[i].id);
 				
-			// destroy redundant elements from itemsCopy
-			for (j = 0, itemsLength = itemsCopy.length; j < itemsLength; j++) {
-					// remove items and destroy them (true parameter)
-					SenchaAdapter.clear(itemsCopy[j], true);	  
+				// item found
+				if(!!item){
+					// remove from container
+					item = SenchaAdapter.remove(con, item, false);
+					// add to temporary container
+					tmpCon.add(item);
+				}
 			}
 			
-			//SenchaAdapter.refresh(container);
-	};
-	
-		function parse(newCon, oldCon, sd) {
-			var i = 0, j = 0, length = 0, slots = sd["slots"], item = false, newItem = {}, itemFound = false;
-			console.log("parse; ", ["id", newCon.id, "type", newCon.type, "slot", newCon.slot, newCon]);
-			// if there is no slots - break
-			if(!slots){
-				console.log("brak slotów", ["sd", sd]);
-				return ;
-			}
+			// remove all remained components and destroy them
+			SenchaAdapter.removeAll(con, true);
+			
+			// analyze short description and founded items remove from con (without destroying)
+			for(i = 0, length = slots.length; i<length; i++){
+				item = SenchaAdapter.get(tmpCon, slots[i].id);
 				
-			// for every slot in short description
-			for (i = 0, length = slots.length; i < length; i++) {
-				// check for item occurrence in old container
-				item = SenchaAdapter.get(oldCon, slots[i].id);
-				console.log(["in for", "id", slots[i].id, "item", item]);
-				
-				// if item was not in old container OR slot names are different
-				if(!item || item.slot !== slots[i].slot){
-					console.log("item "+ slots[i].id +" not found");
-					// get full description from url
-					newItem = getFromURL(slots[i].url);
-					
-					// parse description to sencha format
-					newItem = Parser.transform(newItem);
-					
-					itemFound = false;
+				// item found
+				if(!!item){
+					//console.log("item "+ slots[i].id +" found");
+					// remove from container
+					item = SenchaAdapter.remove(tmpCon, item, false);
 				}
 				else{
-					console.log("item "+ slots[i].id +" found");
-					/*
-					// remove item from old container
-					description = SenchaAdapter.remove(oldCon, item, false);
-					*/
+					//console.log("item "+ slots[i].id +" not found");
+					// get full description from url
+					item = getFromURL(slots[i].url);
 					
-					// make new instance of item without it's slots
-					newItem = Parser.transform(item.initialConfig || item);
-					
-					itemFound = true;
+					// parse description to sencha format
+					item = Parser.transform(item);
 				}
 				
-				// add item to new container
-				SenchaAdapter.add(newCon, newItem);
+				// add item to container
+				SenchaAdapter.add(con, item);
 				
-				// go deeper; if item found in old container - pass it, else pass {}
-				parse(newItem, (itemFound) ? item : {}, slots[i]);
-			} // for end	
-		};
+				// go deeper
+				parse(item, slots[i]);
+			}
+			
+			// destroy temporary container
+			SenchaAdapter.destroy(tmpCon);
+			
+			
+		}
+		
 		
 		/**
 		 * @public handling request for new page components; adds record to history
@@ -302,7 +217,7 @@ var Dispatcher = function() {
 		
 		
 		/**
-		 * @public called to reload part of the page
+		 * @public called to reload (part of) the page
 		 * 
 		 * @param {object}
 		 *			state - new state of page; properties: shortDescription,
@@ -314,40 +229,44 @@ var Dispatcher = function() {
 		 * @return
 		 */
 		function pageReload(state, newPage) {
-				
-				var newScreen, oldScreen;
-				
-				newScreen = defaultScreen();
-				oldScreen = SenchaAdapter.get(screen, "screen");
-				
-				console.log("After adding:", ["old", oldScreen, "new", newScreen]); 
-				// work with short description, analyze each depth
-				
-				//Ext.get("a").dom.innerHTML += state.shortDescription+"; "+state.title+"; "+state.url+"; "+newPage+"<br />";
 				console.log("in page reload", ["state", state, "newPage", newPage]); 
-				//analyzeDepth(screen, state.shortDescription); 
 				
-				parse(newScreen, oldScreen || {}, state.shortDescription);
+				// set loading mask
+				screen.setLoading(true);
 				
+				// remodel screen
+				parse(screen, state.shortDescription);
 				
+				// hide loading mask
+				screen.setLoading(false);
 				
-				console.log("After adding:", ["old", oldScreen, "new", newScreen]); 
-				
-				if(oldScreen){
-					SenchaAdapter.remove(screen, oldScreen, true);
-				}
-				SenchaAdapter.refresh(screen);
-				SenchaAdapter.add(screen, newScreen);
-				SenchaAdapter.refresh(newScreen);
-				//SenchaAdapter.refresh(newScreen, false);
-				//SenchaAdapter.refresh(screen, (!!newPage) ? 'left' : 'right'); 
-				// page.doLayout();
-				
+				// screen refresh
+				SenchaAdapter.refresh(screen);	
 		};
 		
+
+		function defaultScreen(id, slot){
+			return Parser.transform({
+				type : "Panel",
+                id: id || 'screen', 
+                slot: slot || 'screen'
+			});
+		}
+		
+		function defaultPopup(){
+			return Parser.transform({
+            	type : "Special",
+            	id: 'popup',
+            	slot : 'special'
+            });
+		}
+		
+		
 		function init(){
-			screen = defaultScreen('page', 'page');
-			//shortDescription = 
+			// set default screen
+			screen = defaultScreen();
+			
+			// set default popup
 			popup = defaultPopup();
 		}
 		

@@ -1,5 +1,5 @@
 {
- "id" : "menuTabBar",
+ "id2" : "menuTabBar",
  "type" : "TabBar",
  "dock" : "bottom",
  "slot" : "bottom",
@@ -7,7 +7,7 @@
  [
   {
    "slot" : "left",
-   "id" : "TabBarButton1",
+   "id2" : "TabBarButton1",
    "icon" : "bookmarks",
    "text" : "Menu",
    "action" : {
@@ -21,7 +21,7 @@
   },
   {
    "slot" : "middle",
-   "id" : "TabBarButton2",
+   "id2" : "TabBarButton2",
    "icon" : "info",
    "text" : "Info",
    "action" : {
@@ -33,7 +33,7 @@
   },
   {
    "slot" : "right",
-   "id" : "TabBarButton3",
+   "id2" : "TabBarButton3",
    "icon" : "favorites",
    "text" : "Fav",
    "action" : {

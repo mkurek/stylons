@@ -28887,6 +28887,7 @@ Ext.layout.Layout = Ext.extend(Object, {
     
     isValidParent : function(item, target) {
         var dom = item.el ? item.el.dom : Ext.getDom(item);
+        //console.log("in is valid parent; ", ['dom', dom, "item", item]);
         return target && (dom.parentNode == (target.dom || target));
     },
 
