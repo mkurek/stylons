@@ -1,5 +1,5 @@
 {
     "slot" : "screen",
     "id" : "screen",
-    "type" : "Panel"
+    "type" : "Screen"
 }

@@ -6,6 +6,7 @@ var Dispatcher = function() {
 				dirPath : "testy/refapp/"
 			};
 		
+		
 		/**
 		 * @public Return page object
 		 * 
@@ -55,6 +56,7 @@ var Dispatcher = function() {
 		};
 		
 		
+		
 		function specialSlotShow(url){
 			var shortDescription;
 			console.log("in special slot", ["url", url]);
@@ -65,11 +67,12 @@ var Dispatcher = function() {
 			// get short description from passed url (sender request)
 			shortDescription = getFromURL(url);
 			
-			// parse short description
-			parse(popup, shortDescription);
+			containerRemodel(popup, shortDescription);
 			
 			// refresh popup
 			SenchaAdapter.refresh(popup);
+			
+			// show popup
 			popup.show('pop');
 			
 			return true;
@@ -78,14 +81,7 @@ var Dispatcher = function() {
 		
 		function specialSlotHide(id){
 			if(!!popup.hide){
-				console.log("hide");
 				popup.hide();
-				/*
-				if(!!popup.destroy){
-					console.log("destroy");
-					popup.destroy();
-				}
-				*/
 				return true;
 			}
 			return false;
@@ -110,6 +106,34 @@ var Dispatcher = function() {
 		function getFromURL(url) { // TO DO - change params when sender
 				return Sender.getFromURL(Config.dirPath+url);
 		};
+		
+		
+		/**
+		 * @public handling request for new page components; adds record to history
+		 * 
+		 * @param {string}
+		 *			url - new url of short description
+		 * @param {boolean}
+		 *			keepHash - true if window.location.hash won't be overwritten
+		 * 
+		 * @return
+		 */
+		function loadURL(url, keepHash) {
+				var shortDescription;
+	 
+				// if url is empty, replace it with default url value
+				url = url || Config.defaultURL;
+				
+				// get short description from passed url (sender request)
+				shortDescription = getFromURL(url);
+				//shortDescription = url;
+				
+				console.log("in load url:", ["sd", shortDescription]);
+				
+				// add record to History
+				History.pushState(shortDescription, "title", url, keepHash);
+				// console.log("dodałem do hist");
+		}
 		
 		
 		/**
@@ -187,34 +211,29 @@ var Dispatcher = function() {
 		}
 		
 		
-		/**
-		 * @public handling request for new page components; adds record to history
-		 * 
-		 * @param {string}
-		 *			url - new url of short description
-		 * @param {boolean}
-		 *			keepHash - true if window.location.hash won't be overwritten
-		 * 
-		 * @return
-		 */
-		function loadURL(url, keepHash) {
-				var shortDescription;
-	 
-				// if url is empty, replace it with default url value
-				url = url || Config.defaultURL;
-				
-				// get short description from passed url (sender request)
-				shortDescription = getFromURL(url);
-				//shortDescription = url;
-				
-				console.log("in load url:", ["sd", shortDescription]);
-				
-				// add record to History
-				History.pushState(shortDescription, "title", url, keepHash);
-				// console.log("dodałem do hist");
+		function containerRemodel(container, shortDescription){
+			var description;
+			
+			// set loading mask
+			screen.setLoading(true, true);
+			
+			// remodel screen
+			parse(container, shortDescription);
+			
+			// apply description to highest level of description
+			if(!!shortDescription.url && container.id == shortDescription.id){
+				//console.log("highest level")
+				description = getFromURL(shortDescription.url);
+				if(description.id == container.id && !!description.type){
+					//console.log("id ok, apply", ["des", description])
+					Parser.applyToInstance(container, description);
+					//console.log(container)
+				}
+			}
+			
+			// hide loading mask
+			screen.setLoading(false);
 		}
-		
-		
 		
 		/**
 		 * @public called to reload (part of) the page
@@ -231,33 +250,32 @@ var Dispatcher = function() {
 		function pageReload(state, newPage) {
 				console.log("in page reload", ["state", state, "newPage", newPage]); 
 				
-				// set loading mask
-				screen.setLoading(true);
-				
-				// remodel screen
-				parse(screen, state.shortDescription);
-				
-				// hide loading mask
-				screen.setLoading(false);
+				containerRemodel(screen, state.shortDescription);
 				
 				// screen refresh
 				SenchaAdapter.refresh(screen);	
+				
 		};
 		
 
-		function defaultScreen(id, slot){
+		function defaultScreen(){
 			return Parser.transform({
-				type : "Panel",
-                id: id || 'screen', 
-                slot: slot || 'screen'
+				type : "Screen",
+                id: 'screen', 
+                slot: 'screen',
+                fullscreen : true,
+                layout: 'fit'
 			});
 		}
 		
 		function defaultPopup(){
 			return Parser.transform({
-            	type : "Special",
+            	type : "SpecialPanel",
             	id: 'popup',
-            	slot : 'special'
+            	slot : 'special',
+            	//width : 200,
+            	//height : 400,
+            	layout : 'fit'
             });
 		}
 		

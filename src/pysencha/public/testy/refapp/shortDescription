@@ -17,8 +17,7 @@
       {
       "slot" : "bottom",
       "id" : "menuList",
-      "url" : "menu/list",
-      "slots" : []
+      "url" : "menu/list"
       }
     ]
     },

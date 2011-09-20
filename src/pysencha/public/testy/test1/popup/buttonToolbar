@@ -1,0 +1,7 @@
+{
+	"id" : "popupButtonToolbar",
+	"slot" : "bottom",
+	"url" : "popup/buttonToolbar",
+	"type" : "Toolbar",
+	"dock" : "bottom"
+}

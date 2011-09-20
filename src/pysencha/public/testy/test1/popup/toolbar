@@ -1,0 +1,8 @@
+{
+	"id" : "popupToolbar",
+	"slot" : "top",
+	"url" : "popup/toolbar",
+	"type" : "Toolbar",
+	"title" : "Potwierdzenie",
+	"dock" : "top"
+}

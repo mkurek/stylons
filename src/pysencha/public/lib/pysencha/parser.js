@@ -31,19 +31,40 @@ var Parser = function() {
 					type: defaultType
 				}
 			},	
+			"SpecialPanel" : {
+				fn: makePanel,
+				description : {
+					floating : true,
+					modal : true,
+					fullscreen : false,
+					centered : true,
+					margin: undefined,
+					padding: undefined,
+					width : 'auto',
+					height : 'auto',
+					styleHtmlContent : true,
+					ui : 'dark',
+					layout: 'auto'
+				}
+			},
+			"Screen" : {
+				fn: makePanel,
+				description : {
+					fullscreen : true,
+					margin : 0, // {Number | String (eg. '10 2 4 5')}
+					padding : 0, // {Number | String (eg. '10 2 4 5')}
+					layout: 'auto'
+				}
+			},
 			"Panel" : {
 				fn: makePanel,
 				description : {
 					html : "",
-					
-					fullscreen : true,
+					fullscreen : false,
 					margin : 0, // {Number | String (eg. '10 2 4 5')}
 					padding : 0, // {Number | String (eg. '10 2 4 5')}
 					//scroll : 'vertical' // {vertical | horizontal | both | false}
-				},
-				privateDescription : {
-					layout : 'fit',
-					bleble : 'noco'
+					layout : 'auto',
 				}
 			},
 			"List" : {
@@ -67,9 +88,7 @@ var Parser = function() {
 					ui : 'dark', // {'dark' | 'light'}
 					fullscreen : false,
 					scroll : false,
-					list: ''
-				},
-				privateDescription : {
+					list: '',
 					layout : { // default layout
 						pack : 'center'
 					}
@@ -81,6 +100,7 @@ var Parser = function() {
 				description : {
 					iconCls : '', // {String} background image
 					text : '', // {String}
+					flex : '', //how much of the remaining size to take up
 					badgeText : '', // {String} text for badge on the button
 					ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
 				// 'forward'} button style
@@ -180,20 +200,6 @@ var Parser = function() {
 				fn: makeRadio,
 				description : {},
 				inheritance : "Checkbox"
-			},
-			"Special" : {
-				fn: makePanel,
-				description : {
-					floating : true,
-					fullscreen: false,
-					modal : true,
-					//centered : true,
-					width : 'auto',
-					height : 'auto',
-					styleHtmlContent : true,
-					ui : 'dark'
-				},
-				inheritance : "Panel"
 			}
 		}; 
 
@@ -324,13 +330,19 @@ var Parser = function() {
 			}
 			// load special slot content (popup)
 			else if(reaction.type === 'specialShow'){
-				console.log("special reaction");
+				console.log("special show reaction");
 				
 				if(!!reaction.url){
 					console.log("url ok");
 					
 					result = Dispatcher.specialShow(reaction.url);
 				}
+			}
+			// load special slot content (popup)
+			else if(reaction.type === 'specialHide'){
+				console.log("special hide reaction");
+				result = Dispatcher.specialHide(reaction.url);
+				
 			}
 			
 			// check result for new reaction
@@ -377,6 +389,33 @@ var Parser = function() {
 		return component;
 	}
 	
+	/**
+	 * @public 
+	 * Apply only specyfic properties to already initiated component
+	 * 
+	 * @param {object} component 
+	 * component to apply properties
+	 * 
+	 * @param {object} description 
+	 * detailed description of specific component
+	 * 
+	 * @return 
+	 */
+	function applyToInstance(component, description){
+		var type;
+		
+		type = component.type;
+		
+		if(!!type && type in types){
+			for (property in description) {
+				if (property in component) {
+					component[property] = description[property];
+				}
+			}
+		}
+		
+		return component;
+	}
 	
 	/**
 	 * @private 
@@ -432,11 +471,12 @@ var Parser = function() {
 				obj[sub[property]] = specificDescription[property];
 		}
 		
+		/*
 		// apply private properties
 		if(!!types[type].privateDescription){
 			obj = Ext.apply(obj, types[type].privateDescription);
 		}
-		
+		*/
 		return obj;
 	}
 	
@@ -454,7 +494,7 @@ var Parser = function() {
 	function transform(des) {
 		var result, type, event;
 		
-		type = (des.type in types) ? des.type : defaultType;
+		type = (des.type in types) ? des.type : (des.type = defaultType);
 		
 		// apply default and specific properties
 		result = apply(type, des);
@@ -571,9 +611,9 @@ var Parser = function() {
 		return new Ext.form.Radio(conent);
 	}
 	
-
 	return {
-		transform : transform
+		transform : transform,
+		applyToInstance : applyToInstance
 	}
 
 	

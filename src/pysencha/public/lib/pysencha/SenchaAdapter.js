@@ -120,7 +120,7 @@ var SenchaAdapter = function() {
 	}
 	
 	function add(container, item){
-		//console.log("SA.add", " | con.id", container.id, " | item.id", item.id, " | dock", item.dock);
+		console.log("SA.add", " | con.id", container.id, " | item.id", item.id, " | dock", item.dock);
 		// add to docked items if item has dock param and container docked items array
 		if(!!item.dock && !!container.addDocked){
 			//console.log("to docked")
@@ -146,6 +146,17 @@ var SenchaAdapter = function() {
 		return new Ext.util.MixedCollection;
 	}
 	
+	function setDimensions(con, width, height){
+		if(!!con.setWidth){
+			con.setWidth(width || "auto");
+		}
+		if(!!con.setHeight){
+			con.setHeight(height || "auto");
+		}
+		
+		return true;
+	}
+	
 	return {
 		destroy : fdestroy,
 		refresh : frefresh,
@@ -153,7 +164,8 @@ var SenchaAdapter = function() {
 		add : add,
 		remove : remove,
 		getContainer: getContainer /* getMixedCollection */,
-		removeAll : removeAll
+		removeAll : removeAll,
+		setDimensions : setDimensions
 	};
 	
 }();

@@ -1,0 +1,8 @@
+{
+	"id" : "popupButton2",
+	"slot" : "left",
+	"url" : "popup/button2",
+	"type" : "Button",
+	"text" : "Zamów",
+	"flex" : 1
+}

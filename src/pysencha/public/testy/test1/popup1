@@ -1,12 +1,38 @@
 {
 	"id" : "popup",
 	"slot" : "special",
-	"type" : "Special",
+	"type" : "SpecialPanel",
+	"url" : "popup/popup",
 	"slots" : [
 		{
-			"id" : "popupPanel2",
+			"id" : "popupPanel",
 			"slot" : "center",
-			"url" : "popup/Panel2"
+			"url" : "popup/Panel",
+			"slots" : [
+				{
+					"id" : "popupToolbar",
+					"slot" : "top",
+					"url" : "popup/toolbar",
+					"slots" : []
+				},
+				{
+					"id" : "popupButtonToolbar",
+					"slot" : "bottom",
+					"url" : "popup/buttonToolbar",
+					"slots" : [
+						{
+							"id" : "popupButton1",
+							"slot" : "left",
+							"url" : "popup/button1"
+						},
+						{
+							"id" : "popupButton2",
+							"slot" : "left",
+							"url" : "popup/button2"
+						}
+					]
+				}
+			]
 		}
 	]
 }
