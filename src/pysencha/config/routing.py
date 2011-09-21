@@ -21,5 +21,5 @@ def make_map(config):
     # CUSTOM ROUTES HERE
     #map.connect('/{controller}/{action}')
     #map.connect('/{controller}/{action}/{id}')
-    #map.connect('/*url', controller='handler', action='load')
+    map.connect('/*url', controller='handler', action='load')
     return map

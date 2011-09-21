@@ -12,8 +12,9 @@ class HandlerController(BaseController):
         # Return a rendered template
         #return render('/handler.mako')
         # or, return a response
+        print "Tutaj : " + url
         pathname = os.path.dirname(os.path.dirname(sys.argv[0]))
-        f = open(str(pathname+'/src/pysencha/public/'+url))
+        f = open(str(pathname+'/src/pysencha/'+url))
         plik  = f.read()
         f.close()
         return plik
