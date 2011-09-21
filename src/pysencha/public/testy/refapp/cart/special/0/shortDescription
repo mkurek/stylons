@@ -1,6 +1,6 @@
 {
  "slot" : "special",
- "id" : "popup0",
+ "id" : "popup",
  "url" : "cart/special/0/index",
  "slots" : [
   {

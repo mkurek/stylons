@@ -1,5 +1,5 @@
 {
- "id" : "popup1",
+ "id" : "popup",
  "slot" : "special",
  "url" : "cart/special/1/index",
  "type" : "SpecialPanel",

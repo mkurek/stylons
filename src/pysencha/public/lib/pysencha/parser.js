@@ -100,7 +100,7 @@ var Parser = function() {
 				description : {
 					iconCls : '', // {String} background image
 					text : '', // {String}
-					flex : '0', //how much of the remaining size to take up
+					flex : 0, //how much of the remaining size to take up
 					badgeText : '', // {String} text for badge on the button
 					ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
 				// 'forward'} button style
@@ -213,6 +213,60 @@ var Parser = function() {
 		} 
 	};
 
+	
+	
+	// auxiliary function 1 - check for available variables in types properties, get their value from default arguments (defArgs)
+	function getVarsValue(name, args){
+		var vars = {}, i, tmp, varName, j, varDes, len;
+		
+		if(!!events[name]){
+			for(i in events[name]){	
+				
+				varName = i;
+				varDes = events[name][i];
+				tmp = args;
+				
+				for(j=0, len=varDes.length; j < len; j++){
+					if(tmp[varDes[j]] !== undefined){
+						tmp = tmp[varDes[j]];
+					}
+					else{
+						tmp = undefined;
+						break;
+					}
+				}
+				
+				vars[varName] = tmp;
+			}
+		}
+		return vars;
+	}
+	
+	// auxiliary function 2 - replace {var} with variable value
+	function replaceValues(vars, des){
+		console.log("replaceValues", ["args", arguments, "url", des.url]);
+		var pattern, i, j, value, str;
+		
+		for(i in vars){
+			// pattern: {key} with global and case-insensitive modifiers
+			pattern = new RegExp("{"+i+"}", 'ig');
+			value = vars[i];
+			
+			// for all params in desrciption of reaction 
+			for(j in des){
+				str = des[j];
+				if(Ext.isString(str)){
+					str = str.replace(pattern, value);
+				}
+				else if(Ext.isObject(str)){
+					str = replaceValues(vars, str)
+				}
+				des[j] = str;
+			}
+		}
+		return des;
+	}
+	
 	/**
 	 * @private 
 	 * React to event
@@ -230,78 +284,35 @@ var Parser = function() {
 	 */
 	
 	function eventHandler(name, des, defArgs) {
-		var vars, i, j, reaction, data, result;
+		var vars, i, j, reaction, data, result, reactions;
 
-		// auxiliary function 1 - check for available variables in types properties, get their value from default arguments (defArgs)
-		function getVarsValue(name, args){
-			var vars = {}, i, tmp, varName, j, varDes, len;
-			
-			if(!!events[name]){
-				for(i in events[name]){	
-					
-					varName = i;
-					varDes = events[name][i];
-					tmp = args;
-					
-					for(j=0, len=varDes.length; j < len; j++){
-						if(!!tmp[varDes[j]]){
-							tmp = tmp[varDes[j]];
-						}
-						else{
-							tmp = undefined;
-							break;
-						}
-					}
-					
-					vars[varName] = tmp;
-				}
-			}
-			return vars;
-		}
-		
-		// auxiliary function 2 - replace {var} with variable value
-		function replaceValues(vars, des){
-			var pattern, i, j, value, str;
-			
-			for(i in vars){
-				// pattern: {key} with global and case-insensitive modifiers
-				pattern = new RegExp("{"+i+"}", 'ig');
-				value = vars[i];
-				
-				// for all params in desrciption of reaction 
-				for(j in des){
-					str = des[j];
-					if(Ext.isString(str)){
-						str = str.replace(pattern, value);
-					}
-					else if(Ext.isObject(str)){
-						str = replaceValues(vars, str)
-					}
-					des[j] = str;
-				}
-			}
-			return des;
-		}
+		console.log("eventHandler;", ["args", arguments, "des.url", des.url]);
 		
 		// get available variables values
 		vars = getVarsValue(name, defArgs);
 		console.log("vars", vars);
-		// make des an array
-		if(!Ext.isArray(des)){
-			des = [des];
+		
+		// make link to des
+		reactions = des;
+		
+		// make reactions an array
+		if(!Ext.isArray(reactions)){
+			reactions = [reactions];
 		}
 		
 		// for every description in table
 		// notice des.length make on purpose - des array could be extended!
-		for(i = 0; i < des.length; i++){
-			reaction = des[i];
+		for(i = 0; i < reactions.length; i++){
 			result = false;
 			
+			// make copy of this reaction description
+			reaction = Ext.apply({}, reactions[i]);
+			
 			// change {key} to matching them values
-			reaction = des[i] = replaceValues(vars, reaction);
+			reaction = replaceValues(vars, reaction);
 			console.log("des["+i+"]", reaction);
 			
-			// in case of des.type
+			// in case of reaction type
 			// Send data to server, wait for JSON-reaction
 			if(reaction.type === 'send'){
 				console.log("send reaction");
@@ -349,7 +360,7 @@ var Parser = function() {
 			if(Ext.isObject(result) && !!result.type){
 				console.log("result ok", ["result", result]);
 				
-				des.push(result);
+				reactions.push(result);
 			}
 			
 			
@@ -360,19 +371,18 @@ var Parser = function() {
 	 * @private 
 	 * Add defined event listeners to component
 	 * 
-	 * @param {String}
-	 *            name - name of item
-	 * @param {String}
-	 * 			event description
+	 * @param {Object} component
+	 *            component, to which events will be added
+	 * @param {Object} description
+	 * description of component
 	 * 
-	 * @param {Array}
-	 * 			Array of arguments, passed to default event function
-	 * 
+	 * @return {Object} component
+	 * component after adding events listeners
 	 */
 	function addEvents(component, description){
 		var event, avEv = types[component.type].events;
 		
-		if(description.action){
+		if(!!description.action){
 			//console.log("jest action");
 			// for every event defined in action
 			for(event in description.action){
