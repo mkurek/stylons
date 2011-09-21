@@ -61,6 +61,7 @@ var Parser = function() {
 				description : {
 					html : "",
 					fullscreen : false,
+					styleHtmlContent : false,
 					margin : 0, // {Number | String (eg. '10 2 4 5')}
 					padding : 0, // {Number | String (eg. '10 2 4 5')}
 					//scroll : 'vertical' // {vertical | horizontal | both | false}
