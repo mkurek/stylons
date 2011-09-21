@@ -22,6 +22,7 @@
    "id" : "TabbarButton2",
    "icon" : "cart",
    "text" : "Koszyk",
+   "badge" : "2",
    "action" : {
       "tap" : {
         "type" : "load",

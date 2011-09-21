@@ -1,0 +1,8 @@
+{
+ "slot" : "left",
+ "id" : "button0_0",
+ "url" : "cart/special/0/button0",
+ "type" : "Button",
+ "ui" : "decline",
+ "text" : "Anuluj"
+}

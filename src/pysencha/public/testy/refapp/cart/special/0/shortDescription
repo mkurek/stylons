@@ -1,7 +1,6 @@
 {
  "slot" : "special",
  "id" : "popup0",
- "type" : "SpecialPanel",
  "url" : "cart/special/0/index",
  "slots" : [
   {
