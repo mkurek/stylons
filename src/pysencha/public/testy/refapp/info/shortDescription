@@ -16,9 +16,30 @@
       },
       {
       "slot" : "bottom",
-      "id" : "menuList",
-      "url" : "menu/list",
-      "slots" : []
+      "id" : "infoPanel",
+      "url" : "info/panel/index",
+      "slots" : [
+       {
+        "slot" : "top",
+        "id" : "infoTitle",
+        "url" : "info/panel/title"
+       },
+       {
+        "slot" : "uppermiddle",
+        "id" : "infoMessage",
+        "url" : "info/panel/message"
+       },
+       {
+        "slot" : "lowermiddle",
+        "id" : "infoPicture",
+        "url" : "info/panel/picture"
+       },
+       {
+        "slot" : "bottom",
+        "id" : "infoContact",
+        "url" : "info/panel/contact"
+       }
+      ]
       }
     ]
     },

@@ -1,0 +1,7 @@
+{
+ "slot" : "top",
+ "id" : "infoTitle",
+ "url" : "info/panel/title",
+ "type" : "Panel",
+ "html" : "<h2>Witaj podróżniku!</h2>"
+}

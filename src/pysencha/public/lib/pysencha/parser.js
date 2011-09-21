@@ -44,7 +44,7 @@ var Parser = function() {
 				padding: undefined,
 				width : 'auto',
 				height : 'auto',
-				styleHtmlContent : true,
+				styleHtmlContent : false,
 				ui : 'dark',
 				layout: 'auto'
 			}

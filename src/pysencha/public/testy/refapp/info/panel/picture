@@ -1,0 +1,9 @@
+{
+ "slot" : "lowermiddle",
+ "id" : "infoPicture",
+ "url" : "info/panel/picture",
+ "type" : "Panel",
+ "width" : 300,
+ "height" : 300,
+ "html" : "</br></br>Siedziba firmy</br>"
+}
