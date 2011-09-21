@@ -177,16 +177,20 @@ var Dispatcher = (function () {
 				item = Parser.transform(item);
 			}
 
+			// go deeper
+			parse(item, slots[i]);
+			
 			// add item to container
 			SenchaAdapter.add(con, item);
 
-			// go deeper
-			parse(item, slots[i]);
+			
 		}
 
 		// destroy temporary container
 		SenchaAdapter.destroy(tmpCon);
-
+		
+		// refresh container
+		SenchaAdapter.refresh(con);
 	}
 
 
@@ -251,11 +255,14 @@ var Dispatcher = (function () {
 		containerRemodel(popup, shortDescription);
 
 		// refresh popup
-		SenchaAdapter.refresh(popup);
+		//SenchaAdapter.refresh(popup);
 
 		// show popup
 		popup.show('pop');
 
+		// refresh popup
+		SenchaAdapter.refresh(popup);
+		
 		return true;
 	}
 

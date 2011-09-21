@@ -25,3 +25,5 @@ syntax: regexp
 ^src/pysencha\.egg-info/SOURCES\.txt$
 syntax: regexp
 ^src/pysencha\.egg-info$
+syntax: regexp
+^parts$

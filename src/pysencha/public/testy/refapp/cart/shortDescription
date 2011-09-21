@@ -19,6 +19,11 @@
          "url" : "cart/clearButton",
         },
         {
+         "slot" : "middle",
+         "id" : "spacer",
+         "url" : "spacer",
+        },
+        {
          "slot" : "right",
          "id" : "sendButton",
          "url" : "cart/sendButton",

@@ -1,207 +1,212 @@
-/*
+/**
  * Parser - class returning method to parse server's response to SenchaTouch object
- * 
- * @method transform(response):
- * 	@param response - response returned by server, containing slot description
- * 	@return result - SenchaTouch object described in response
  */
 
 var Parser = function() {
+	
 	/**
-	 * Global variables:
+	 * Global variables declaration:
 	 * 
-	 * @defaultType - default type to apply, if wrong is specified
+	 * defaultType - default type to apply, if wrong is specified
 	 * 
-	 * @types - map with handlers to functions, types description, available events, inheritance, short-names
+	 * types - map with handlers to functions, types description, available events, inheritance, short-names
+	 * 
+	 * events - object describing events
 	 */
 	var defaultType, types, events;
 	
-	defaultType = "Panel";
 	
+	/** 
+	 * global variables definitions
+	 */
+	// set default component type to Panel
+	defaultType = "Panel";
+
 	// link between component type and handler function
-		types = {
-			"Default" : {
-				fn : makePanel,
-				description : {
-					id : "",
-					slot : "",
-					cls : '', // CSS style class
-					//items : '',
-					//dockedItems : '',
-					type: defaultType
-				}
-			},	
-			"SpecialPanel" : {
-				fn: makePanel,
-				description : {
-					floating : true,
-					modal : true,
-					fullscreen : false,
-					centered : true,
-					margin: undefined,
-					padding: undefined,
-					width : 'auto',
-					height : 'auto',
-					styleHtmlContent : true,
-					ui : 'dark',
-					layout: 'auto'
-				}
-			},
-			"Screen" : {
-				fn: makePanel,
-				description : {
-					fullscreen : true,
-					margin : 0, // {Number | String (eg. '10 2 4 5')}
-					padding : 0, // {Number | String (eg. '10 2 4 5')}
-					layout: 'auto'
-				}
-			},
-			"Panel" : {
-				fn: makePanel,
-				description : {
-					html : "",
-					fullscreen : false,
-					margin : 0, // {Number | String (eg. '10 2 4 5')}
-					padding : 0, // {Number | String (eg. '10 2 4 5')}
-					//scroll : 'vertical' // {vertical | horizontal | both | false}
-					layout : 'auto',
-				}
-			},
-			"List" : {
-				fn: makeList,
-				description : {
-					itemTpl : '{text}', // {String}
-					list : '',
-					fullscreen : true, // {true | false}
-					emptyText : 'empty List', // {String}
-					indexBar : false // {true | false}
-				},
-				substitute : {
-					itemtpl : 'itemTpl'
-				},
-				events : ["itemtap"]
-			},
-			"TabBar" : {
-				fn: makeTabBar,
-				description : {
-					dock : 'bottom', // {'top' | 'bottom' | 'left' | 'right'}
-					ui : 'dark', // {'dark' | 'light'}
-					fullscreen : false,
-					scroll : false,
-					list: '',
-					layout : { // default layout
-						pack : 'center'
-					}
-				},
-				inheritance : "Panel"
-			},
-			"Button" : {
-				fn: makeButton,
-				description : {
-					iconCls : '', // {String} background image
-					text : '', // {String}
-					flex : 0, //how much of the remaining size to take up
-					badgeText : '', // {String} text for badge on the button
-					ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
-				// 'forward'} button style
-				},
-				substitute : {
-					icon : 'iconCls',
-					badge : 'badgeText'
-				},
-				events : ["tap"]
-			},
-			"Toolbar" : {
-				fn: makeToolbar,
-				description : {
-					ui : 'dark', // {'dark' | 'light'}
-					dock : 'top', // {'top' | 'bottom' | 'left' | 'right'}
-					margin : 0, // {Number | String (eg. '10 2 4 5')}
-					padding : 0, // {Number | String (eg. '10 2 4 5')}
-					title : '' // {String}
-				}
-			},
-			"Tab" : {
-				fn: makeTab,
-				description : {
-					active : false // {true | false} Tab highlight
-				},
-				inheritance : "Button",
-				substitute : {
-					icon : 'iconCls',
-					badge : 'badgeText'
-				},
-				events : ["tap"]
-			},
-			
-			// form components
-			"Form" : {
-				fn: makeForm,
-				description : {
-					url : '',	// {String} default url to send form
-					list : ''
-				},
-				inheritance : "Panel"
-			},
-			"Fieldset" : {
-				fn: makeFieldset,
-				description : {
-					title : '',	// {String} fields group title, shown above fields in group
-					instructions : '', // {String} optional instructions, shown under title
-					list : ''
-				}
-			},
-			"Field" : {
-				fn: makeField,
-				description : {
-					disabled : false, // {true | false} specifies if field is disabled
-					type : 'text',	// {'text' | 'password' | 'file' | 'radio'} Specifies field input type
-					label : '', // {String}
-					name : '', // {String}
-					required : false,	// {true | false} field requirement
-					value : '' // {String} default field value
-				}
-			},
-			"HiddenField" : {
-				fn: makeHiddenField,
-				description : {},
-				inheritance : "Field"
-			},
-			"TextField" : {
-				fn: makeTextField,
-				description : {
-					maxLength : 0 // {Int} max length of input text
-				},
-				inheritance : "Field"
-			},
-			"SelectField" : {
-				fn: makeSelectField,
-				description : {
-					options : '' // select options - array of object with text and value properties
-				},
-				inheritance : "TextField"
-			},
-			"TextareaField" : {
-				fn: makeTextareaField,
-				description : {
-					maxRows : undefined // {Int} - max textarea rows
-				},
-				inheritance : "TextField"
-			},
-			"Checkbox" : {
-				fn: makeCheckbox,
-				description : {
-					checked : false, // {true | false} if checkbox is checked
-					value : '' // {String} what value will be send if checkbox is checked
-				},
-				inheritance : "Field"
-			},
-			"Radio" : {
-				fn: makeRadio,
-				description : {},
-				inheritance : "Checkbox"
+	types = {
+		"Default" : {
+			fn : makePanel,
+			description : {
+				id : "",
+				slot : "",
+				cls : '', // CSS style class
+				type: defaultType
 			}
-		}; 
+		},	
+		"SpecialPanel" : {
+			fn: makePanel,
+			description : {
+				floating : true,
+				modal : true,
+				fullscreen : false,
+				centered : true,
+				margin: undefined,
+				padding: undefined,
+				width : 'auto',
+				height : 'auto',
+				styleHtmlContent : true,
+				ui : 'dark',
+				layout: 'auto'
+			}
+		},
+		"Screen" : {
+			fn: makePanel,
+			description : {
+				fullscreen : true,
+				margin : 0, // {Number | String (eg. '10 2 4 5')}
+				padding : 0, // {Number | String (eg. '10 2 4 5')}
+				layout: 'auto'
+			}
+		},
+		"Panel" : {
+			fn: makePanel,
+			description : {
+				html : "",
+				fullscreen : false,
+				margin : 0, // {Number | String (eg. '10 2 4 5')}
+				padding : 0, // {Number | String (eg. '10 2 4 5')}
+				//scroll : 'vertical' // {vertical | horizontal | both | false}
+				layout : 'auto',
+			}
+		},
+		"Toolbar" : {
+			fn: makeToolbar,
+			description : {
+				ui : 'dark', // {'dark' | 'light'}
+				dock : 'top', // {'top' | 'bottom' | 'left' | 'right'}
+				margin : 0, // {Number | String (eg. '10 2 4 5')}
+				padding : 0, // {Number | String (eg. '10 2 4 5')}
+				title : '' // {String}
+			}
+		},
+		"TabBar" : {
+			fn: makeTabBar,
+			description : {
+				dock : 'bottom', // {'top' | 'bottom' | 'left' | 'right'}
+				ui : 'dark', // {'dark' | 'light'}
+				fullscreen : false,
+				scroll : false,
+				list: '',
+				layout : { // default layout
+					pack : 'center'
+				}
+			},
+			inheritance : "Panel"
+		},
+		"Button" : {
+			fn: makeButton,
+			description : {
+				iconCls : '', // {String} background image
+				text : '', // {String}
+				flex : null, //how much of the remaining size to take up
+				badgeText : '', // {String} text for badge on the button
+				ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
+			// 'forward'} button style
+			},
+			substitute : {
+				icon : 'iconCls',
+				badge : 'badgeText'
+			},
+			events : ["tap"]
+		},
+		"Tab" : {
+			fn: makeTab,
+			description : {
+				active : false // {true | false} Tab highlight
+			},
+			inheritance : "Button",
+			substitute : {
+				icon : 'iconCls',
+				badge : 'badgeText'
+			},
+			events : ["tap"]
+		},
+		"Spacer" : {
+			fn : makeSpacer,
+			description : {}
+		},
+		"List" : {
+			fn: makeList,
+			description : {
+				itemTpl : '{text}', // {String}
+				list : '',
+				fullscreen : true, // {true | false}
+				emptyText : 'empty List', // {String}
+				indexBar : false // {true | false}
+			},
+			substitute : {
+				itemtpl : 'itemTpl'
+			},
+			events : ["itemtap"]
+		},
+		// form components
+		"Form" : {
+			fn: makeForm,
+			description : {
+				url : '',	// {String} default url to send form
+				list : ''
+			},
+			inheritance : "Panel"
+		},
+		"Fieldset" : {
+			fn: makeFieldset,
+			description : {
+				title : '',	// {String} fields group title, shown above fields in group
+				instructions : '', // {String} optional instructions, shown under title
+				list : ''
+			}
+		},
+		"Field" : {
+			fn: makeField,
+			description : {
+				disabled : false, // {true | false} specifies if field is disabled
+				type : 'text',	// {'text' | 'password' | 'file' | 'radio'} Specifies field input type
+				label : '', // {String}
+				name : '', // {String}
+				required : false,	// {true | false} field requirement
+				value : '' // {String} default field value
+			}
+		},
+		"HiddenField" : {
+			fn: makeHiddenField,
+			description : {},
+			inheritance : "Field"
+		},
+		"TextField" : {
+			fn: makeTextField,
+			description : {
+				maxLength : 0 // {Int} max length of input text
+			},
+			inheritance : "Field"
+		},
+		"SelectField" : {
+			fn: makeSelectField,
+			description : {
+				options : '' // select options - array of object with text and value properties
+			},
+			inheritance : "TextField"
+		},
+		"TextareaField" : {
+			fn: makeTextareaField,
+			description : {
+				maxRows : undefined // {Int} - max textarea rows
+			},
+			inheritance : "TextField"
+		},
+		"Checkbox" : {
+			fn: makeCheckbox,
+			description : {
+				checked : false, // {true | false} if checkbox is checked
+				value : '' // {String} what value will be send if checkbox is checked
+			},
+			inheritance : "Field"
+		},
+		"Radio" : {
+			fn: makeRadio,
+			description : {},
+			inheritance : "Checkbox"
+		}
+	}; 
 
 	// events description
 	events = {
@@ -361,10 +366,10 @@ var Parser = function() {
 				console.log("result ok", ["result", result]);
 				
 				reactions.push(result);
-			}
-			
-			
+			}	
 		}// end for
+		
+		return true;
 	}
 	
 	/**
@@ -553,6 +558,10 @@ var Parser = function() {
 	
 	function makeTab(content, des){
 		return new Ext.Tab(content);	
+	}
+	
+	function makeSpacer(content, des){
+		return new Ext.Spacer(content);
 	}
 	
 	function makeTabBar(content, des) {
