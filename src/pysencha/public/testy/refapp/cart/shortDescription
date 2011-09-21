@@ -12,12 +12,23 @@
       "slot" : "top",
       "id" : "cartToolbar",
       "url" : "cart/toolbar",
-      "slots" : []
+      "slots" : [
+        {
+         "slot" : "left",
+         "id" : "clearButton",
+         "url" : "cart/clearButton",
+        },
+        {
+         "slot" : "right",
+         "id" : "sendButton",
+         "url" : "cart/sendButton",
+        }
+      ]
       },
       {
       "slot" : "bottom",
       "id" : "cartList",
-      "url" : "cart/cartList",
+      "url" : "cart/list",
       "slots" : []
       }
     ]

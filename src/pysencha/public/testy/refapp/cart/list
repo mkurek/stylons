@@ -1,0 +1,17 @@
+{
+ "id" : "cartList", 
+ "slot" : "bottom",
+ "type" : "List",
+ "itemtpl" : "{dish}",
+ "list" : 
+ [
+    {"dish" : 'Zapiekanka'},
+    {"dish" : 'Tortilla'}
+ ],
+ "action" : {
+    "itemtap" : {
+        "type" : "specialShow",
+        "url" : "/cart/special/{index}/shortDescription"
+    }
+ },
+}

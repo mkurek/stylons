@@ -100,7 +100,7 @@ var Parser = function() {
 				description : {
 					iconCls : '', // {String} background image
 					text : '', // {String}
-					flex : '', //how much of the remaining size to take up
+					flex : '0', //how much of the remaining size to take up
 					badgeText : '', // {String} text for badge on the button
 					ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
 				// 'forward'} button style

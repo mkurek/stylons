@@ -1,0 +1,8 @@
+{
+ "id" : "sendButton",
+ "slot" : "right",
+ "type" : "Button",
+ "ui" : "action",
+ "text" : "Wyślij",
+ "dock" : "right"
+}

@@ -1,0 +1,8 @@
+{
+ "id" : "popup0",
+ "slot" : "special",
+ "url" : "cart/special/0/index",
+ "type" : "SpecialPanel",
+ "width" : 200,
+ "height" : 300
+}
