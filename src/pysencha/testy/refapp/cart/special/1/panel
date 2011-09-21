@@ -2,5 +2,9 @@
    "slot" : "bottom",
    "type" : "Panel",
    "id" : "specialPanel1",
-   "url" : "cart/special/1/panel"
+   "url" : "cart/special/1/panel",
+   "layout" :
+   {
+    "type" : "hbox"
+   }
 }
