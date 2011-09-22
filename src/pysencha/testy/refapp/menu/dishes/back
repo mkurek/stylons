@@ -1,0 +1,13 @@
+{
+ "id" : "menuBack",
+ "slot" : "left",
+ "type" : "Button",
+ "ui" : "back",
+ "text" : "Menu",
+ "action" : {
+   "tap" : {
+    "type" : "load",
+    "url" : "menu/shortDescription"
+   }
+ }
+}

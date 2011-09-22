@@ -3,7 +3,7 @@
  "slot" : "special",
  "url" : "cart/special/0/index",
  "type" : "SpecialPanel",
- "width" : 300,
- "height" : 150,
+ "width" : 285,
+ "height" : 120,
  "styleHtmlContent" : true
 }

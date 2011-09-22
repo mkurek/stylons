@@ -1,0 +1,32 @@
+{
+  "slot" : "screen",
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "slot" : "top",
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "slot" : "top",
+      "id" : "margarittaToolbar",
+      "url" : "menu/dishes/0/0/toolbar",
+      "slots" : [
+       {
+        "slot" : "left",
+        "id" : "pizzaBack",
+        "url" : "menu/dishes/0/back",
+        "slots" : []
+       }
+       ]
+      }
+    ]
+    },
+    { 
+    "slot" : "bottom",
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+ "id" : "pizzaList", 
+ "slot" : "bottom",
+ "type" : "List",
+ "itemtpl" : "{dish}",
+ "list" : 
+ [
+    {"dish" : 'Margaritta'},
+    {"dish" : 'Hawajska'},
+    {"dish" : 'Rzeźnicka'}
+ ],
+ "action" : {
+    "itemtap" : {
+        "type" : "load",
+        "url" : "menu/dishes/0/{index}/shortDescription"
+    }
+ },
+}

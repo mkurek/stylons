@@ -14,7 +14,7 @@
  "action" : {
     "itemtap" : {
         "type" : "load",
-        "url" : "/menu/list/dishes/{index}/shortDescription"
+        "url" : "menu/dishes/{index}/shortDescription"
     }
  },
 }

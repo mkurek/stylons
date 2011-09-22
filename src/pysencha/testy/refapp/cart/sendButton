@@ -2,7 +2,7 @@
  "id" : "sendButton",
  "slot" : "right",
  "type" : "Button",
- "ui" : "action",
- "text" : "Wyślij",
+ "ui" : "confirm",
+ "text" : "Zamów",
  "dock" : "right"
 }

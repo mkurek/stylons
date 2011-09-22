@@ -1,0 +1,8 @@
+{
+    "id" : "margarittaToolbar",
+    "slot" : "top",
+    "url" : "menu/dishes/0/0/toolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Margaritta"
+}

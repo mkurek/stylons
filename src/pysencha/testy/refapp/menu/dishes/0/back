@@ -1,0 +1,13 @@
+{
+ "id" : "pizzaBack",
+ "slot" : "left",
+ "type" : "Button",
+ "ui" : "back",
+ "text" : "Pizza",
+ "action" : {
+   "tap" : {
+    "type" : "load",
+    "url" : "menu/dishes/0/shortDescription"
+   }
+ }
+}
