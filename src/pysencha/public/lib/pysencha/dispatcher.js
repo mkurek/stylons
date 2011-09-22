@@ -65,16 +65,13 @@ var Dispatcher = (function() {
 	 * 
 	 * @return {object} JSON description - returned value from server
 	 */
-	function getFromURL(url) { // TO DO - change params when sender
+	function getFromURL(url) {
 		return Sender.getFromURL(Config.dirPath + url);
 	}
 
 	function sendToURL(url, data) {
 		console.log("in send to url", ["url", url]);
-		// return Sender.sendToURL(url, data);
-		return {
-			"result" : "success"
-		};
+		return Sender.sendToURL(url, data);
 	}
 
 	/**
@@ -181,12 +178,12 @@ var Dispatcher = (function() {
 	 * @private remodel container and all it childs
 	 * 
 	 * @param {object}
-	 *            con container to remodel
+	 *            con Container to remodel
 	 * 
 	 * @param {object}
-	 *            sd short description to parse
+	 *            sd Short description to be applied
 	 * 
-	 * @return
+	 * @return {object} container Container after remodeling
 	 */
 	function containerRemodel(container, shortDescription) {
 		var description;
@@ -199,27 +196,30 @@ var Dispatcher = (function() {
 
 		// apply description to highest level of description
 		if (!!shortDescription.url && container.id === shortDescription.id) {
-			// console.log("highest level")
+			// get full description on main container
 			description = getFromURL(shortDescription.url);
+		
+			// if ids are the same and description has specified type
 			if (description.id === container.id && !!description.type) {
-				console.log("id ok, apply", ["des", description])
+				// apply properties
 				Parser.applyToInstance(container, description);
-				// console.log(container)
 			}
 		}
 
 		// hide loading mask
 		screen.setLoading(false);
+		
+		return container;
 	}
 
 	/**
-	 * @public called to reload (part of) the page
+	 * @public called to reload the page
 	 * 
 	 * @param {object}
-	 *            state new state of page; properties: shortDescription, title,
+	 *            state New state of page; properties: shortDescription, title,
 	 *            url
 	 * @param {boolean}
-	 *            newPage false if page loaded using back/forward button, true
+	 *            newPage False if page loaded using back/forward button, true
 	 *            otherwise
 	 * 
 	 * @return
@@ -234,18 +234,28 @@ var Dispatcher = (function() {
 
 		// show screen
 		SenchaAdapter.show(screen);
+
 	}
 
+	/**
+	 * @public shows popup
+	 * 
+	 * @param {string}
+	 *            url URL address with short description of popup
+	 * 
+	 * @return false if url was wrong, true otherwise
+	 */
 	function specialSlotShow(url) {
 		var shortDescription;
-		console.log("in special slot", ["url", url]);
-
-		// if url is empty, replace it with default url value
-		url = url || Config.defaultURL;
-
+		
+		// if url is not a string
+		if(!Ext.isString(url)){
+			return false;
+		}
 		// get short description from passed url (sender request)
 		shortDescription = getFromURL(url);
 
+		// apply new properties and components
 		containerRemodel(popup, shortDescription);
 
 		// show popup
@@ -253,16 +263,18 @@ var Dispatcher = (function() {
 
 		// refresh popup
 		SenchaAdapter.refresh(popup);
-
+		
 		return true;
 	}
 
+	/**
+	 * @public hide popup
+	 * 
+	 * @return
+	 */
+	
 	function specialSlotHide() {
-		if (!!popup.hide) {
-			popup.hide();
-			return true;
-		}
-		return false;
+		SenchaAdapter.hide(popup);
 	}
 
 	function defaultScreen() {
