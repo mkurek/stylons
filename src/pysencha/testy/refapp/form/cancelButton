@@ -1,5 +1,13 @@
 {
  "id" : "cancelButton",
  "type" : "Button",
- "text" : "Anuluj"
+ "text" : "Anuluj",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "load",
+    "url" : "cart/shortDescription"
+   }
+ }
 }
