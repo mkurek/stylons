@@ -42,7 +42,7 @@
          "url" : "menu/dishes/0/sizes",
          "slots" : [
           {
-           "id" : "button15",
+           "id" : "button10",
            "url" : "menu/dishes/0/button10"
           },
           {
@@ -50,7 +50,7 @@
            "url" : "menu/dishes/0/button15"
           },
           {
-           "id" : "button15",
+           "id" : "button30",
            "url" : "menu/dishes/0/button30"
           }
          ]

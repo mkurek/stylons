@@ -1,0 +1,6 @@
+{
+    "id" : "zapiekankaToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Zapiekanka"
+}

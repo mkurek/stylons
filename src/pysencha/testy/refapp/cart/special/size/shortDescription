@@ -1,0 +1,25 @@
+{
+ "id" : "popup",
+ "url" : "cart/special/size/index",
+ "slots" : [
+  {
+   "id" : "sizeToolbar",
+   "url" : "cart/special/size/toolbar",
+   "slots" : []
+  },
+  {
+   "id" : "sizePanel",
+   "url" : "cart/special/size/panel",
+   "slots" : [
+    {
+     "id" : "sizeMala",
+     "url" : "cart/special/size/buttonMala"
+    },
+    {
+     "id" : "sizeDuza",
+     "url" : "cart/special/size/buttonDuza"
+    }
+    ]
+  }
+  ]
+}

@@ -2,5 +2,13 @@
  "id" : "sendButton",
  "type" : "Button",
  "ui" : "confirm",
- "text" : "Zamów"
+ "text" : "Zamów",
+ "action" : 
+ {
+  "tap" :
+  {
+   "type" : "load",
+   "url" : "form/shortDescription"
+  }
+ }
 }

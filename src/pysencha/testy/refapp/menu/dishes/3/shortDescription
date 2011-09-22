@@ -1,0 +1,63 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "id" : "tortillaToolbar",
+      "url" : "menu/dishes/3/toolbar",
+      "slots" : [
+       {
+        "id" : "back",
+        "url" : "menu/dishes/back",
+        "slots" : []
+       }
+       ]
+      },
+      {
+       "id" : "dishPanel",
+       "url" : "menu/dishes/panel",
+       "slots" : [
+        {
+         "id" : "tortillaTitle",
+         "url" : "menu/dishes/3/title"
+        },
+        {
+         "id" : "tortillaPicture",
+         "url" : "menu/dishes/3/picture"
+        },
+        {
+         "id" : "tortillaDesc",
+         "url" : "menu/dishes/3/desc"
+        },
+        {
+         "id" : "tortillaIngr",
+         "url" : "menu/dishes/3/ingr"
+        },
+        {
+         "id" : "Sizes",
+         "url" : "menu/dishes/sizes",
+         "slots" : [
+          {
+           "id" : "buttonMala",
+           "url" : "menu/dishes/buttonMala"
+          },
+          {
+           "id" : "buttonDuza",
+           "url" : "menu/dishes/buttonDuza"
+          }
+         ]
+        }
+       ]
+      }
+    ]
+    },
+    {
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}

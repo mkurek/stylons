@@ -3,5 +3,12 @@
  "type" : "Button",
  "ui" : "decline",
  "flex" : "1",
- "text" : "Anuluj"
+ "text" : "Anuluj",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialHide"
+   }
+ }
 }

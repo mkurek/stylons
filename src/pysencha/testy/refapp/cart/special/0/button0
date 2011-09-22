@@ -2,5 +2,12 @@
  "id" : "button0_0",
  "type" : "Button",
  "ui" : "decline",
- "text" : "Anuluj"
+ "text" : "Anuluj",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialHide"
+   }
+ }
 }

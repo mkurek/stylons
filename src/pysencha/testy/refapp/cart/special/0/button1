@@ -2,5 +2,13 @@
  "id" : "button0_1",
  "type" : "Button",
  "ui" : "confirm",
- "text" : "Zmień rozmiar"
+ "text" : "Zmień rozmiar",
+ "action" :
+ {
+  "tap" :
+  {
+   "type" : "specialShow",
+   "url" : "cart/special/size/shortDescription"
+  }
+ }
 }

@@ -3,5 +3,13 @@
  "type" : "Button",
  "ui" : "confirm",
  "flex" : "1",
- "text" : "Zamów"
+ "text" : "Zamów",
+ "action" :
+ {
+  "tap" : 
+  {
+   "type" : "show",
+   "url" : "form/shortDescription"
+  }
+ }
 }

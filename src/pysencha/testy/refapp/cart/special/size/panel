@@ -1,0 +1,8 @@
+{
+   "type" : "Panel",
+   "id" : "sizePanel",
+   "layout" :
+   {
+    "type" : "hbox"
+   }
+}

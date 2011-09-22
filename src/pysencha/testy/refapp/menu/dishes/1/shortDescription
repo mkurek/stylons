@@ -1,0 +1,63 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "id" : "zapiekankaToolbar",
+      "url" : "menu/dishes/1/toolbar",
+      "slots" : [
+       {
+        "id" : "back",
+        "url" : "menu/dishes/back",
+        "slots" : []
+       }
+       ]
+      },
+      {
+       "id" : "dishPanel",
+       "url" : "menu/dishes/panel",
+       "slots" : [
+        {
+         "id" : "zapiekankaTitle",
+         "url" : "menu/dishes/1/title"
+        },
+        {
+         "id" : "zapiekankaPicture",
+         "url" : "menu/dishes/1/picture"
+        },
+        {
+         "id" : "zapiekankaDesc",
+         "url" : "menu/dishes/1/desc"
+        },
+        {
+         "id" : "zapiekankaIngr",
+         "url" : "menu/dishes/1/ingr"
+        },
+        {
+         "id" : "Sizes",
+         "url" : "menu/dishes/sizes",
+         "slots" : [
+          {
+           "id" : "buttonMala",
+           "url" : "menu/dishes/buttonMala"
+          },
+          {
+           "id" : "buttonDuza",
+           "url" : "menu/dishes/buttonDuza"
+          }
+         ]
+        }
+       ]
+      }
+    ]
+    },
+    {
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}
