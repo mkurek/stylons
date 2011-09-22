@@ -1,8 +1,7 @@
-var Dispatcher = (function () {
-	
+var Dispatcher = (function() {
+
 	// gobal variables, available in whole class
 	var obj, screen, popup, Config;
-
 
 	// set global variables to defaults
 	screen = {};
@@ -11,7 +10,6 @@ var Dispatcher = (function () {
 		defaultURL : "shortDescription",
 		dirPath : "../testy/refapp/"
 	};
-
 
 	/**
 	 * @public Return page object
@@ -22,7 +20,6 @@ var Dispatcher = (function () {
 		return screen;
 	}
 
-
 	/**
 	 * @public Set page object
 	 * 
@@ -32,7 +29,6 @@ var Dispatcher = (function () {
 		screen = newScreen;
 	}
 
-
 	/**
 	 * @public Return popup object
 	 * 
@@ -41,7 +37,6 @@ var Dispatcher = (function () {
 	function getPopup() {
 		return popup;
 	}
-
 
 	/**
 	 * @public Set popup object
@@ -53,7 +48,6 @@ var Dispatcher = (function () {
 		return true;
 	}
 
-
 	/**
 	 * @public Return Config object
 	 * 
@@ -63,19 +57,17 @@ var Dispatcher = (function () {
 		return Config;
 	}
 
-
 	/**
 	 * @private Adapter to Sender-Receiver Object Get server response from URL
 	 * 
 	 * @param {string}
-	 *            url - url to be requested
+	 *            url url to be requested
 	 * 
 	 * @return {object} JSON description - returned value from server
 	 */
 	function getFromURL(url) { // TO DO - change params when sender
 		return Sender.getFromURL(Config.dirPath + url);
 	}
-
 
 	function sendToURL(url, data) {
 		console.log("in send to url", ["url", url]);
@@ -85,14 +77,13 @@ var Dispatcher = (function () {
 		};
 	}
 
-
 	/**
 	 * @public handling request for new page components; adds record to history
 	 * 
 	 * @param {string}
-	 *            url - new url of short description
+	 *            url new url of short description
 	 * @param {boolean}
-	 *            keepHash - true if window.location.hash won't be overwritten
+	 *            keepHash true if window.location.hash won't be overwritten
 	 * 
 	 * @return
 	 */
@@ -113,7 +104,6 @@ var Dispatcher = (function () {
 		// console.log("dodałem do hist");
 	}
 
-
 	/**
 	 * @private parse short description and remodel container (add new items,
 	 *          remove unnecessary)
@@ -127,23 +117,20 @@ var Dispatcher = (function () {
 	 * @return
 	 */
 	function parse(con, sd) {
-		var i = 0, length = 0, slots = sd.slots, tmpCon = [], item;
-
-		// console.log(["parse", "id", con.id, "type", con.type, "slot",
-		// con.slot]);
+		var i = 0, length = 0, slots = sd.slots, tmpCon = [], item = {};
 
 		// if there is no slots - break
 		if (!slots) {
-			// console.log("brak slotów", ["sd", sd]);
 			return;
 		}
 
 		// create temporary container
 		tmpCon = SenchaAdapter.getContainer();
 
-		// analyze short description and founded items remove from con (without
+		// analyze short description and founded items remove from container (without
 		// destroying)
 		for (i = 0, length = slots.length; i < length; i++) {
+			// get item with specified id from container
 			item = SenchaAdapter.get(con, slots[i].id);
 
 			// item found
@@ -161,15 +148,14 @@ var Dispatcher = (function () {
 		// analyze short description and founded items remove from con (without
 		// destroying)
 		for (i = 0, length = slots.length; i < length; i++) {
+			// get item with specified id from temporary container
 			item = SenchaAdapter.get(tmpCon, slots[i].id);
 
 			// item found
 			if (!!item) {
-				// console.log("item "+ slots[i].id +" found");
-				// remove from container
+				// remove item from container
 				item = SenchaAdapter.remove(tmpCon, item, false);
 			} else {
-				// console.log("item "+ slots[i].id +" not found");
 				// get full description from url
 				item = getFromURL(slots[i].url);
 
@@ -179,20 +165,17 @@ var Dispatcher = (function () {
 
 			// go deeper
 			parse(item, slots[i]);
-			
+
 			// add item to container
 			SenchaAdapter.add(con, item);
-
-			
 		}
 
 		// destroy temporary container
 		SenchaAdapter.destroy(tmpCon);
-		
-		// refresh container
-		//SenchaAdapter.refresh(con);
-	}
 
+		// refresh container
+		// SenchaAdapter.refresh(con);
+	}
 
 	function containerRemodel(container, shortDescription) {
 		var description;
@@ -208,7 +191,7 @@ var Dispatcher = (function () {
 			// console.log("highest level")
 			description = getFromURL(shortDescription.url);
 			if (description.id === container.id && !!description.type) {
-				 console.log("id ok, apply", ["des", description])
+				console.log("id ok, apply", ["des", description])
 				Parser.applyToInstance(container, description);
 				// console.log(container)
 			}
@@ -218,15 +201,14 @@ var Dispatcher = (function () {
 		screen.setLoading(false);
 	}
 
-
 	/**
 	 * @public called to reload (part of) the page
 	 * 
 	 * @param {object}
-	 *            state - new state of page; properties: shortDescription,
-	 *            title, url
+	 *            state new state of page; properties: shortDescription, title,
+	 *            url
 	 * @param {boolean}
-	 *            newPage - false if page loaded using back/forward button, true
+	 *            newPage false if page loaded using back/forward button, true
 	 *            otherwise
 	 * 
 	 * @return
@@ -238,11 +220,10 @@ var Dispatcher = (function () {
 
 		// screen refresh
 		SenchaAdapter.refresh(screen);
-		
+
 		// show screen
 		SenchaAdapter.show(screen);
 	}
-
 
 	function specialSlotShow(url) {
 		var shortDescription;
@@ -255,17 +236,15 @@ var Dispatcher = (function () {
 		shortDescription = getFromURL(url);
 
 		containerRemodel(popup, shortDescription);
-		
+
 		// show popup
 		SenchaAdapter.show(popup, "pop");
-		
+
 		// refresh popup
 		SenchaAdapter.refresh(popup);
-		
-		
+
 		return true;
 	}
-
 
 	function specialSlotHide() {
 		if (!!popup.hide) {
@@ -274,7 +253,6 @@ var Dispatcher = (function () {
 		}
 		return false;
 	}
-
 
 	function defaultScreen() {
 		return Parser.transform({
@@ -285,7 +263,6 @@ var Dispatcher = (function () {
 			layout : 'fit'
 		});
 	}
-
 
 	function defaultPopup() {
 		return Parser.transform({
@@ -298,7 +275,6 @@ var Dispatcher = (function () {
 		});
 	}
 
-
 	function init() {
 		// set default screen
 		screen = defaultScreen();
@@ -306,7 +282,6 @@ var Dispatcher = (function () {
 		// set default popup
 		popup = defaultPopup();
 	}
-
 
 	obj = {
 		load : loadURL,
@@ -321,7 +296,6 @@ var Dispatcher = (function () {
 		getPopup : getPopup,
 		init : init
 	};
-
 
 	return obj;
 

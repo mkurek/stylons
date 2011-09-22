@@ -606,11 +606,11 @@ var Parser = function() {
 	}
 	
 	function makeField(content, des){
-		return new Ext.form.Field(conent);
+		return new Ext.form.Field(content);
 	}
 	
 	function makeHiddenField(content, des){
-		return new Ext.form.Hidden(conent);
+		return new Ext.form.Hidden(content);
 	}
 	
 	function makeTextField(content, des){
@@ -618,19 +618,19 @@ var Parser = function() {
 	}
 	
 	function makeSelectField(content, des){
-		return new Ext.form.Select(conent);
+		return new Ext.form.Select(content);
 	}
 	
 	function makeTextareaField(content, des){
-		return new Ext.form.Textarea(conent);
+		return new Ext.form.Textarea(content);
 	}
 	
 	function makeCheckbox(content, des){
-		return new Ext.form.Checkbox(conent);
+		return new Ext.form.Checkbox(content);
 	}
 	
 	function makeRadio(content, des){
-		return new Ext.form.Radio(conent);
+		return new Ext.form.Radio(content);
 	}
 	
 	return {
