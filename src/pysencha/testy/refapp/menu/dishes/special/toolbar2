@@ -1,0 +1,5 @@
+{
+    "id" : "dishToolbar2",
+    "type" : "Toolbar",
+    "dock" : "bottom"
+}

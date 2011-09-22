@@ -2,5 +2,13 @@
  "id" : "button10",
  "type" : "Button",
  "ui" : "action",
- "text" : "10 cm"
+ "text" : "10 cm",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialShow",
+    "url" : "menu/dishes/special/shortDescription"
+   }
+ }
 }

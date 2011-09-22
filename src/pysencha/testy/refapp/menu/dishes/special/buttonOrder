@@ -1,0 +1,7 @@
+{
+ "id" : "buttonOrder",
+ "type" : "Button",
+ "ui" : "confirm",
+ "flex" : "1",
+ "text" : "Zamów"
+}

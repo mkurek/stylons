@@ -1,0 +1,67 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "id" : "rzeznickaToolbar",
+      "url" : "menu/dishes/0/2/toolbar",
+      "slots" : [
+       {
+        "id" : "pizzaBack",
+        "url" : "menu/dishes/0/back",
+        "slots" : []
+       }
+       ]
+      },
+      {
+       "id" : "dishPanel",
+       "url" : "menu/dishes/panel",
+       "slots" : [
+        {
+         "id" : "rzeznickaTitle",
+         "url" : "menu/dishes/0/2/title"
+        },
+        {
+         "id" : "rzeznickaPicture",
+         "url" : "menu/dishes/0/2/picture"
+        },
+        {
+         "id" : "rzeznickaDesc",
+         "url" : "menu/dishes/0/2/desc"
+        },
+        {
+         "id" : "rzeznickaIngr",
+         "url" : "menu/dishes/0/2/ingr"
+        },
+        {
+         "id" : "pizzaSizes",
+         "url" : "menu/dishes/0/sizes",
+         "slots" : [
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button10"
+          },
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button15"
+          },
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button30"
+          }
+         ]
+        }
+       ]
+      }
+    ]
+    },
+    {
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}

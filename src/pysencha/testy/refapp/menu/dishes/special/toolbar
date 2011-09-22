@@ -1,0 +1,6 @@
+{
+    "id" : "dishToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Potwierdzenie"
+}
