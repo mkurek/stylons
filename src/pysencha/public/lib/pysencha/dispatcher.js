@@ -69,6 +69,16 @@ var Dispatcher = (function() {
 		return Sender.getFromURL(Config.dirPath + url);
 	}
 
+	/**
+	 * @private Adapter to Sender-Receiver Object Send data to specified URL
+	 * 
+	 * @param {string}
+	 *            url URL to be requested
+	 * @param {Object}
+	 *            data Object to be sent
+	 * 
+	 * @return {object} JSON description - returned value from server
+	 */
 	function sendToURL(url, data) {
 		console.log("in send to url", ["url", url]);
 		return Sender.sendToURL(url, data);
@@ -102,8 +112,8 @@ var Dispatcher = (function() {
 	}
 
 	/**
-	 * @private parse short description and apply changes to container (add new items,
-	 *          remove unnecessary)
+	 * @private parse short description and apply changes to container (add new
+	 *          items, remove unnecessary)
 	 * 
 	 * @param {object}
 	 *            con Container to remodel
@@ -124,7 +134,8 @@ var Dispatcher = (function() {
 		// create temporary container
 		tmpCon = SenchaAdapter.getContainer();
 
-		// analyze short description and founded items remove from container (without
+		// analyze short description and founded items remove from container
+		// (without
 		// destroying)
 		for (i = 0, length = slots.length; i < length; i++) {
 			// get item with specified id from container
@@ -198,7 +209,7 @@ var Dispatcher = (function() {
 		if (!!shortDescription.url && container.id === shortDescription.id) {
 			// get full description on main container
 			description = getFromURL(shortDescription.url);
-		
+
 			// if ids are the same and description has specified type
 			if (description.id === container.id && !!description.type) {
 				// apply properties
@@ -208,7 +219,7 @@ var Dispatcher = (function() {
 
 		// hide loading mask
 		screen.setLoading(false);
-		
+
 		return container;
 	}
 
@@ -247,9 +258,9 @@ var Dispatcher = (function() {
 	 */
 	function specialSlotShow(url) {
 		var shortDescription;
-		
+
 		// if url is not a string
-		if(!Ext.isString(url)){
+		if (!Ext.isString(url)) {
 			return false;
 		}
 		// get short description from passed url (sender request)
@@ -263,7 +274,7 @@ var Dispatcher = (function() {
 
 		// refresh popup
 		SenchaAdapter.refresh(popup);
-		
+
 		return true;
 	}
 
@@ -272,11 +283,16 @@ var Dispatcher = (function() {
 	 * 
 	 * @return
 	 */
-	
+
 	function specialSlotHide() {
 		SenchaAdapter.hide(popup);
 	}
 
+	/**
+	 * @private create new instance of default screen
+	 * 
+	 * @return {Object} default screen object
+	 */
 	function defaultScreen() {
 		return Parser.transform({
 			type : "Screen",
@@ -287,6 +303,11 @@ var Dispatcher = (function() {
 		});
 	}
 
+	/**
+	 * @private create new instance of default popup
+	 * 
+	 * @return {Object} default popup object
+	 */
 	function defaultPopup() {
 		return Parser.transform({
 			type : "SpecialPanel",
@@ -298,6 +319,11 @@ var Dispatcher = (function() {
 		});
 	}
 
+	/**
+	 * @public init function; initialize screen and popup
+	 * 
+	 * @return
+	 */
 	function init() {
 		// set default screen
 		screen = defaultScreen();

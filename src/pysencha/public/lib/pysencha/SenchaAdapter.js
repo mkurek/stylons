@@ -1,151 +1,192 @@
-var SenchaAdapter = function() {
-	
-	// general adapters
+var SenchaAdapter = (function() {
+	var obj;
 	
 	/**
-	 * destroy - destroy object given as a parameter
+	 * @public
+	 * destroy object given as a parameter
 	 * 
-	 * @params: obj - object to be destroyed
+	 * @param obj Object to be destroyed
 	 * 
-	 * @return: false if obj.destroy() method does not exist, true otherwise
+	 * @return false if obj.destroy() method does not exist, true otherwise
 	 */
-
 	function destroy(obj) {
-		//console.log("destroy", ['id', obj.id]);
+		// console.log("destroy", ['id', obj.id]);
 		if (!!obj.destroy) {
-			// remove parent link - prevent warning before removing unexisting component
-			//obj.ownerCt = undefined;
 			obj.destroy();
-		}
-		else {
+		} else {
 			return false;
 		}
-		
+
 		return true;
-	};
-	
+	}
+
 	/**
-	 * refresh - refresh object given as a parameter
+	 * @public
+	 * refresh object given as a parameter
 	 * 
-	 * @params: obj - object to be refreshed
+	 * @param {Object} obj Object to be refreshed
 	 * 
-	 * @return: false if obj.doLayout() method does not exist, true otherwise
+	 * @return
 	 */
 
 	function refresh(obj) {
 		if (!!obj.doLayout) {
-			console.log("refresh!", ["id", obj.id]);
 			obj.doLayout();
 		}
-		if(!!obj.doComponentLayout){
+		if (!!obj.doComponentLayout) {
 			obj.doComponentLayout();
 		}
 
-		return true;
-	};
-	
-	/**
-	 * show - shows object
-	 * 
-	 * @params: obj - object to be showed
-	 * 
-	 * @return 
-	 */
+	}
 
+	/**
+	 * shows object
+	 * 
+	 * @param {Object} obj Object to be showed
+	 * 
+	 * @param {Object|Boolean|String} anim Animation description
+	 * 
+	 * @return
+	 */
 	function show(obj, anim) {
-		// helps for some devices to redraw
+		// help for some devices to redraw
 		Ext.Viewport.fireResizeEvent();
 
 		// another workaround
 		Ext.repaint();
-		
-		if(!!obj.show){
+
+		if (!!obj.show) {
 			obj.show(anim);
 		}
 	}
-	
+
 	/**
 	 * @public hide object
 	 * 
-	 * @param: obj - object to be hided
+	 * @param {Object} obj Object to be hided
 	 * 
-	 * @return 
+	 * @return
 	 */
-
 	function hide(obj, anim) {
-		
-		if(!!obj.hide){
+
+		if (!!obj.hide) {
 			obj.hide(anim);
 		}
-		
+
 	}
-	
-	
+
 	/**
+	 * @oublic
+	 * check if item is in container 
 	 * 
-	 * @param {String | Object} item item to be found
+	 * @param {Object} container Container to check for item
+	 * 
+	 * @param {String |
+	 *            Object} item Item to be found
+	 *            
+	 * @return item if found, false otherwise
 	 */
-	function get(container, item){
+	function get(container, item) {
 		var result = false, index;
-		
+
 		// if defined getComponent container's method
-		if(!!container.getComponent){
+		if (!!container.getComponent) {
 			result = container.getComponent(item);
-		}
-		else if(Ext.isArray(container)){
+		} 
+		// if container is regular array
+		else if (Ext.isArray(container)) {
+			// get index of item
 			index = container.indexOf(item);
-			if(index != -1){
+			
+			if (index !== -1) {
 				result = container[index];
 			}
 		}
-		
+
 		return result || false;
 	}
-	
-	function remove(container, item, des){
-		var index;
-		console.log("SA - remove", " | con.id", container.id, " | item.id", item.id, " | destroy", des);
+
+	/**
+	 * @oublic
+	 * remove item from container 
+	 * 
+	 * @param {Object} container Container from which item will be removed
+	 * 
+	 * @param {Object} item Item to be removed
+	 *          
+	 * @param {Object} des Defines if item should be destroyed           
+	 *            
+	 * @return item if not found in container, false otherwise
+	 */
+	function remove(container, item, des) {
+		var index, result;
+		//console.log("SA - remove", " | con.id", container.id, " | item.id", item.id, " | destroy", des);
 		result = false;
-		
+
 		// check if the item is in container
-		if(!!get(container, item)){
+		if (!!get(container, item)) {
 			// check for occurrence in docked items
-			if(!!container.getDockedComponent && !!container.getDockedComponent(item)){
+			if (!!container.getDockedComponent
+					&& !!container.getDockedComponent(item)) {
 				// remove from docked items
-				if(!!container.removeDocked){
+				if (!!container.removeDocked) {
 					result = container.removeDocked(item, !!des);
 				}
 			}
 			// item is in items
-			else{
-				if(!!container.remove){
+			else {
+				if (!!container.remove) {
 					result = container.remove(item, !!des);
 				}
 			}
-		}
-		else if(Ext.isArray(container)){
-			index = container.indexOf(item)
-			if(index != -1){
+		} 
+		// check for being array
+		else if (Ext.isArray(container)) {
+			// get index of item
+			index = container.indexOf(item);
+			
+			// if item is in array
+			if (index !== -1) {
+				
+				// cut off item from array
 				result = container.splice(index, 1);
-				if(!!des){
+				
+				// destroy item if necessary
+				if (!!des) {
 					destroy(result);
 				}
 			}
 		}
-		
+
 		return result;
 	}
-	
-	function removeAll(container, destroy){
+
+	/**
+	 * @oublic
+	 * remove all items from container 
+	 * 
+	 * @param {Object} container Container from which items will be removed
+	 *          
+	 * @param {Object} des Defines if items should be destroyed           
+	 *            
+	 * @return removed items
+	 */
+	function removeAll(container, destroy) {
 		var i, j, leni, lenj, removeItems, pos = ["items", "dockedItems"], items = [], item;
-		
-		for(i=0,leni=pos.length;i<leni;i++){
-			if(container[pos[i]]){
+
+		// check for items and dockedItems
+		for (i = 0, leni = pos.length; i < leni; i++) {
+			if (!!container[pos[i]]) {
+				// make copy of items
 				removeItems = container[pos[i]].items.slice();
-				for(j=0,lenj=removeItems.length;j<lenj;j++){
+				
+				// for every items in sub-container
+				for (j = 0, lenj = removeItems.length; j < lenj; j++) {
+					// remove item
 					item = remove(container, removeItems[j], !!destroy);
-					
-					if(item){
+
+					// push item to result list
+					if (!!item) {
 						items.push(item);
 					}
 				}
@@ -154,55 +195,69 @@ var SenchaAdapter = function() {
 		return items;
 	}
 	
-	function add(container, item){
-		console.log("SA.add", " | con.id", container.id, " | item.id", item.id, " | dock", item.dock);
-		// add to docked items if item has dock param and container docked items array
-		if(!!item.dock && !!container.addDocked){
-			//console.log("to docked")
+	
+	/**
+	 * @oublic
+	 * add item to container 
+	 * 
+	 * @param {Object} container Container from which items will be removed
+	 *          
+	 * @param {Object} item Component to add to container    
+	 *            
+	 * @return true if successful, false otherwise
+	 */
+	function add(container, item) {
+		//console.log("SA.add", " | con.id", container.id, " | item.id", item.id," | dock", item.dock);
+		
+		// add to docked items if item has dock param and container docked items
+		// array
+		if (!!item.dock && !!container.addDocked) {
 			container.addDocked(item);
 		}
 		// add to items if container has add method
-		else if(!!container.add){
-			//console.log("to normal")
+		else if (!!container.add) {
 			container.add(item);
-		}
-		else{
+		} else {
 			return false;
 		}
-		
+
 		return true;
 	}
+
 	
-	function getContainer(){
-		return new Ext.Container;
+	/**
+	 * @public
+	 * create new container 
+	 *            
+	 * @return new container instance
+	 */
+	function getContainer() {
+		return new Ext.Container();
 	}
 	
-	function getMixedCollection(){
-		return new Ext.util.MixedCollection;
+	
+	/**
+	 * @public
+	 * create new mixed collection container 
+	 *            
+	 * @return new mixed collection container instance
+	 */
+	function getMixedCollection() {
+		return new Ext.util.MixedCollection();
 	}
 	
-	function setDimensions(con, width, height){
-		if(!!con.setWidth){
-			con.setWidth(width || "auto");
-		}
-		if(!!con.setHeight){
-			con.setHeight(height || "auto");
-		}
-		
-		return true;
-	}
 	
-	return {
+	obj =  {
 		destroy : destroy,
 		refresh : refresh,
 		get : get,
 		add : add,
 		remove : remove,
-		getContainer: getContainer /* getMixedCollection */,
+		getContainer : getContainer, /* getMixedCollection */
 		removeAll : removeAll,
-		setDimensions : setDimensions,
 		show : show,
 		hide : hide
 	};
-	
-}();
+
+	return obj;
+}());
