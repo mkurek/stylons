@@ -1,12 +1,27 @@
 var Sender = {
 	getFromURL: function(url) {
-		//console.log("Pobieram: "+url);
-		var response, xhr = new XMLHttpRequest();
+		var response , xhr = new XMLHttpRequest();
 		xhr.open("POST",url,false);
 		xhr.send(null);
-		//console.log(["response", xhr.responseText])
-		response = eval('('+xhr.responseText+')');
-		console.log("Pobrałem: "+url);
+		try {
+			response = eval('('+xhr.responseText+')');
+		}
+		catch (err){
+			respone = '';
+		}
+		return response;
+	},
+	sendToURL: function(url, data) {
+		var response, dataForServer, xhr = new XMLHttpRequest();
+		xhr.open("POST",url,false);
+		dataForServer = JSON.stringify(data);
+		xhr.send(dataForServer);
+		try {
+			response = eval('('+xhr.responseText+')');
+		}
+		catch (err){
+			respone = '';
+		}
 		return response;
 	}
 }

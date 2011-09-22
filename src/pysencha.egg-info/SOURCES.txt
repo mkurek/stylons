@@ -28,6 +28,11 @@ pysencha/model/__init__.py
 pysencha/model/meta.py
 pysencha/public/favicon.ico
 pysencha/public/index.html
+pysencha/public/img/Firma.png
+pysencha/public/img/Margaritta.png
+pysencha/public/img/default.png
+pysencha/public/img/hawajska.png
+pysencha/public/img/rzeznicka.png
 pysencha/public/lib/pysencha/History.js
 pysencha/public/lib/pysencha/SenchaAdapter.js
 pysencha/public/lib/pysencha/dispatcher.js
