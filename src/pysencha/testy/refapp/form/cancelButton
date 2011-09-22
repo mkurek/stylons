@@ -1,0 +1,6 @@
+{
+ "id" : "cancelButton",
+ "type" : "Button",
+ "ui" : "decline",
+ "text" : "Anuluj"
+}

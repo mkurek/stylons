@@ -1,0 +1,7 @@
+{
+ "id" : "city",
+ "type" : "TextField",
+ "label" : "Miasto",
+ "required" : "true",
+ "name" : "city"
+}

@@ -1,0 +1,6 @@
+{
+ "id" : "sendButton",
+ "type" : "Button",
+ "ui" : "confirm",
+ "text" : "Wyślij"
+}
