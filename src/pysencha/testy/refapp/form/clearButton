@@ -1,0 +1,6 @@
+{
+ "id" : "clearButton",
+ "type" : "Button",
+ "ui" : "decline",
+ "text" : "Wyczyść"
+}

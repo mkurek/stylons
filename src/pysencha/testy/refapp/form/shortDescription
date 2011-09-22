@@ -15,6 +15,10 @@
          "url" : "form/cancelButton",
         },
         {
+         "id" : "clearButton",
+         "url" : "form/clearButton",
+        },
+        {
          "id" : "spacer",
          "url" : "spacer",
         },
