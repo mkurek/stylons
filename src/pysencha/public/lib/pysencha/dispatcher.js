@@ -190,7 +190,7 @@ var Dispatcher = (function () {
 		SenchaAdapter.destroy(tmpCon);
 		
 		// refresh container
-		SenchaAdapter.refresh(con);
+		//SenchaAdapter.refresh(con);
 	}
 
 
@@ -255,15 +255,13 @@ var Dispatcher = (function () {
 		shortDescription = getFromURL(url);
 
 		containerRemodel(popup, shortDescription);
-
-		// refresh popup
-		//SenchaAdapter.refresh(popup);
-
+		
 		// show popup
 		SenchaAdapter.show(popup, "pop");
-
+		
 		// refresh popup
 		SenchaAdapter.refresh(popup);
+		
 		
 		return true;
 	}
@@ -296,7 +294,7 @@ var Dispatcher = (function () {
 			slot : 'special',
 			// width : 200,
 			// height : 400,
-			layout : 'fit'
+			layout : 'auto'
 		});
 	}
 

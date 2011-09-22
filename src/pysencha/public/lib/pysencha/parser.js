@@ -68,6 +68,8 @@ var Parser = function() {
 				padding : 0, // {Number | String (eg. '10 2 4 5')}
 				scroll : false, // {vertical | horizontal | both | false}
 				layout : 'auto',
+				width : undefined,
+				height : undefined
 			}
 		},
 		"Toolbar" : {

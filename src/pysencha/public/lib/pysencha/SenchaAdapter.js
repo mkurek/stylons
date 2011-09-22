@@ -40,9 +40,7 @@ var SenchaAdapter = function() {
 		if(!!obj.doComponentLayout){
 			obj.doComponentLayout();
 		}
-		
-		Ext.repaint();
-		
+
 		return true;
 	};
 	
@@ -55,9 +53,16 @@ var SenchaAdapter = function() {
 	 */
 
 	function show(obj, anim) {
+		// helps for some devices to redraw
+		Ext.Viewport.fireResizeEvent();
+
+		// another workaround
+		//Ext.repaint();
+		
 		if(!!obj.show){
 			obj.show(anim);
 		}
+		
 		
 		return true;
 	};
