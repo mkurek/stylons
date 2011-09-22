@@ -2,7 +2,7 @@ var SenchaAdapter = function() {
 	
 	// general adapters
 	
-	/*
+	/**
 	 * destroy - destroy object given as a parameter
 	 * 
 	 * @params: obj - object to be destroyed
@@ -10,7 +10,7 @@ var SenchaAdapter = function() {
 	 * @return: false if obj.destroy() method does not exist, true otherwise
 	 */
 
-	function fdestroy(obj) {
+	function destroy(obj) {
 		//console.log("destroy", ['id', obj.id]);
 		if (!!obj.destroy) {
 			// remove parent link - prevent warning before removing unexisting component
@@ -24,7 +24,7 @@ var SenchaAdapter = function() {
 		return true;
 	};
 	
-	/*
+	/**
 	 * refresh - refresh object given as a parameter
 	 * 
 	 * @params: obj - object to be refreshed
@@ -32,7 +32,7 @@ var SenchaAdapter = function() {
 	 * @return: false if obj.doLayout() method does not exist, true otherwise
 	 */
 
-	function frefresh(obj) {
+	function refresh(obj) {
 		if (!!obj.doLayout) {
 			console.log("refresh!", ["id", obj.id]);
 			obj.doLayout();
@@ -45,6 +45,23 @@ var SenchaAdapter = function() {
 		
 		return true;
 	};
+	
+	/**
+	 * show - shows object
+	 * 
+	 * @params: obj - object to be showed
+	 * 
+	 * @return 
+	 */
+
+	function show(obj, anim) {
+		if(!!obj.show){
+			obj.show(anim);
+		}
+		
+		return true;
+	};
+	
 	
 	/**
 	 * 
@@ -67,9 +84,9 @@ var SenchaAdapter = function() {
 		return result || false;
 	}
 	
-	function remove(container, item, destroy){
+	function remove(container, item, des){
 		var index;
-		console.log("SA - remove", " | con.id", container.id, " | item.id", item.id, " | destroy", destroy);
+		console.log("SA - remove", " | con.id", container.id, " | item.id", item.id, " | destroy", des);
 		result = false;
 		
 		// check if the item is in container
@@ -78,13 +95,13 @@ var SenchaAdapter = function() {
 			if(!!container.getDockedComponent && !!container.getDockedComponent(item)){
 				// remove from docked items
 				if(!!container.removeDocked){
-					result = container.removeDocked(item, !!destroy);
+					result = container.removeDocked(item, !!des);
 				}
 			}
 			// item is in items
 			else{
 				if(!!container.remove){
-					result = container.remove(item, !!destroy);
+					result = container.remove(item, !!des);
 				}
 			}
 		}
@@ -92,7 +109,7 @@ var SenchaAdapter = function() {
 			index = container.indexOf(item)
 			if(index != -1){
 				result = container.splice(index, 1);
-				if(!!destroy){
+				if(!!des){
 					destroy(result);
 				}
 			}
@@ -158,14 +175,15 @@ var SenchaAdapter = function() {
 	}
 	
 	return {
-		destroy : fdestroy,
-		refresh : frefresh,
+		destroy : destroy,
+		refresh : refresh,
 		get : get,
 		add : add,
 		remove : remove,
 		getContainer: getContainer /* getMixedCollection */,
 		removeAll : removeAll,
-		setDimensions : setDimensions
+		setDimensions : setDimensions,
+		show : show
 	};
 	
 }();

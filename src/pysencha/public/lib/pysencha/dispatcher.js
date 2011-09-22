@@ -9,7 +9,7 @@ var Dispatcher = (function () {
 	popup = {};
 	Config = {
 		defaultURL : "shortDescription",
-		dirPath : "testy/refapp/"
+		dirPath : "../testy/refapp/"
 	};
 
 
@@ -238,7 +238,9 @@ var Dispatcher = (function () {
 
 		// screen refresh
 		SenchaAdapter.refresh(screen);
-
+		
+		// show screen
+		SenchaAdapter.show(screen);
 	}
 
 
@@ -258,7 +260,7 @@ var Dispatcher = (function () {
 		//SenchaAdapter.refresh(popup);
 
 		// show popup
-		popup.show('pop');
+		SenchaAdapter.show(popup, "pop");
 
 		// refresh popup
 		SenchaAdapter.refresh(popup);
