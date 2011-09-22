@@ -1,0 +1,7 @@
+{
+ "id" : "email",
+ "type" : "TextField",
+ "label" : "Email",
+ "required" : "true",
+ "name" : "email"
+}

@@ -1,0 +1,7 @@
+{
+ "id" : "street",
+ "type" : "TextField",
+ "label" : "Ulica",
+ "required" : "true",
+ "name" : "street"
+}

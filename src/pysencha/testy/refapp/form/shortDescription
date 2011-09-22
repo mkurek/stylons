@@ -1,0 +1,91 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "form",
+    "url" : "form/index",
+    "slots" : [
+      {
+      "id" : "formToolbar",
+      "url" : "form/toolbar",
+      "slots" : [
+        {
+         "id" : "cancelButton",
+         "url" : "form/cancelButton",
+        },
+        {
+         "id" : "spacer",
+         "url" : "spacer",
+        },
+        {
+         "id" : "sendButton",
+         "url" : "form/sendButton",
+        }
+      ]
+      },
+      {
+      "id" : "formPanel",
+      "url" : "form/panel/index",
+      "slots" : [
+      	{
+      		"id" : "surnameandname",
+      		"url" : "form/panel/fieldset1/index",
+      		"slots" : [
+      			{
+      				"id" : "name",
+      				"url" : "form/panel/fieldset1/field1"
+      			},
+      			{
+      				"id" : "surname",
+      				"url" : "form/panel/fieldset1/field2"
+      			},
+      		]
+      	},
+      	{
+      		"id" : "location",
+      		"url" : "form/panel/fieldset2/index",
+      		"slots" : [
+      			{
+      				"id" : "city",
+      				"url" : "form/panel/fieldset2/field1"
+      			},
+      			{
+      				"id" : "street",
+      				"url" : "form/panel/fieldset2/field2"
+      			},
+      			{
+      				"id" : "housenumber1",
+      				"url" : "form/panel/fieldset2/field3"
+      			},
+      			{
+      				"id" : "housenumber2",
+      				"url" : "form/panel/fieldset2/field4"
+      			},
+      		]
+      	},
+      	{
+      		"id" : "contact",
+      		"url" : "form/panel/fieldset3/index",
+      		"slots" : [
+      			{
+      				"id" : "email",
+      				"url" : "form/panel/fieldset3/field1"
+      			},
+      			{
+      				"id" : "phonenumber",
+      				"url" : "form/panel/fieldset3/field2"
+      			},
+      		]
+      	},
+      	
+      ]
+      }
+    ]
+    },
+    {
+    "id" : "formTabbar",
+    "url" : "form/tabbar"
+    }
+  ]
+}

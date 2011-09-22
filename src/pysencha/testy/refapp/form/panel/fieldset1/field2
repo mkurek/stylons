@@ -1,0 +1,7 @@
+{
+ "id" : "surname",
+ "type" : "TextField",
+ "label" : "Nazwisko",
+ "required" : "true",
+ "name" : "surname"
+}

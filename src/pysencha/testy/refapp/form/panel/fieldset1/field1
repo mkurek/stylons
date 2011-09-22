@@ -1,0 +1,7 @@
+{
+ "id" : "name",
+ "type" : "TextField",
+ "label" : "Imię",
+ "required" : "true",
+ "name" : "name"
+}
