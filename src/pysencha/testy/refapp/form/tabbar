@@ -25,7 +25,8 @@
         "type" : "load",
         "url" : "cart/shortDescription"
       }
-   }
+   },
+   "active" : "true"
   },
   {
    "id" : "TabbarButton3",
