@@ -5,5 +5,5 @@
  "type" : "Panel",
  "width" : 300,
  "height" : 300,
- "html" : "<img src='img/Firma.png'/></br>Siedziba firmy</br>"
+ "html" : "<img src='img/Firma.png'/></br>Siedziba firmy</br></br>"
 }

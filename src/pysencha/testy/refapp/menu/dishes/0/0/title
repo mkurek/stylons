@@ -1,0 +1,7 @@
+{
+ "slot" : "top",
+ "id" : "margarittaTitle",
+ "url" : "menu/dishes/0/0/title",
+ "type" : "Panel",
+ "html" : "<h2>Margaritta</h2>"
+}

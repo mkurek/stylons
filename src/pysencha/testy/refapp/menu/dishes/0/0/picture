@@ -1,0 +1,9 @@
+{
+ "slot" : "uppermiddle",
+ "id" : "margarittaPicture",
+ "url" : "menu/dishes/0/0/picture",
+ "type" : "Panel",
+ "width" : 150,
+ "height" : 150,
+ "html" : "<img src='img/Margaritta.png'/></br>"
+}

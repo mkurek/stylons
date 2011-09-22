@@ -1,7 +1,7 @@
 {
  "slot" : "bottom",
- "id" : "infoPanel",
- "url" : "info/panel/index",
+ "id" : "dishPanel",
+ "url" : "menu/dishes/panel",
  "styleHtmlContent" : "true",
  "type" : "Panel",
  "scroll" : "vertical"
