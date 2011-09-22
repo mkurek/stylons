@@ -29,3 +29,5 @@ syntax: regexp
 ^parts$
 syntax: regexp
 ^buildout\.cfg$
+syntax: regexp
+^src/pysencha/testy/refapp2$
