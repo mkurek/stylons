@@ -66,7 +66,7 @@ var Parser = function() {
 				styleHtmlContent : false,
 				margin : 0, // {Number | String (eg. '10 2 4 5')}
 				padding : 0, // {Number | String (eg. '10 2 4 5')}
-				//scroll : 'vertical' // {vertical | horizontal | both | false}
+				scroll : false, // {vertical | horizontal | both | false}
 				layout : 'auto',
 			}
 		},
