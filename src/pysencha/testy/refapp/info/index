@@ -1,6 +1,4 @@
 {
-    "slot" : "top",
     "id" : "info",
-    "type" : "Panel",
     "layout" : "fit"
 }

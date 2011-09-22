@@ -1,9 +1,7 @@
 {
  "id" : "popup",
- "slot" : "special",
- "url" : "cart/special/1/index",
  "type" : "SpecialPanel",
- "width" : 285,
- "height" : 120,
- "styleHtmlContent" : true
+ "width" : "285",
+ "height" : "120",
+ "styleHtmlContent" : "true"
 }

@@ -1,7 +1,5 @@
 {
     "id" : "pizzaToolbar",
-    "slot" : "top",
-    "url" : "menu/dishes/0/toolbar",
     "type" : "Toolbar",
     "dock" : "top",
     "title" : "Pizza"

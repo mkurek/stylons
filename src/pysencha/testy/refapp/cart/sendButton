@@ -1,8 +1,6 @@
 {
  "id" : "sendButton",
- "slot" : "right",
  "type" : "Button",
  "ui" : "confirm",
- "text" : "Zamów",
- "dock" : "right"
+ "text" : "Zamów"
 }

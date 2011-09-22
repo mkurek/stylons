@@ -1,6 +1,5 @@
 {
  "id" : "cartList", 
- "slot" : "bottom",
  "type" : "List",
  "itemtpl" : "{dish}",
  "list" : 

@@ -1,6 +1,5 @@
 {
- "id" : "menuList", 
- "slot" : "bottom",
+ "id" : "menuList",
  "type" : "List",
  "itemtpl" : "{dish}",
  "list" : 

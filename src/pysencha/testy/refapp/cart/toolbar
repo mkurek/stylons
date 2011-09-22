@@ -1,7 +1,5 @@
 {
     "id" : "cartToolbar",
-    "slot" : "top",
-    "url" : "cart/toolbar",
     "type" : "Toolbar",
     "dock" : "top",
     "title" : "Koszyk"

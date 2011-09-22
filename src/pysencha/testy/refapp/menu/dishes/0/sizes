@@ -1,10 +1,7 @@
 {
- "slot" : "bottomupper",
  "id" : "pizzaSizes",
- "url" : "menu/dishes/0/0/ingr",
- "type" : "Panel",
  "layout" :
-   {
-    "type" : "hbox"
-   }
+  {
+   "type" : "hbox"
+  }
 }

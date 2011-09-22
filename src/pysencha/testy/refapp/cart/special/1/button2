@@ -1,7 +1,5 @@
 {
- "slot" : "right",
  "id" : "button1_2",
- "url" : "cart/special/1/button2",
  "type" : "Button",
  "ui" : "decline",
  "text" : "Usuń"

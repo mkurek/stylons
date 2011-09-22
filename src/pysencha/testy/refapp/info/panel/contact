@@ -1,7 +1,4 @@
 {
- "slot" : "bottom",
  "id" : "infoContact",
- "url" : "info/panel/contact",
- "type" : "Panel",
  "html" : "<h4>Kontakt:</h4><strong>Marek Marecki</strong></br><strong>Pizzeria Gruby Słoń</strong></br>ul. Siedzibowa 1</br>90-210 Ceverly Valleys</br>"
 }

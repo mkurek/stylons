@@ -1,41 +1,33 @@
 {
-  "slot" : "screen",
   "id" : "screen",
   "url" : "index",
   "slots" : [
     {
-    "slot" : "top",
     "id" : "info",
     "url" : "info/index",
     "slots" : [
       {
-      "slot" : "top",
       "id" : "infoToolbar",
       "url" : "info/toolbar",
       "slots" : []
       },
       {
-      "slot" : "bottom",
       "id" : "infoPanel",
       "url" : "info/panel/index",
       "slots" : [
        {
-        "slot" : "top",
         "id" : "infoTitle",
         "url" : "info/panel/title"
        },
        {
-        "slot" : "uppermiddle",
         "id" : "infoMessage",
         "url" : "info/panel/message"
        },
        {
-        "slot" : "lowermiddle",
         "id" : "infoPicture",
         "url" : "info/panel/picture"
        },
        {
-        "slot" : "bottom",
         "id" : "infoContact",
         "url" : "info/panel/contact"
        }
@@ -43,8 +35,7 @@
       }
     ]
     },
-    { 
-    "slot" : "bottom",
+    {
     "id" : "infoTabbar",
     "url" : "info/tabbar"
     }

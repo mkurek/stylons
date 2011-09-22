@@ -2,11 +2,9 @@
  "id" : "infoTabbar",
  "type" : "TabBar",
  "dock" : "bottom",
- "slot" : "bottom",
  "list" : 
  [
   {
-   "slot" : "left",
    "id" : "TabbarButton1",
    "icon" : "home",
    "text" : "Menu",
@@ -18,7 +16,6 @@
    }
   },
   {
-   "slot" : "middleleft",
    "id" : "TabbarButton2",
    "icon" : "cart",
    "text" : "Koszyk",
@@ -31,7 +28,6 @@
    }
   },
   {
-   "slot" : "middleright",
    "id" : "TabbarButton3",
    "icon" : "favorites",
    "text" : "Promocje",
@@ -43,7 +39,6 @@
    }
   },
   {
-   "slot" : "right",
    "id" : "TabbarButton4",
    "icon" : "info",
    "text" : "Info",

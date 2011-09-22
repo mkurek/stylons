@@ -1,7 +1,5 @@
 {
     "id" : "specialToolbar1",
-    "slot" : "top",
-    "url" : "cart/special/1/toolbar",
     "type" : "Toolbar",
     "dock" : "top",
     "title" : "Możliwe zmiany:"

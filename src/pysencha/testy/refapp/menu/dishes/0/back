@@ -1,6 +1,5 @@
 {
  "id" : "pizzaBack",
- "slot" : "left",
  "type" : "Button",
  "ui" : "back",
  "text" : "Pizza",

@@ -1,6 +1,5 @@
 {
  "id" : "menuBack",
- "slot" : "left",
  "type" : "Button",
  "ui" : "back",
  "text" : "Menu",

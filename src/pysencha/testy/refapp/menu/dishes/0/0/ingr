@@ -1,7 +1,4 @@
 {
- "slot" : "lowermiddle",
  "id" : "margarittaIngr",
- "url" : "menu/dishes/0/0/ingr",
- "type" : "Panel",
  "html" : "</br><b>Składniki:</b></br>ser</br></br><b>Rozmiar:</b></br>"
 }

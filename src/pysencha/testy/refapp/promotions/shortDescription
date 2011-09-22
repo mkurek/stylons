@@ -1,29 +1,24 @@
 {
-  "slot" : "screen",
   "id" : "screen",
   "url" : "index",
   "slots" : [
     {
-    "slot" : "top",
     "id" : "promotions",
     "url" : "promotions/index",
     "slots" : [
       {
-      "slot" : "top",
       "id" : "promotionsToolbar",
       "url" : "promotions/toolbar",
       "slots" : []
       },
       {
-      "slot" : "bottom",
       "id" : "menuList",
       "url" : "menu/list",
       "slots" : []
       }
     ]
     },
-    { 
-    "slot" : "bottom",
+    {
     "id" : "promotionsTabbar",
     "url" : "promotions/tabbar"
     }

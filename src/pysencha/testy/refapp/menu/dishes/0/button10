@@ -1,6 +1,5 @@
 {
  "id" : "button10",
- "url" : "menu/dishes/0/button10",
  "type" : "Button",
  "ui" : "action",
  "text" : "10 cm"

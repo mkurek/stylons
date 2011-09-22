@@ -1,8 +1,6 @@
 {
  "id" : "clearButton",
- "slot" : "left",
  "type" : "Button",
  "ui" : "decline",
- "text" : "Wyczyść",
- "dock" : "left"
+ "text" : "Wyczyść"
 }

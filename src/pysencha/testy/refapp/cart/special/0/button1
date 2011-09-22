@@ -1,7 +1,5 @@
 {
- "slot" : "middle",
  "id" : "button0_1",
- "url" : "cart/special/0/button1",
  "type" : "Button",
  "ui" : "confirm",
  "text" : "Zmień rozmiar"

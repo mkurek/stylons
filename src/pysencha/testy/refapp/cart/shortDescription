@@ -1,45 +1,37 @@
 {
-  "slot" : "screen",
   "id" : "screen",
   "url" : "index",
   "slots" : [
     {
-    "slot" : "top",
     "id" : "menu",
     "url" : "menu/index",
     "slots" : [
       {
-      "slot" : "top",
       "id" : "cartToolbar",
       "url" : "cart/toolbar",
       "slots" : [
         {
-         "slot" : "left",
          "id" : "clearButton",
          "url" : "cart/clearButton",
         },
         {
-         "slot" : "middle",
          "id" : "spacer",
          "url" : "spacer",
         },
         {
-         "slot" : "right",
          "id" : "sendButton",
          "url" : "cart/sendButton",
         }
       ]
       },
       {
-      "slot" : "bottom",
       "id" : "cartList",
       "url" : "cart/list",
       "slots" : []
       }
     ]
     },
-    { 
-    "slot" : "bottom",
+    {
     "id" : "cartTabbar",
     "url" : "cart/tabbar"
     }
