@@ -1,0 +1,67 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "id" : "hawajskaToolbar",
+      "url" : "menu/dishes/0/1/toolbar",
+      "slots" : [
+       {
+        "id" : "pizzaBack",
+        "url" : "menu/dishes/0/back",
+        "slots" : []
+       }
+       ]
+      },
+      {
+       "id" : "dishPanel",
+       "url" : "menu/dishes/panel",
+       "slots" : [
+        {
+         "id" : "hawajskaTitle",
+         "url" : "menu/dishes/0/1/title"
+        },
+        {
+         "id" : "hawajskaPicture",
+         "url" : "menu/dishes/0/1/picture"
+        },
+        {
+         "id" : "hawajskaDesc",
+         "url" : "menu/dishes/0/1/desc"
+        },
+        {
+         "id" : "hawajskaIngr",
+         "url" : "menu/dishes/0/1/ingr"
+        },
+        {
+         "id" : "pizzaSizes",
+         "url" : "menu/dishes/0/sizes",
+         "slots" : [
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button10"
+          },
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button15"
+          },
+          {
+           "id" : "button15",
+           "url" : "menu/dishes/0/button30"
+          }
+         ]
+        }
+       ]
+      }
+    ]
+    },
+    {
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}

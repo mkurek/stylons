@@ -1,0 +1,7 @@
+{
+ "id" : "buttonAbort",
+ "type" : "Button",
+ "ui" : "decline",
+ "flex" : "1",
+ "text" : "Anuluj"
+}

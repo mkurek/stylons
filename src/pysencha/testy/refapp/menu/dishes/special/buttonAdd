@@ -1,0 +1,7 @@
+{
+ "id" : "buttonAdd",
+ "type" : "Button",
+ "ui" : "accept",
+ "flex" : "1",
+ "text" : "Dodaj"
+}
