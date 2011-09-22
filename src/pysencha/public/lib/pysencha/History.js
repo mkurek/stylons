@@ -34,6 +34,7 @@ var History = function(window) {
                 }
             }, checkInterval);
 		}
+		return true;
 	};
 	
 	/**
@@ -51,8 +52,6 @@ var History = function(window) {
 		// set currentToken to url
 		currentToken.token = cleanToken(url) || Dispatcher.Config().defaultURL;
 		
-		//console.log("push state: currentToken, statesHistory", [getCurrentToken(), statesHistory]);
-		
 		// delete all history records after previous
 		if(currentToken.id++ !== statesHistory.length){
 			statesHistory.splice(currentToken.id);
@@ -68,7 +67,7 @@ var History = function(window) {
 		if(!keepHash){
 			window.location.hash = currentToken.token;
 		}
-	};
+	}
 	
 	/**
 	 * @public
@@ -86,12 +85,14 @@ var History = function(window) {
 			moveForward = true;	// true if new page added or forward move, false otherwise
 		
 		//console.log("hash change event! obj: ", [obj]);
-			
+		
+		// hide popup
+		Dispatcher.specialHide();
+		
 		// callback after back or forward button
 		if(recentlyAdded !== true){
 			// get encoded token from newURL property
 			token = cleanToken(window.location.hash || Dispatcher.Config().defaultURL);
-			//console.log("token = |"+token+'|');
 			
 			// search token in states history
 			for(i=statesHistory.length-1;i>=0;i--){
@@ -122,14 +123,12 @@ var History = function(window) {
 			}
 		}
 		
-		//console.log("after mods: currentToken, statesHistory, currentState", [currentToken, statesHistory, statesHistory[currentToken.id]]);
-		
 		// call dispatcher's pageReload
 		Dispatcher.pageReload(statesHistory[currentToken.id], moveForward);
 		
 		// reset recentlyAdded status
 		recentlyAdded = false;
-	};
+	}
 	
 	/**
 	 * @private
@@ -143,7 +142,7 @@ var History = function(window) {
 		console.log("url: "+url);
 		var pos = url.indexOf('#');
 		return (pos === -1) ? '' : url.substr(pos);
-	};
+	}
 	
 	/**
 	 * @private
@@ -153,7 +152,7 @@ var History = function(window) {
 	 */
 	function getCurrentToken(){
 		return decodeURI(currentToken.token);
-	};
+	}
 	
 	/**
 	 * @private
@@ -166,7 +165,7 @@ var History = function(window) {
 	 */
 	function cleanToken(token){
 		return encodeURI(token[0] == '#' ? token.substr(1) : token);
-	};
+	}
 	
 	/**
 	 * @private
