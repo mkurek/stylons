@@ -3,12 +3,10 @@
  "type" : "Button",
  "ui" : "confirm",
  "text" : "Zamów",
- "action" : 
- {
-  "tap" :
-  {
-   "type" : "load",
-   "url" : "form/shortDescription"
-  }
- }
+ "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "form/shortDescription"
+      }
+   }
 }

@@ -27,3 +27,5 @@ syntax: regexp
 ^src/pysencha\.egg-info$
 syntax: regexp
 ^parts$
+syntax: regexp
+^buildout\.cfg$
