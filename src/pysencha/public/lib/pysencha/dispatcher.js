@@ -61,7 +61,7 @@ var Dispatcher = (function() {
 	 * @private Adapter to Sender-Receiver Object Get server response from URL
 	 * 
 	 * @param {string}
-	 *            url url to be requested
+	 *            url URL to be requested
 	 * 
 	 * @return {object} JSON description - returned value from server
 	 */
@@ -81,9 +81,9 @@ var Dispatcher = (function() {
 	 * @public handling request for new page components; adds record to history
 	 * 
 	 * @param {string}
-	 *            url new url of short description
+	 *            url New url of short description
 	 * @param {boolean}
-	 *            keepHash true if window.location.hash won't be overwritten
+	 *            keepHash True if window.location.hash won't be overwritten
 	 * 
 	 * @return
 	 */
@@ -105,14 +105,14 @@ var Dispatcher = (function() {
 	}
 
 	/**
-	 * @private parse short description and remodel container (add new items,
+	 * @private parse short description and apply changes to container (add new items,
 	 *          remove unnecessary)
 	 * 
 	 * @param {object}
-	 *            con container to remodel
+	 *            con Container to remodel
 	 * 
 	 * @param {object}
-	 *            sd short description to parse
+	 *            sd Short description to parse
 	 * 
 	 * @return
 	 */
@@ -177,6 +177,17 @@ var Dispatcher = (function() {
 		// SenchaAdapter.refresh(con);
 	}
 
+	/**
+	 * @private remodel container and all it childs
+	 * 
+	 * @param {object}
+	 *            con container to remodel
+	 * 
+	 * @param {object}
+	 *            sd short description to parse
+	 * 
+	 * @return
+	 */
 	function containerRemodel(container, shortDescription) {
 		var description;
 
