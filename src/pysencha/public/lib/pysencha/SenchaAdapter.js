@@ -57,15 +57,28 @@ var SenchaAdapter = function() {
 		Ext.Viewport.fireResizeEvent();
 
 		// another workaround
-		//Ext.repaint();
+		Ext.repaint();
 		
 		if(!!obj.show){
 			obj.show(anim);
 		}
+	}
+	
+	/**
+	 * @public hide object
+	 * 
+	 * @param: obj - object to be hided
+	 * 
+	 * @return 
+	 */
+
+	function hide(obj, anim) {
 		
+		if(!!obj.hide){
+			obj.hide(anim);
+		}
 		
-		return true;
-	};
+	}
 	
 	
 	/**
@@ -188,7 +201,8 @@ var SenchaAdapter = function() {
 		getContainer: getContainer /* getMixedCollection */,
 		removeAll : removeAll,
 		setDimensions : setDimensions,
-		show : show
+		show : show,
+		hide : hide
 	};
 	
 }();
