@@ -12,8 +12,8 @@
       "slots" : []
       },
       {
-      "id" : "menuList",
-      "url" : "menu/list",
+      "id" : "promotionsPanel",
+      "url" : "promotions/panel",
       "slots" : []
       }
     ]

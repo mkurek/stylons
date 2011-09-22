@@ -1,14 +1,14 @@
 {
  "id" : "menuList",
  "type" : "List",
- "itemtpl" : "{dish}",
+ "itemtpl" : "{dish} <div style='position: absolute; top: 10px; right: 30px; font-size: 120%;'>{price}</div>",
  "list" : 
  [
-    {"dish" : 'Pizza'},
-    {"dish" : 'Zapiekanka'},
-    {"dish" : 'Hot-dog'},
-    {"dish" : 'Tortilla'},
-    {"dish" : 'Kebab'},
+    {"dish" : 'Pizza', "price" : ""},
+    {"dish" : 'Zapiekanka', "price" : "10 zł"},
+    {"dish" : 'Hot-dog', "price" : "8 zł"},
+    {"dish" : 'Tortilla', "price" : "9.99 zł"},
+    {"dish" : 'Kebab', "price" : "15.99 zł"},
  ],
  "action" : {
     "itemtap" : {
