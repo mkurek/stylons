@@ -2,6 +2,7 @@
  "id" : "cancelButton",
  "type" : "Button",
  "text" : "Anuluj",
+ "ui" : "back",
  "action" : 
  {
   "tap" : 

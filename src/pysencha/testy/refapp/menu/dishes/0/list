@@ -1,12 +1,12 @@
 {
  "id" : "pizzaList",
  "type" : "List",
- "itemtpl" : "{dish}",
+ "itemtpl" : "{dish} <div style='position: absolute; top: 10px; right: 30px; font-size: 120%;'>{price}</div>",
  "list" : 
  [
-    {"dish" : 'Margaritta'},
-    {"dish" : 'Hawajska'},
-    {"dish" : 'Rzeźnicka'}
+    {"dish" : 'Margaritta', "price" : "9.99 zł"},
+    {"dish" : 'Hawajska', "price" : "29.15 zł"},
+    {"dish" : 'Rzeźnicka', "price" : "17.68 zł"}
  ],
  "action" : {
     "itemtap" : {
