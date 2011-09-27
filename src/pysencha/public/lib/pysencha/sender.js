@@ -10,6 +10,7 @@ var Sender = {
 		 */
 		
 	getFromURL: function(url) {
+
 		var response , xhr = new XMLHttpRequest();
 		xhr.open("POST",url,false);
 		xhr.send(null);
@@ -33,16 +34,22 @@ var Sender = {
 		 */
 	
 	sendToURL: function(url, data) {
+		var response;
+		response= {
+				type : "load",
+				url : "menu/shortDecription"
+		};
 		var response, dataForServer, xhr = new XMLHttpRequest();
 		xhr.open("POST",url,false);
 		dataForServer = JSON.stringify(data);
 		xhr.send(dataForServer);
 		try {
-			response = eval('('+xhr.responseText+')');
+			//response = eval('('+xhr.responseText+')');
 		}
 		catch (err){
-			respone = '';
+			response = '';
 		}
+		console.log("wysyłam" + response);
 		return response;
 	}
 }

@@ -2,5 +2,14 @@
  "id" : "sendButton",
  "type" : "Button",
  "ui" : "confirm",
- "text" : "Wyślij"
+ "text" : "Wyślij",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "send",
+    "url" : "form/submit",
+    "dataId" : "form",
+   }
+ }
 }
