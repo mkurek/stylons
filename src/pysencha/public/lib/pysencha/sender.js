@@ -37,7 +37,7 @@ var Sender = {
 		var response;
 		response= {
 				type : "load",
-				url : "menu/shortDecription"
+				url : "menu/shortDescription"
 		};
 		var response, dataForServer, xhr = new XMLHttpRequest();
 		xhr.open("POST",url,false);

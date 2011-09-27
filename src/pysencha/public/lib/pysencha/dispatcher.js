@@ -142,7 +142,7 @@ var Dispatcher = (function() {
 			item = SenchaAdapter.get(con, slots[i].id);
 
 			// item found
-			if (!!item) {
+			if (item) {
 				// remove from container
 				item = SenchaAdapter.remove(con, item, false);
 				// add to temporary container
@@ -160,7 +160,7 @@ var Dispatcher = (function() {
 			item = SenchaAdapter.get(tmpCon, slots[i].id);
 
 			// item found
-			if (!!item) {
+			if (item) {
 				// remove item from container
 				item = SenchaAdapter.remove(tmpCon, item, false);
 			} else {
@@ -206,12 +206,12 @@ var Dispatcher = (function() {
 		parse(container, shortDescription);
 
 		// apply description to highest level of description
-		if (!!shortDescription.url && container.id === shortDescription.id) {
+		if (shortDescription.url && container.id === shortDescription.id) {
 			// get full description on main container
 			description = getFromURL(shortDescription.url);
 
 			// if ids are the same and description has specified type
-			if (description.id === container.id && !!description.type) {
+			if (description.id === container.id && description.type) {
 				// apply properties
 				Parser.applyToInstance(container, description);
 			}

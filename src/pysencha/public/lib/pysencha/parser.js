@@ -3,6 +3,8 @@
  * object
  */
 
+var d1;
+
 var Parser = (function() {
 
 	/**
@@ -16,7 +18,6 @@ var Parser = (function() {
 	 * events - object describing events
 	 */
 	var defaultType, types, events, obj;
-
 
 	/**
 	 * global variables definitions
@@ -234,12 +235,14 @@ var Parser = (function() {
 	};
 
 	/**
-	 * @private 
-	 * check for available variables in types properties and get their value from default arguments (defArgs)
+	 * @private check for available variables in types properties and get their
+	 *          value from default arguments (defArgs)
 	 * 
-	 * @param {String} name Event name
+	 * @param {String}
+	 *            name Event name
 	 * 
-	 * @param {Array} args Array containing params passed to default event handler
+	 * @param {Array}
+	 *            args Array containing params passed to default event handler
 	 * 
 	 * @return
 	 */
@@ -247,14 +250,14 @@ var Parser = (function() {
 		var vars = {}, i, tmp, varName, j, varDes, len;
 
 		// if event name is correct (specified in events map)
-		if (!!events[name]) {
+		if (events[name]) {
 			// for every available variable for event
 			for (i in events[name]) {
 				if (events[name].hasOwnProperty(i)) {
 					varName = i;
 					varDes = events[name][i];
 					tmp = args;
-					
+
 					// get value
 					for (j = 0, len = varDes.length; j < len; j++) {
 						if (tmp[varDes[j]] !== undefined) {
@@ -273,12 +276,13 @@ var Parser = (function() {
 	}
 
 	/**
-	 * @private 
-	 * replace {var} with var value
+	 * @private replace {var} with var value
 	 * 
-	 * @param {Object} vars Variables to substitute
+	 * @param {Object}
+	 *            vars Variables to substitute
 	 * 
-	 * @param {Object} des Description of reaction containing values to substitute
+	 * @param {Object}
+	 *            des Description of reaction containing values to substitute
 	 * 
 	 * @param {Array}
 	 *            Array of arguments, passed to default event function
@@ -299,16 +303,16 @@ var Parser = (function() {
 				for (j in des) {
 					if (des.hasOwnProperty(j)) {
 						str = des[j];
-						
+
 						// if str is string - replace pattern with value
 						if (Ext.isString(str)) {
 							str = str.replace(pattern, value);
-						} 
+						}
 						// if str is object - go recursively
 						else if (Ext.isObject(str)) {
 							str = replaceValues(vars, str);
 						}
-						
+
 						des[j] = str;
 					}
 				}
@@ -335,11 +339,12 @@ var Parser = (function() {
 	function eventHandler(name, des, defArgs) {
 		var vars, i, j, reaction, data, result, reactions;
 
-		//console.log("eventHandler;", ["args", arguments, "des.url", des.url]);
+		// console.log("eventHandler;", ["args", arguments, "des.url",
+		// des.url]);
 
 		// get available variables values
 		vars = getVarsValue(name, defArgs);
-		//console.log("vars", vars);
+		// console.log("vars", vars);
 
 		// make link to des
 		reactions = des;
@@ -365,12 +370,13 @@ var Parser = (function() {
 			// Send data to server, wait for JSON-reaction
 			if (reaction.type === 'send') {
 				console.log("send reaction");
-				if (!!reaction.url && !!reaction.dataId) {
+				if (reaction.url && reaction.dataId) {
 					console.log("url & dataId ok");
 
 					data = Ext.getCmp(reaction.dataId);
-
-					if (!!data && !!data.getValues) {
+					console.log(["data", data]);
+					d1 = data;
+					if (data && data.getValues) {
 						data = data.getValues();
 						console.log("data ok", ["data", data]);
 
@@ -382,7 +388,7 @@ var Parser = (function() {
 
 				console.log("load reaction");
 
-				if (!!reaction.url) {
+				if (reaction.url) {
 					console.log("url ok");
 
 					result = Dispatcher.load(reaction.url);
@@ -392,7 +398,7 @@ var Parser = (function() {
 
 				console.log("special show reaction");
 
-				if (!!reaction.url) {
+				if (reaction.url) {
 					console.log("url ok");
 
 					result = Dispatcher.specialShow(reaction.url);
@@ -406,7 +412,7 @@ var Parser = (function() {
 			}
 
 			// check result for new reaction
-			if (Ext.isObject(result) && !!result.type) {
+			if (Ext.isObject(result) && result.type) {
 				console.log("result ok", ["result", result]);
 
 				reactions.push(result);
@@ -429,7 +435,7 @@ var Parser = (function() {
 	function addEvents(component, description) {
 		var event, avEv = types[component.type].events;
 
-		if (!!description.action) {
+		if (description.action) {
 
 			// for every event defined in action
 			for (event in description.action) {
@@ -437,8 +443,8 @@ var Parser = (function() {
 
 					// if component handle addListener method and dispatcher
 					// allow to use this event
-					if (!!component.addListener && !!component.events[event]
-							&& !!avEv && avEv.indexOf(event) !== -1) {
+					if (component.addListener && component.events[event]
+							&& avEv && avEv.indexOf(event) !== -1) {
 						// add event listener
 						component.addListener(event, function() {
 							eventHandler(event, description.action[event],
@@ -468,12 +474,12 @@ var Parser = (function() {
 		type = component.type;
 
 		// if component type is in types map
-		if (!!type && type in types) {
+		if (type && types.hasOwnProperty(type)) {
 			// for every property of description to apply
 			for (property in description) {
 				if (description.hasOwnProperty(property)) {
 					// if component already has this property
-					if (property in component) {
+					if (component.hasOwnProperty(property)) {
 						component[property] = description[property];
 					}
 				}
@@ -502,7 +508,7 @@ var Parser = (function() {
 		function inherit(o, type) {
 			var inh = types[type].inheritance;
 
-			if (!!inh && inh in types) {
+			if (inh && types.hasOwnProperty(inh)) {
 				// go deeper
 				o = inherit(o, inh);
 
@@ -528,9 +534,9 @@ var Parser = (function() {
 
 		for (property in specificDescription) {
 			if (specificDescription.hasOwnProperty(property)) {
-				if (property in obj) {
+				if (obj.hasOwnProperty(property)) {
 					obj[property] = specificDescription[property];
-				} else if (!!sub && property in sub) {
+				} else if (sub && sub.hasOwnProperty(property)) {
 					// check for short-name
 
 					obj[sub[property]] = specificDescription[property];
@@ -553,7 +559,9 @@ var Parser = (function() {
 	function transform(des) {
 		var result, type, event;
 
-		type = (des.type in types) ? des.type : (des.type = defaultType);
+		type = (types.hasOwnProperty(des.type))
+				? des.type
+				: (des.type = defaultType);
 
 		// apply default and specific properties
 		result = apply(type, des);
@@ -570,7 +578,7 @@ var Parser = (function() {
 	function addItems(content, des, defaultItemType) {
 		var elem, i, len;
 
-		if (!!des.list && Ext.isArray(des.list)) {
+		if (des.list && Ext.isArray(des.list)) {
 			if (!content.items || !Ext.isArray(content.items)) {
 				content.items = [];
 			}
@@ -679,12 +687,12 @@ var Parser = (function() {
 	function makeRadio(content, des) {
 		return new Ext.form.Radio(content);
 	}
-	
+
 	obj = {
 		transform : transform,
 		applyToInstance : applyToInstance
 	};
-	
+
 	return obj;
 
 }());

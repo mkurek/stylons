@@ -1,10 +1,10 @@
 var History = (function(window) {
 	var currentToken, // current token with id and token params
-		statesHistory, // array to keep previous states
-		hashChangeSupport, // hashchange event support
-		checkInterval, // interval to check hash change
-		recentlyAdded, // recently added page status
-		obj; // object to return
+	statesHistory, // array to keep previous states
+	hashChangeSupport, // hashchange event support
+	checkInterval, // interval to check hash change
+	recentlyAdded, // recently added page status
+	obj; // object to return
 
 	checkInterval = 100;
 	recentlyAdded = false;
@@ -14,7 +14,6 @@ var History = (function(window) {
 		id : -1,
 		token : ""
 	};
-
 
 	/**
 	 * @private get hash from URL address
@@ -59,7 +58,6 @@ var History = (function(window) {
 	function getHistory() {
 		return statesHistory;
 	}
-
 
 	/**
 	 * @public put new record to states history
@@ -111,9 +109,9 @@ var History = (function(window) {
 	 * @return
 	 */
 	function onHashChange(obj) {
-		var i = 0,
-			moveForward = true; // true if new page added or forward move, false
-				// otherwise
+		var i = 0, token, moveForward = true; // true if new page added or forward
+										// move, false
+		// otherwise
 
 		// console.log("hash change event! obj: ", [obj]);
 
@@ -164,7 +162,6 @@ var History = (function(window) {
 		recentlyAdded = false;
 	}
 
-
 	/**
 	 * @public History initialization Check for hashchange event support Define
 	 *         event handler
@@ -181,17 +178,17 @@ var History = (function(window) {
 			window.addEventListener('hashchange', onHashChange, false);
 		} else {
 			// console.log("hashchange doesn't supported");
-			setInterval(function () {
-				var newToken = cleanToken(window.location.hash),
-					oldToken = getCurrentToken();
+			setInterval(
+					function() {
+						var newToken = cleanToken(window.location.hash), oldToken = getCurrentToken();
 
-				if (newToken !== oldToken) {
-					onHashChange({
-						oldURL : oldToken,
-						newURL : newToken
-					});
-				}
-			}, checkInterval);
+						if (newToken !== oldToken) {
+							onHashChange({
+								oldURL : oldToken,
+								newURL : newToken
+							});
+						}
+					}, checkInterval);
 		}
 		return true;
 	}
