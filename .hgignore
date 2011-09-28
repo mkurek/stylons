@@ -31,3 +31,7 @@ syntax: regexp
 ^buildout\.cfg$
 syntax: regexp
 ^src/pysencha/testy/refapp2$
+syntax: regexp
+^src/pysencha\.egg-info/SOURCES\.txt$
+syntax: regexp
+^src/MANIFEST\.in$

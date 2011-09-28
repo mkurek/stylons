@@ -40,6 +40,7 @@ pysencha/public/lib/pysencha/index.html
 pysencha/public/lib/pysencha/parser.js
 pysencha/public/lib/pysencha/parser_old.js
 pysencha/public/lib/pysencha/sender.js
+pysencha/public/lib/pysencha/sender_new.js
 pysencha/public/lib/sencha/index.html
 pysencha/public/lib/sencha/license.inc
 pysencha/public/lib/sencha/license.txt
