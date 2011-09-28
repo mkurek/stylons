@@ -1,0 +1,6 @@
+{
+    "id" : "toolbarSended",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Wysłano"
+}

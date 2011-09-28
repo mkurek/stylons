@@ -16,8 +16,7 @@ class FormController(BaseController):
         #print json.loads(request.params)
         print 'odebrałem:'
         print request.POST['data']
-        #print '\n'.join(['klucz: %s, wartosc: %s' % (k.decode('UTF-8'),v.decode('UTF-8')) for (k,v) in request.POST])
         # primitive return without checking POST data
-        x = '{"type" : "load","url" : "menu/shortDescription"}'
+        x = '{"type" : "load","url" : "form/end/shortDescription"}'
         
         return x

@@ -1,0 +1,14 @@
+{
+ "id" : "returnbttn",
+ "type" : "Button",
+ "text" : "Wróć do strony głównej",
+ "ui" : "action",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "load",
+    "url" : "menu/shortDescription"
+   }
+ }
+}
