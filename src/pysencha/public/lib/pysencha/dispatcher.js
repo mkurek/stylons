@@ -65,7 +65,7 @@ var Dispatcher = (function() {
 	 * @return {object} JSON description - returned value from server
 	 */
 	function getFromURL(url) {
-		return Sender.getFromURL(Config.dirPath + url);
+		return Sender.getFromURL(url);
 	}
 
 	/**
