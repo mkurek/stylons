@@ -24,7 +24,6 @@ var History = (function(window) {
 	 * @return {string} hash (anchor)
 	 */
 	function getHash(url) {
-		console.log("url: " + url);
 		var pos = url.indexOf('#');
 		return (pos === -1) ? '' : url.substr(pos);
 	}
@@ -109,12 +108,9 @@ var History = (function(window) {
 	 * @return
 	 */
 	function onHashChange(obj) {
-		var i = 0, token, moveForward = true; // true if new page added or forward
-										// move, false
-		// otherwise
-
-		// console.log("hash change event! obj: ", [obj]);
-
+		var i = 0, token, moveForward = true; // true if new page added or
+												// forward
+		// move, false otherwise
 		// hide popup
 		Dispatcher.specialHide();
 
@@ -174,10 +170,8 @@ var History = (function(window) {
 
 		// add hash change listener
 		if (hashChangeSupport) {
-			// console.log("hashchange supported");
 			window.addEventListener('hashchange', onHashChange, false);
 		} else {
-			// console.log("hashchange doesn't supported");
 			setInterval(
 					function() {
 						var newToken = cleanToken(window.location.hash), oldToken = getCurrentToken();

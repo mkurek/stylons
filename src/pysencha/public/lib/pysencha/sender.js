@@ -1,3 +1,4 @@
+var res, res2;
 var Sender = {
 	
 		/**
@@ -15,7 +16,7 @@ var Sender = {
 		xhr.open("POST",url,false);
 		xhr.send(null);
 		try {
-			response = eval('('+xhr.responseText+')');
+			response = JSON.parse(xhr.responseText);
 		}
 		catch (err){
 			respone = '';
@@ -44,12 +45,11 @@ var Sender = {
 		dataForServer = JSON.stringify(data);
 		xhr.send(dataForServer);
 		try {
-			//response = eval('('+xhr.responseText+')');
+			response = JSON.parse(xhr.responseText);
 		}
 		catch (err){
 			response = '';
 		}
-		console.log("wysyłam" + response);
 		return response;
 	}
 }

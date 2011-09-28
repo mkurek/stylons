@@ -9,7 +9,7 @@ var Dispatcher = (function() {
 	Config = {
 		defaultURL : "shortDescription"
 	};
-	
+
 	/**
 	 * @public Return page object
 	 * 
@@ -79,7 +79,6 @@ var Dispatcher = (function() {
 	 * @return {object} JSON description - returned value from server
 	 */
 	function sendToURL(url, data) {
-		console.log("in send to url", ["url", url]);
 		return Sender.sendToURL(url, data);
 	}
 
@@ -103,11 +102,8 @@ var Dispatcher = (function() {
 		shortDescription = getFromURL(url);
 		// shortDescription = url;
 
-		console.log("in load url:", ["sd", shortDescription]);
-
 		// add record to History
 		History.pushState(shortDescription, "title", url, keepHash);
-		// console.log("dodałem do hist");
 	}
 
 	/**
@@ -235,8 +231,6 @@ var Dispatcher = (function() {
 	 * @return
 	 */
 	function pageReload(state, newPage) {
-		console.log("in page reload", ["state", state, "newPage", newPage]);
-
 		containerRemodel(screen, state.shortDescription);
 
 		// screen refresh
@@ -325,7 +319,7 @@ var Dispatcher = (function() {
 	 */
 	function init() {
 		loadMask = new Ext.LoadMask(Ext.getBody());
-		
+
 		// set default screen
 		screen = defaultScreen();
 

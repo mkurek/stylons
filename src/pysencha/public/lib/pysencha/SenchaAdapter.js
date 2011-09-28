@@ -10,7 +10,6 @@ var SenchaAdapter = (function() {
 	 * @return false if obj.destroy() method does not exist, true otherwise
 	 */
 	function destroy(obj) {
-		// console.log("destroy", ['id', obj.id]);
 		if (!!obj.destroy) {
 			obj.destroy();
 		} else {
@@ -125,8 +124,6 @@ var SenchaAdapter = (function() {
 	 */
 	function remove(container, item, des) {
 		var index, result;
-		// console.log("SA - remove", " | con.id", container.id, " | item.id",
-		// item.id, " | destroy", des);
 		result = false;
 
 		// check if the item is in container
@@ -214,9 +211,6 @@ var SenchaAdapter = (function() {
 	 * @return true if successful, false otherwise
 	 */
 	function add(container, item) {
-		// console.log("SA.add", " | con.id", container.id, " | item.id",
-		// item.id," | dock", item.dock);
-
 		// add to docked items if item has dock param and container docked items
 		// array
 		if (item.dock && container.addDocked) {

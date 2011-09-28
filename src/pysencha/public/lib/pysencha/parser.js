@@ -2,9 +2,6 @@
  * Parser - class returning method to parse server's response to SenchaTouch
  * object
  */
-
-var d1;
-
 var Parser = (function() {
 
 	/**
@@ -339,12 +336,8 @@ var Parser = (function() {
 	function eventHandler(name, des, defArgs) {
 		var vars, i, j, reaction, data, result, reactions;
 
-		// console.log("eventHandler;", ["args", arguments, "des.url",
-		// des.url]);
-
 		// get available variables values
 		vars = getVarsValue(name, defArgs);
-		// console.log("vars", vars);
 
 		// make link to des
 		reactions = des;
@@ -364,57 +357,36 @@ var Parser = (function() {
 
 			// change {key} to matching them values
 			reaction = replaceValues(vars, reaction);
-			console.log("des[" + i + "]", reaction);
 
 			// in case of reaction type
 			// Send data to server, wait for JSON-reaction
 			if (reaction.type === 'send') {
-				console.log("send reaction");
 				if (reaction.url && reaction.dataId) {
-					console.log("url & dataId ok");
-
 					data = Ext.getCmp(reaction.dataId);
-					console.log(["data", data]);
-					d1 = data;
+
 					if (data && data.getValues) {
 						data = data.getValues();
-						console.log("data ok", ["data", data]);
-
 						result = Dispatcher.send(reaction.url, data);
 					}
 				}
 			} else if (reaction.type === 'load') {
 				// load new Page - call Dispatcher.load with false to keepHash
 
-				console.log("load reaction");
-
 				if (reaction.url) {
-					console.log("url ok");
-
 					result = Dispatcher.load(reaction.url);
 				}
 			} else if (reaction.type === 'specialShow') {
 				// load special slot content (popup)
-
-				console.log("special show reaction");
-
 				if (reaction.url) {
-					console.log("url ok");
-
 					result = Dispatcher.specialShow(reaction.url);
 				}
 			} else if (reaction.type === 'specialHide') {
-				// load special slot content (popup)
-
-				console.log("special hide reaction");
 				result = Dispatcher.specialHide(reaction.url);
 
 			}
 
 			// check result for new reaction
 			if (Ext.isObject(result) && result.type) {
-				console.log("result ok", ["result", result]);
-
 				reactions.push(result);
 			}
 		}// end for
@@ -621,7 +593,6 @@ var Parser = (function() {
 	}
 
 	function makeList(content, des) {
-		console.log("in make list", content, des, typeof content.store);
 		var storeContent, storeModel, i, example;
 
 		storeContent = {
