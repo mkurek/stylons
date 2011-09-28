@@ -1,16 +1,15 @@
 var Dispatcher = (function() {
 
 	// gobal variables, available in whole class
-	var obj, screen, popup, Config;
+	var obj, screen, popup, Config, loadMask;
 
 	// set global variables to defaults
 	screen = {};
 	popup = {};
 	Config = {
-		defaultURL : "shortDescription",
-		dirPath : "../testy/refapp/"
+		defaultURL : "shortDescription"
 	};
-
+	
 	/**
 	 * @public Return page object
 	 * 
@@ -200,7 +199,7 @@ var Dispatcher = (function() {
 		var description;
 
 		// set loading mask
-		screen.setLoading(true, true);
+		loadMask.show();
 
 		// remodel screen
 		parse(container, shortDescription);
@@ -218,7 +217,7 @@ var Dispatcher = (function() {
 		}
 
 		// hide loading mask
-		screen.setLoading(false);
+		loadMask.hide();
 
 		return container;
 	}
@@ -325,6 +324,8 @@ var Dispatcher = (function() {
 	 * @return
 	 */
 	function init() {
+		loadMask = new Ext.LoadMask(Ext.getBody());
+		
 		// set default screen
 		screen = defaultScreen();
 
