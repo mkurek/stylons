@@ -1,4 +1,5 @@
-import logging, sys, os
+# -*- coding: utf8 -*-
+import logging, sys, os, json
 
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
@@ -12,7 +13,10 @@ class FormController(BaseController):
         # Return a rendered template
         #return render('/handler.mako')
         # or, return a response
-        print "Form submit "
+        #print json.loads(request.params)
+        print 'odebrałem:'
+        print request.POST['data']
+        #print '\n'.join(['klucz: %s, wartosc: %s' % (k.decode('UTF-8'),v.decode('UTF-8')) for (k,v) in request.POST])
         # primitive return without checking POST data
         x = '{"type" : "load","url" : "menu/shortDescription"}'
         

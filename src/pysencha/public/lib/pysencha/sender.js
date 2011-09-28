@@ -1,4 +1,3 @@
-var res, res2;
 var Sender = {
 	
 		/**
@@ -43,7 +42,8 @@ var Sender = {
 		var response, dataForServer, xhr = new XMLHttpRequest();
 		xhr.open("POST",url,false);
 		dataForServer = JSON.stringify(data);
-		xhr.send(dataForServer);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send('data='+dataForServer);
 		try {
 			response = JSON.parse(xhr.responseText);
 		}

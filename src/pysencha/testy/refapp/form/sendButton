@@ -9,7 +9,7 @@
    {
     "type" : "send",
     "url" : "form/submit",
-    "dataId" : "formPanel",
+    "dataId" : "formPanel"
    }
  }
 }

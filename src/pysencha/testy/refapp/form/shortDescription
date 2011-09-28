@@ -12,19 +12,19 @@
       "slots" : [
         {
          "id" : "cancelButton",
-         "url" : "form/cancelButton",
+         "url" : "form/cancelButton"
         },
         {
          "id" : "clearButton",
-         "url" : "form/clearButton",
+         "url" : "form/clearButton"
         },
         {
          "id" : "spacer",
-         "url" : "spacer",
+         "url" : "spacer"
         },
         {
          "id" : "sendButton",
-         "url" : "form/sendButton",
+         "url" : "form/sendButton"
         }
       ]
       },
@@ -43,7 +43,7 @@
       			{
       				"id" : "surname",
       				"url" : "form/panel/fieldset1/field2"
-      			},
+      			}
       		]
       	},
       	{
@@ -65,7 +65,7 @@
       			{
       				"id" : "housenumber2",
       				"url" : "form/panel/fieldset2/field4"
-      			},
+      			}
       		]
       	},
       	{
@@ -79,9 +79,9 @@
       			{
       				"id" : "phonenumber",
       				"url" : "form/panel/fieldset3/field2"
-      			},
+      			}
       		]
-      	},
+      	}
       	
       ]
       }
