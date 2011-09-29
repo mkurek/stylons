@@ -12,7 +12,7 @@ class HandlerController(BaseController):
     def load(self, url):
         serverpath = os.path.dirname(os.path.dirname(__file__))
         path = os.path.join(serverpath, testpath, url)
-        f = open(path)
+        f = open(path, 'r')
         plik  = f.read()
         f.close()
         return plik

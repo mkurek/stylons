@@ -1,4 +1,1 @@
-{
- "id" : "dataEnd",
- "html" : "Dane"
-}
+{"id" : "dataEnd", "styleHtmlContent" : "true",         "html" : "<h3>Odebrałem:</h3>city: kjb<br/>surname: jkb<br/>name: mb<br/>street: <br/>phonenumber: <br/>housenumber1: <br/>housenumber2: <br/>email: "}

@@ -16,8 +16,14 @@
         "url" : "form/end/data"
        },
        {
-        "id" : "returnbttn",
-        "url" : "form/end/bttn"
+        "id" : "box",
+        "url" : "form/end/box",
+        "slots" : [
+         {
+          "id" : "returnbttn",
+          "url" : "form/end/bttn"
+         }
+        ]
        }
      ]
     }
