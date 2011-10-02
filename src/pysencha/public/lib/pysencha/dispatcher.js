@@ -102,8 +102,7 @@ var Dispatcher = (function() {
 		shortDescription = getFromURL(url);
 		// shortDescription = url;
 
-		// add record to History
-		History.pushState(shortDescription, "title", url, keepHash);
+		Dispatcher.pageReload(shortDescription);
 	}
 
 	/**
@@ -230,8 +229,8 @@ var Dispatcher = (function() {
 	 * 
 	 * @return
 	 */
-	function pageReload(state, newPage) {
-		containerRemodel(screen, state.shortDescription);
+	function pageReload(shortDescription, newPage) {
+		containerRemodel(screen, shortDescription);
 
 		// screen refresh
 		SenchaAdapter.refresh(screen);

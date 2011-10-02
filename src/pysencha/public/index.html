@@ -12,8 +12,6 @@
 <script src="lib/pysencha/SenchaAdapter.js" type="text/javascript"></script> 
 <script src="lib/pysencha/parser.js" type="text/javascript"></script>
 <script src="lib/pysencha/sender.js" type="text/javascript"></script>
-<script src="lib/pysencha/History.js" type="text/javascript"></script>
-
 <!-- initial config -->
 <script type="text/javascript">
 
@@ -22,15 +20,7 @@ function dispatcherInit(){
 
 	// History initialization
     // call Dispatcher.action for current url
-    Dispatcher.load(History.cleanToken(window.location.hash /* || Dispatcher.Config().defaultURL */), true);
-
-    // init history handling
-    History.init();
-
-    // manually trigger hashchange event handler (could not use
-	// hashchange trigger -
-    // some browsers still don't have this)
-    History.onHashChange();  
+    Dispatcher.load(Dispatcher.Config().defaultURL);  
 }
 
 function senchaInit()
@@ -50,15 +40,7 @@ Ext.setup({
 				// call main Dispatcher init
                 dispatcherInit();
         }
-});     
-
-button1 = Parser.transform({type: 'Button', id: 'button1', text : 'button1'});
-button2 = Parser.transform({type: 'Button', id: 'button2', text : 'button2'});
-tab1 = Parser.transform({type: 'Tab', id: 'tab1', text : 'tab1', icon: 'add'});
-tab2 = Parser.transform({type: 'Tab', id: 'tab2', text : 'tab2', icon: 'doc'});
-tool1 = Parser.transform({type : 'Toolbar', id : 'tool1', title : 'tool1'});
-tool2 = Parser.transform({type : 'Toolbar', id : 'tool2', title : 'tool2'});
-pop = Parser.transform({type : "Special", id : "Special"})
+});
 }
 </script>
 <body onload="senchaInit();">

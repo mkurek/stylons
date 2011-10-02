@@ -204,20 +204,6 @@ var Parser = (function() {
 			// {Int} - max textarea rows
 			},
 			inheritance : "TextField"
-		},
-		"Checkbox" : {
-			fn : makeCheckbox,
-			description : {
-				checked : false, // {true | false} if checkbox is checked
-				value : '' // {String} what value will be send if checkbox is
-			// checked
-			},
-			inheritance : "Field"
-		},
-		"Radio" : {
-			fn : makeRadio,
-			description : {},
-			inheritance : "Checkbox"
 		}
 	};
 
@@ -649,14 +635,6 @@ var Parser = (function() {
 
 	function makeTextareaField(content, des) {
 		return new Ext.form.Textarea(content);
-	}
-
-	function makeCheckbox(content, des) {
-		return new Ext.form.Checkbox(content);
-	}
-
-	function makeRadio(content, des) {
-		return new Ext.form.Radio(content);
 	}
 
 	obj = {
