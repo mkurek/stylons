@@ -1,2 +1,7 @@
-Pylons>=0.10
-SQLAlchemy>=0.5
+nose
+markupsafe
+PasteScript
+Pylons
+SQLAlchemy
+pysqlite
+FormAlchemy

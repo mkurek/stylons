@@ -1,0 +1,14 @@
+{
+ "id" : "buttonDuza",
+ "type" : "Button",
+ "ui" : "action",
+ "text" : "duża",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialShow",
+    "url" : "menu/dishes/special/3/duza/shortDescription"
+   }
+ }
+}

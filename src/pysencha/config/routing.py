@@ -21,6 +21,13 @@ def make_map(config):
     # CUSTOM ROUTES HERE
     #map.connect('/{controller}/{action}')
     #map.connect('/{controller}/{action}/{id}')
+    map.connect('/menu/dishes/special/*url/shortDescription', controller='menu', action='special')
+    map.connect('/menu/dishes/special/0/{id}/{size}/add', controller='menu', action='add', pizza=True)
+    map.connect('/menu/dishes/special/{id}/{size}/add', controller='menu', action='add', pizza=False)
+    map.connect('/menu/dishes/special/0/{id}/{size}/order', controller='menu', action='order', pizza=True)
+    map.connect('/menu/dishes/special/{id}/{size}/order', controller='menu', action='order', pizza=False)
+    map.connect('/menu/dishes/special/*url/buttonAdd', controller='menu', action='buttonAdd')
+    map.connect('/menu/dishes/special/*url/buttonOrder', controller='menu', action='buttonOrder')
     map.connect('/form/submit', controller='form', action='submit')
     map.connect('/*url', controller='handler', action='load')
     return map

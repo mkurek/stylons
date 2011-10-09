@@ -1,8 +1,0 @@
-{
-	"id" : "popupPanel2",
-	"slot" : "center",
-	"url" : "popup/Panel",
-	"type" : "Panel",
-	"html" : "blabla",
-	"slots" : []
-}

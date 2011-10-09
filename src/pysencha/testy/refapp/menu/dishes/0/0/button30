@@ -1,0 +1,14 @@
+{
+ "id" : "button30",
+ "type" : "Button",
+ "ui" : "action",
+ "text" : "30 cm",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialShow",
+    "url" : "menu/dishes/special/0/0/30/shortDescription"
+   }
+ }
+}

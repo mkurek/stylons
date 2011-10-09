@@ -1,8 +1,0 @@
-{
-	"id" : "popup",
-	"slot" : "special",
-	"url" : "popup/popup",
-	"type" : "SpecialPanel",
-	"width" : 200,
-	"height" : 300
-}

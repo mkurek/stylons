@@ -1,8 +1,0 @@
-{
-	"id" : "menuToolbar",
-	"slot" : "top",
-	"url" : "menu/toolbar",
-	"type" : "Toolbar",
-	"dock" : "top",
-	"title" : "Menu"
-}

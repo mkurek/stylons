@@ -1,3 +1,4 @@
+#! -*- coding: utf-8 -*-
 try:
     from setuptools import setup, find_packages
 except ImportError:
@@ -7,14 +8,19 @@ except ImportError:
 
 setup(
     name='pysencha',
-    version='0.1',
+    version='0.0.2',
     description='',
-    author='',
+    author='Mateusz Dembski, Jakub Kedzierski, Mateusz Kurek',
     author_email='',
     url='',
     install_requires=[
-        "Pylons>=0.10",
-        "SQLAlchemy>=0.5",
+        "nose",
+        "markupsafe",
+        "PasteScript",
+        "Pylons",
+        "SQLAlchemy",
+	"pysqlite",
+        "FormAlchemy"
     ],
     setup_requires=["PasteScript>=1.6.3"],
     packages=find_packages(exclude=['ez_setup']),

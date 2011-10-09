@@ -43,15 +43,15 @@
          "slots" : [
           {
            "id" : "button10",
-           "url" : "menu/dishes/0/button10"
+           "url" : "menu/dishes/0/0/button10"
           },
           {
            "id" : "button15",
-           "url" : "menu/dishes/0/button15"
+           "url" : "menu/dishes/0/0/button15"
           },
           {
            "id" : "button30",
-           "url" : "menu/dishes/0/button30"
+           "url" : "menu/dishes/0/0/button30"
           }
          ]
         }

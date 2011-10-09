@@ -1,7 +1,0 @@
-{
-   "type": "Tab",
-   "slot" : "middle",
-   "id" : "TabBarButton2",
-   "icon" : "info",
-   "text" : "Info"
-}

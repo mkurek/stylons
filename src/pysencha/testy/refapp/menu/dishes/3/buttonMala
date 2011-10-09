@@ -1,0 +1,14 @@
+{
+ "id" : "buttonMala",
+ "type" : "Button",
+ "ui" : "action",
+ "text" : "mała",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialShow",
+    "url" : "menu/dishes/special/3/mala/shortDescription"
+   }
+ }
+}

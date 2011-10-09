@@ -43,11 +43,11 @@
          "slots" : [
           {
            "id" : "buttonMala",
-           "url" : "menu/dishes/buttonMala"
+           "url" : "menu/dishes/4/buttonMala"
           },
           {
            "id" : "buttonDuza",
-           "url" : "menu/dishes/buttonDuza"
+           "url" : "menu/dishes/4/buttonDuza"
           }
          ]
         }

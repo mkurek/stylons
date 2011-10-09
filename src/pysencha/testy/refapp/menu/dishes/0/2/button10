@@ -1,0 +1,14 @@
+{
+ "id" : "button10",
+ "type" : "Button",
+ "ui" : "action",
+ "text" : "10 cm",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialShow",
+    "url" : "menu/dishes/special/0/2/10/shortDescription"
+   }
+ }
+}
