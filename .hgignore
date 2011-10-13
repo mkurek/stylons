@@ -10,28 +10,14 @@ syntax: regexp
 syntax: regexp
 ^lib$
 syntax: regexp
-^lib$
+^src/build$
 syntax: regexp
-^src/Paste-1\.7\.5\.1-py2\.6\.egg$
+^src/data$
 syntax: regexp
-^src/PasteDeploy-1\.5\.0-py2\.6\.egg$
-syntax: regexp
-^src/PasteScript-1\.7\.3-py2\.6\.egg$
+^src/docs$
 syntax: regexp
 ^src/pysencha\.egg-info$
 syntax: regexp
-^src/pysencha\.egg-info$
+^pysencha-0\.0\.2\.tar\.gz$
 syntax: regexp
-^src/pysencha\.egg-info/SOURCES\.txt$
-syntax: regexp
-^src/pysencha\.egg-info$
-syntax: regexp
-^parts$
-syntax: regexp
-^buildout\.cfg$
-syntax: regexp
-^src/pysencha/testy/refapp2$
-syntax: regexp
-^src/pysencha\.egg-info/SOURCES\.txt$
-syntax: regexp
-^src/MANIFEST\.in$
+^pysencha-0\.0\.2dev-py2\.6\.egg$
