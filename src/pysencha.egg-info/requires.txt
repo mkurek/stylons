@@ -1,7 +1,0 @@
-nose
-markupsafe
-PasteScript
-Pylons
-SQLAlchemy
-pysqlite
-FormAlchemy

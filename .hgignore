@@ -21,3 +21,25 @@ syntax: regexp
 ^pysencha-0\.0\.2\.tar\.gz$
 syntax: regexp
 ^pysencha-0\.0\.2dev-py2\.6\.egg$
+syntax: regexp
+^lib64$
+syntax: regexp
+^parts$
+syntax: regexp
+^src/Paste-1\.7\.5\.1-py2\.6\.egg$
+syntax: regexp
+^src/PasteDeploy-1\.5\.0-py2\.6\.egg$
+syntax: regexp
+^src/PasteScript-1\.7\.3-py2\.6\.egg$
+syntax: regexp
+^src/pysencha\.egg-info$
+syntax: regexp
+^src/pysencha\.egg-info/SOURCES\.txt$
+syntax: regexp
+^src/README\.txt$
+syntax: regexp
+^src/docs$
+syntax: regexp
+^src/ez_setup\.py$
+syntax: regexp
+^src/setup\.cfg$
