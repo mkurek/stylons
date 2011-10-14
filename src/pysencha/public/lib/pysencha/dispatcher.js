@@ -120,63 +120,76 @@ var Dispatcher = (function() {
 	function parse(con, sd) {
 		var i = 0, length = 0, slots = sd.slots, tmpCon = [], item = {};
 
+		/*
 		// if there is no slots - break
 		if (!slots) {
 			return;
 		}
-
+		*/
+		
+		console.log("in ", con.id)
 		// create temporary container
 		tmpCon = SenchaAdapter.getContainer();
 
-		// analyze short description and founded items remove from container
-		// (without
-		// destroying)
-		for (i = 0, length = slots.length; i < length; i++) {
-			// get item with specified id from container
-			item = SenchaAdapter.get(con, slots[i].id);
-
-			// item found
-			if (item) {
-				// remove from container
-				item = SenchaAdapter.remove(con, item, false);
-				// add to temporary container
-				tmpCon.add(item);
+		if(slots)
+		{
+			// analyze short description and remove founded items from container
+			// (without destroying)
+			for (i = 0, length = slots.length; i < length; i++) {
+				// get item with specified id from container
+				item = SenchaAdapter.get(con, slots[i].id);
+	
+				// item found
+				if (item) {
+					console.log("item ", slots[i].id, " founded in ", con.id);
+					// remove from container
+					item = SenchaAdapter.remove(con, item, false);
+					// add to temporary container
+					tmpCon.add(item);
+				}
 			}
-		}
-
-		// remove all remained components and destroy them
-		SenchaAdapter.removeAll(con, true);
-
-		// analyze short description and founded items remove from con (without
-		// destroying)
-		for (i = 0, length = slots.length; i < length; i++) {
-			// get item with specified id from temporary container
-			item = SenchaAdapter.get(tmpCon, slots[i].id);
-
-			// item found
-			if (item) {
-				// remove item from container
-				item = SenchaAdapter.remove(tmpCon, item, false);
-			} else {
-				// get full description from url
-				item = getFromURL(slots[i].url);
-
-				// parse description to sencha format
-				item = Parser.transform(item);
+		
+			console.log("remove all from ", con.id);
+			// remove all remained components and destroy them
+			SenchaAdapter.removeAll(con, true);
+		
+			// analyze short description and remove founded items from con (without
+			// destroying)
+			for (i = 0, length = slots.length; i < length; i++) {
+				// get item with specified id from temporary container
+				item = SenchaAdapter.get(tmpCon, slots[i].id);
+	
+				console.log("before add: ", slots[i].id, " to ", con.id);
+				
+				// item found
+				if (item) {
+					// remove item from container
+					item = SenchaAdapter.remove(tmpCon, item, false);
+				} else {
+					console.log("new item");
+					// get full description from url
+					item = getFromURL(slots[i].url);
+	
+					// parse description to sencha format
+					item = Parser.transform(item);
+				}
+	
+				// go deeper
+				parse(item, slots[i]);
+				
+				// add item to container
+				SenchaAdapter.add(con, item);
+	
+				console.log("after add item ", item.id, " to ", con.id);
 			}
-
-			// go deeper
-			parse(item, slots[i]);
-
-			// add item to container
-			SenchaAdapter.add(con, item);
+			
 		}
 
 		// destroy temporary container
 		SenchaAdapter.destroy(tmpCon);
 
 		// refresh container
-		// SenchaAdapter.refresh(con);
+		//SenchaAdapter.refresh(con);
 	}
 
 	/**
@@ -194,7 +207,7 @@ var Dispatcher = (function() {
 		var description;
 
 		// set loading mask
-		loadMask.show();
+		//loadMask.show();
 
 		// remodel screen
 		parse(container, shortDescription);
@@ -212,7 +225,7 @@ var Dispatcher = (function() {
 		}
 
 		// hide loading mask
-		loadMask.hide();
+		//loadMask.hide();
 
 		return container;
 	}
@@ -265,7 +278,7 @@ var Dispatcher = (function() {
 		SenchaAdapter.show(popup, "pop");
 
 		// refresh popup
-		SenchaAdapter.refresh(popup);
+		SenchaAdapter.refreshAll(popup);
 
 		return true;
 	}

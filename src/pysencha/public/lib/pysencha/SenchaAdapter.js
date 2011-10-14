@@ -10,7 +10,7 @@ var SenchaAdapter = (function() {
 	 * @return false if obj.destroy() method does not exist, true otherwise
 	 */
 	function destroy(obj) {
-		if (!!obj.destroy) {
+		if (obj.destroy) {
 			obj.destroy();
 		} else {
 			return false;
@@ -29,15 +29,37 @@ var SenchaAdapter = (function() {
 	 */
 
 	function refresh(obj) {
-		if (!!obj.doLayout) {
+		console.log(["refresh: ", obj.id])
+		if (obj.doLayout) {
 			obj.doLayout();
 		}
-		if (!!obj.doComponentLayout) {
+		if (obj.doComponentLayout) {
 			obj.doComponentLayout();
 		}
-
+		console.log(["refresh end"])
 	}
 
+	/**
+	 * @public recalculate layout of all items in con
+	 * 
+	 * @param {Object} con container with items to recalculate
+	 * 
+	 */
+	function refreshAll(con){
+		var items, i, ln;
+		
+		if(con.getRefItems){
+			// get ref items and docked items without deeping
+			items = con.getRefItems(false);
+			
+			for(i = 0, ln = items.length; i < ln; i++){
+				refreshAll(items[i]);
+			}
+		}
+		
+		refresh(con);
+	}
+	
 	/**
 	 * shows object
 	 * 
@@ -56,7 +78,7 @@ var SenchaAdapter = (function() {
 		// another workaround
 		Ext.repaint();
 
-		if (!!obj.show) {
+		if (obj.show) {
 			obj.show(anim);
 		}
 	}
@@ -77,8 +99,10 @@ var SenchaAdapter = (function() {
 
 	}
 
+
+	
 	/**
-	 * @oublic check if item is in container
+	 * @public check if item is in container
 	 * 
 	 * @param {Object}
 	 *            container Container to check for item
@@ -187,6 +211,7 @@ var SenchaAdapter = (function() {
 				// for every items in sub-container
 				for (j = 0, lenj = removeItems.length; j < lenj; j++) {
 					// remove item
+					console.log("remove item ", removeItems[j].id)
 					item = remove(container, removeItems[j], destroy);
 
 					// push item to result list
@@ -200,7 +225,7 @@ var SenchaAdapter = (function() {
 	}
 
 	/**
-	 * @oublic add item to container
+	 * @public add item to container
 	 * 
 	 * @param {Object}
 	 *            container Container from which items will be removed
@@ -247,6 +272,7 @@ var SenchaAdapter = (function() {
 	obj = {
 		destroy : destroy,
 		refresh : refresh,
+		refreshAll : refreshAll,
 		get : get,
 		add : add,
 		remove : remove,
