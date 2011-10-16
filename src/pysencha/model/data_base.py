@@ -42,7 +42,7 @@ t_menu = sa.Table("menu", meta.metadata,
                   sa.Column("childGroup", sa.types.Integer, sa.ForeignKey('groups.id')),
     )
 
-t_menu_leafs = sa.Table("menu_leafs", meta.metadata,
+t_menu_leafs = sa.Table("menu_leaves", meta.metadata,
                   sa.Column("id", sa.types.Integer, primary_key = True),
                   sa.Column("groupId",sa.types.Integer, sa.ForeignKey('groups.id')),
                   sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish.id')),

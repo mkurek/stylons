@@ -1,3 +1,4 @@
+#! -*- coding: utf-8 -*-
 import logging, sys, os
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
@@ -23,12 +24,11 @@ class HandlerController(BaseController):
         path = os.path.join(serverpath, testpath, url)
         f = open(path, 'r')
         plik  = f.read()
-        dish = Dish()
-        dish.name = "Zupe_pomidorowa"
-        meta.Session().add(dish)
-        all_dishes = meta.Session.query(Dish).filter(Dish.name=='Zupe_pomidorowa').all()
+        #dish = Dish()
+        #dish.name = "Zupe_pomidorowa"
+        #meta.Session().add(dish)
+        all_dishes = meta.Session.query(Dish).all()
         for i in all_dishes:
-            print " ".join(("Baza danych:", str(i.name))) 
-        
+                print " ".join(("Element:", str(i), "nazwa:", i.name.encode('utf-8'))) 
         f.close()
         return plik
