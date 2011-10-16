@@ -21,7 +21,6 @@ class MenuController(BaseController):
         """
         c.url = url
         c.hash = url
-        print dir(session)
         return render('/menu/buttonAdd.mako')
     
     def buttonOrder(self, url):

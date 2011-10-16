@@ -5,10 +5,10 @@
  "list" : 
  [
     {"dish" : "Pizza", "price" : ""},
-    {"dish" : "Zapiekanka", "price" : "10 zł"},
-    {"dish" : "Hot-dog", "price" : "8 zł"},
-    {"dish" : "Tortilla", "price" : "9.99 zł"},
-    {"dish" : "Kebab", "price" : "15.99 zł"}
+    {"dish" : "Zapiekanka", "price" : "10 zł", "id" : "4"},
+    {"dish" : "Hot-dog", "price" : "8 zł", "id" : "5"},
+    {"dish" : "Tortilla", "price" : "9.99 zł", "id" : "6"},
+    {"dish" : "Kebab", "price" : "15.99 zł", "id" : "7"}
  ],
  "action" : {
     "itemtap" : {

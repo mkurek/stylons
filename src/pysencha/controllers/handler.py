@@ -24,11 +24,8 @@ class HandlerController(BaseController):
         path = os.path.join(serverpath, testpath, url)
         f = open(path, 'r')
         plik  = f.read()
-        #dish = Dish()
-        #dish.name = "Zupe_pomidorowa"
-        #meta.Session().add(dish)
-        all_dishes = meta.Session.query(Dish).all()
-        for i in all_dishes:
-                print " ".join(("Element:", str(i), "nazwa:", i.name.encode('utf-8'))) 
+        """all_dishes = meta.Session.query(Dish, Sizes, Dish_Sizes).join(Dish_Sizes).join(Sizes).filter(Dish.name=='Tortilla').all()
+        for i, j, k in all_dishes:
+                print " ".join(("Nazwa:", i.name, "rozmiar:", j.name, "cena:", str(k.price)))"""
         f.close()
         return plik

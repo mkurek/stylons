@@ -28,6 +28,7 @@ def make_map(config):
     map.connect('/menu/dishes/special/{id}/{size}/order', controller='menu', action='order', pizza=False)
     map.connect('/menu/dishes/special/*url/buttonAdd', controller='menu', action='buttonAdd')
     map.connect('/menu/dishes/special/*url/buttonOrder', controller='menu', action='buttonOrder')
+    map.connect('/{tab}/tabbar', controller='main', action='tabbar')
     map.connect('/form/submit', controller='form', action='submit')
     map.connect('/*url', controller='handler', action='load')
     return map
