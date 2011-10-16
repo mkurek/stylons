@@ -12,7 +12,7 @@
      "url" : "menu/dishes/special/${c.url}/order"
     },
     {
-     "type" : "specialHide",
+     "type" : "specialHide"
     }
    ]
  }

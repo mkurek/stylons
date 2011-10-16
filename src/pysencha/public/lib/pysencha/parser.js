@@ -333,6 +333,8 @@ var Parser = (function() {
 			reactions = [reactions];
 		}
 
+		//console.log("reactions length: ", reactions.length)
+		
 		// for every description in table
 		// notice des.length make on purpose - des array could be extended!
 		for (i = 0; i < reactions.length; i++) {
@@ -367,6 +369,7 @@ var Parser = (function() {
 					result = Dispatcher.specialShow(reaction.url);
 				}
 			} else if (reaction.type === 'specialHide') {
+				//console.log("parsed - special hide")
 				result = Dispatcher.specialHide(reaction.url);
 
 			}

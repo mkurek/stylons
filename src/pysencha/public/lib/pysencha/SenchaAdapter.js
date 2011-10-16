@@ -29,14 +29,14 @@ var SenchaAdapter = (function() {
 	 */
 
 	function refresh(obj) {
-		console.log(["refresh: ", obj.id])
+		//console.log(["refresh: ", obj.id])
 		if (obj.doLayout) {
 			obj.doLayout();
 		}
 		if (obj.doComponentLayout) {
 			obj.doComponentLayout();
 		}
-		console.log(["refresh end"])
+		//console.log(["refresh end"])
 	}
 
 	/**
@@ -211,7 +211,7 @@ var SenchaAdapter = (function() {
 				// for every items in sub-container
 				for (j = 0, lenj = removeItems.length; j < lenj; j++) {
 					// remove item
-					console.log("remove item ", removeItems[j].id)
+					//console.log("remove item ", removeItems[j].id)
 					item = remove(container, removeItems[j], destroy);
 
 					// push item to result list

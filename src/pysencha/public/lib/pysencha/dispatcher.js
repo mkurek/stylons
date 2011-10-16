@@ -127,7 +127,7 @@ var Dispatcher = (function() {
 		}
 		*/
 		
-		console.log("in ", con.id)
+		//console.log("in ", con.id)
 		// create temporary container
 		tmpCon = SenchaAdapter.getContainer();
 
@@ -141,7 +141,7 @@ var Dispatcher = (function() {
 	
 				// item found
 				if (item) {
-					console.log("item ", slots[i].id, " founded in ", con.id);
+					//console.log("item ", slots[i].id, " founded in ", con.id);
 					// remove from container
 					item = SenchaAdapter.remove(con, item, false);
 					// add to temporary container
@@ -149,7 +149,7 @@ var Dispatcher = (function() {
 				}
 			}
 		
-			console.log("remove all from ", con.id);
+			//console.log("remove all from ", con.id);
 			// remove all remained components and destroy them
 			SenchaAdapter.removeAll(con, true);
 		
@@ -159,17 +159,18 @@ var Dispatcher = (function() {
 				// get item with specified id from temporary container
 				item = SenchaAdapter.get(tmpCon, slots[i].id);
 	
-				console.log("before add: ", slots[i].id, " to ", con.id);
+				//console.log("before add: ", slots[i].id, " to ", con.id);
 				
 				// item found
 				if (item) {
 					// remove item from container
 					item = SenchaAdapter.remove(tmpCon, item, false);
 				} else {
-					console.log("new item");
+					//console.log("new item");
 					// get full description from url
 					item = getFromURL(slots[i].url);
 	
+					//console.log("Dispatcher - transform - id = ", item.id, "item", item, "url", slots[i].url)
 					// parse description to sencha format
 					item = Parser.transform(item);
 				}
@@ -180,7 +181,7 @@ var Dispatcher = (function() {
 				// add item to container
 				SenchaAdapter.add(con, item);
 	
-				console.log("after add item ", item.id, " to ", con.id);
+				//console.log("after add item ", item.id, " to ", con.id);
 			}
 			
 		}
@@ -290,6 +291,7 @@ var Dispatcher = (function() {
 	 */
 
 	function specialSlotHide() {
+		console.log("special hide")
 		SenchaAdapter.hide(popup);
 	}
 
