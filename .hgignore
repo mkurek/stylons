@@ -43,3 +43,5 @@ syntax: regexp
 ^src/ez_setup\.py$
 syntax: regexp
 ^src/setup\.cfg$
+syntax: regexp
+^src/dist$
