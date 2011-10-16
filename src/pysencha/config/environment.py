@@ -1,6 +1,7 @@
 """Pylons environment configuration"""
 import os
-
+from sqlalchemy import engine_from_config
+from pysencha.model import init_model
 from mako.lookup import TemplateLookup
 from pylons.configuration import PylonsConfig
 from pylons.error import handle_mako_error

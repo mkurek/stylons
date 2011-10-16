@@ -1,12 +1,14 @@
 """SQLAlchemy Metadata and Session object"""
 from sqlalchemy import MetaData
-from sqlalchemy.orm import scoped_session, sessionmaker
 
-__all__ = ['Session', 'metadata']
+__all__ = ['engine', 'metadata', 'Session']
 
-# SQLAlchemy session manager. Updated by model.init_model()
-Session = scoped_session(sessionmaker())
+# SQLAlchemy database engine.  Updated by model.init_model().
+engine = None
 
-# Global metadata. If you have multiple databases with overlapping table
-# names, you'll need a metadata for each database
+# SQLAlchemy session manager.  Updated by model.init_model().
+Session = None
+
+# Global metadata. If you have multiple databases with overlapping table 
+# names, you'll need a metadata for each database.
 metadata = MetaData()

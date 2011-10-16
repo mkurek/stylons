@@ -1,7 +1,11 @@
-"""The application's model objects"""
-from pysencha.model.meta import Session, metadata
-
+import sqlalchemy as sa
+from sqlalchemy import orm
+from pysencha.model import meta , data_base
 
 def init_model(engine):
-    """Call me before using any of the tables or classes in the model"""
-    Session.configure(bind=engine)
+    """Call me before using any of the tables or classes in the model."""
+
+    sm = orm.sessionmaker(autoflush=True, transactional=True, bind=engine)
+
+    meta.engine = engine
+    meta.Session = orm.scoped_session(sm)

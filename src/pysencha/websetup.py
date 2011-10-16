@@ -13,6 +13,9 @@ def setup_app(command, conf, vars):
     # Don't reload the app if it was loaded under the testing environment
     if not pylons.test.pylonsapp:
         load_environment(conf.global_conf, conf.local_conf)
-
+    from pysencha.model import meta
+    log.info("Creating tables")
+    meta.metadata.create_all(bind=meta.engine)
+    log.info("Successfully setup")
     # Create the tables if they don't already exist
-    metadata.create_all(bind=Session.bind)
+    #metadata.create_all(bind=Session.bind)
