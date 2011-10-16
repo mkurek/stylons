@@ -6,10 +6,14 @@
  "text" : "Dodaj",
  "action" : 
  {
-  "tap" : 
-   {
-    "type" : "load",
-    "url" : "menu/dishes/special/${c.url}/add"
-   }
+  "tap" : [
+    {
+     "type" : "load",
+     "url" : "menu/dishes/special/${c.url}/add"
+    },
+    {
+     "type" : "specialHide"
+    }
+   ]
  }
 }

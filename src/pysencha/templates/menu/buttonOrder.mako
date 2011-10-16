@@ -6,10 +6,14 @@
  "text" : "Zamów",
  "action" : 
  {
-  "tap" : 
-   {
-    "type" : "load",
-    "url" : "menu/dishes/special/${c.url}/order"
-   }
+  "tap" : [
+    {
+     "type" : "load",
+     "url" : "menu/dishes/special/${c.url}/order"
+    },
+    {
+     "type" : "specialHide",
+    }
+   ]
  }
 }

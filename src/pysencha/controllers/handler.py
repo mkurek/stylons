@@ -6,6 +6,8 @@ from pysencha.model import meta
 from pysencha.model import data_base
 from pysencha.model.data_base import *
 from pysencha.model.data_base import Dish 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 log = logging.getLogger(__name__)
 testpath = 'testy/refapp/'
@@ -23,11 +25,10 @@ class HandlerController(BaseController):
         plik  = f.read()
         dish = Dish()
         dish.name = "Zupe_pomidorowa"
-        Session().add(dish)
-        Session().commit()
-        all_dishes = meta.Session.query.filter(Dish.name=='Zupe_pomidorowa').all()
+        meta.Session().add(dish)
+        all_dishes = meta.Session.query(Dish).filter(Dish.name=='Zupe_pomidorowa').all()
         for i in all_dishes:
-            print "{0}".format(i)
+            print " ".join(("Baza danych:", str(i.name))) 
         
         f.close()
         return plik
