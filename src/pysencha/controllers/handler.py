@@ -21,13 +21,13 @@ class HandlerController(BaseController):
         path = os.path.join(serverpath, testpath, url)
         f = open(path, 'r')
         plik  = f.read()
-        """dish = Dish()
+        dish = Dish()
         dish.name = "Zupe_pomidorowa"
-        meta.Session.add(dish)
-        meta.Session.commit()
+        Session().add(dish)
+        Session().commit()
         all_dishes = meta.Session.query.filter(Dish.name=='Zupe_pomidorowa').all()
         for i in all_dishes:
             print "{0}".format(i)
-        """
+        
         f.close()
         return plik
