@@ -7,7 +7,8 @@ from handler import HandlerController
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
-from sqlalchemy import func 
+from sqlalchemy import func
+from sqlalchemy.orm import aliased
 
 class MenuController(BaseController):
     def special(self, url):
@@ -58,10 +59,22 @@ class MenuController(BaseController):
         """
         generate menu list JSON
         """
-        #groups = meta.Session.query(Group, Menu).join(Menu).join(Group).filter(Menu.parentGroup==1)
-        #groupsString = ',\n'.join(u'{ "dish" : "%s", "id" : "%s" }' % (group.name, group.id) for (group, menu) in groups)
-        #print groups
         
+        "Select groups:"
+        g1 = aliased(Group)
+        g2 = aliased(Group)
+        
+        groups = meta.Session.query(Menu, g1, g2).\
+            join(g1, Menu.parentGroup == g1.id).\
+            join(g2, Menu.childGroup == g2.id).\
+            filter(Menu.parentGroup == group).\
+            all()
+        
+        groupsString = ',\n'.join(u'{ "dish" : "%s", "id" : "%s" }' % (childGroup.name, childGroup.id) for (Menu, parentGroup, childGroup) in groups)
+    
+        "TO DO - back button - pole do wyciągnięcia z parentGroup"
+        
+        "Select dishes (leafs):"
         dishes = meta.Session.query(Dish.name, func.min(Dish_Sizes.price), Dish.id, Menu_Leaves.groupId).\
             join(Dish_Sizes).\
             join(Menu_Leaves).\
@@ -70,5 +83,8 @@ class MenuController(BaseController):
             all()
        
         dishesString = ',\n'.join(u'{ "dish" : "%s", "price" : "%.2f zł", "id" : "%s"}' % (x[0], x[1], x[2]) for (x) in dishes)
-        c.listString = dishesString #',\n'.join((groupsString, dishesString))
+        
+        "Join groups and dishes:"
+        c.listString = ',\n'.join((groupsString, dishesString))
+        
         return render('/menu/list.mako')
