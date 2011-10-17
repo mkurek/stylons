@@ -85,6 +85,6 @@ class MenuController(BaseController):
         dishesString = ',\n'.join(u'{ "dish" : "%s", "price" : "%.2f zł", "id" : "%s"}' % (x[0], x[1], x[2]) for (x) in dishes)
         
         "Join groups and dishes:"
-        c.listString = ',\n'.join((groupsString, dishesString))
-        
+        c.listString = groupsString and ',\n'.join((groupsString, dishesString)) or dishesString
+        c.listString = dishesString and c.listString or groupsString
         return render('/menu/list.mako')
