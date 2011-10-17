@@ -6,7 +6,6 @@ from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model import data_base
 from pysencha.model.data_base import *
-from pysencha.model.data_base import Dish 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

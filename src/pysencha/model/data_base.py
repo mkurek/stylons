@@ -42,7 +42,7 @@ t_menu = sa.Table("menu", meta.metadata,
                   sa.Column("childGroup", sa.types.Integer, sa.ForeignKey('groups.id')),
     )
 
-t_menu_leafs = sa.Table("menu_leaves", meta.metadata,
+t_menu_leaves = sa.Table("menu_leaves", meta.metadata,
                   sa.Column("id", sa.types.Integer, primary_key = True),
                   sa.Column("groupId",sa.types.Integer, sa.ForeignKey('groups.id')),
                   sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish.id')),
@@ -69,11 +69,11 @@ class Dish_Sizes(object):
 class Menu(object):
     pass
 
-class Menu_Leafs(object):
+class Menu_Leaves(object):
     pass
 
 orm.mapper(Dish_Sizes, t_dish_sizes)
-orm.mapper(Menu_Leafs, t_menu_leafs)
+orm.mapper(Menu_Leaves, t_menu_leaves)
 orm.mapper(Menu, t_menu)
 orm.mapper(Group, t_groups)
 orm.mapper(Dish, t_dish)
