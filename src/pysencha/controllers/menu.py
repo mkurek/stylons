@@ -59,7 +59,6 @@ class MenuController(BaseController):
         """
         generate menu list JSON
         """
-        
         "Select groups:"
         g1 = aliased(Group)
         g2 = aliased(Group)
@@ -71,8 +70,6 @@ class MenuController(BaseController):
             all()
         
         groupsString = ',\n'.join(u'{ "dish" : "%s", "id" : "%s" }' % (childGroup.name, childGroup.id) for (Menu, parentGroup, childGroup) in groups)
-    
-        "TO DO - back button - pole do wyciągnięcia z parentGroup"
         
         "Select dishes (leafs):"
         dishes = meta.Session.query(Dish.name, func.min(Dish_Sizes.price), Dish.id, Menu_Leaves.groupId).\

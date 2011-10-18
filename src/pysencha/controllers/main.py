@@ -8,5 +8,6 @@ from pysencha.lib.base import BaseController, render
 class MainController(BaseController):
     def tabbar(self, tab):
         c.tab = tab
-        c.badge = 5
+        if 'cart' in session and session.cart:
+            c.badge = len(session.cart)
         return render('/tabbar.mako')
