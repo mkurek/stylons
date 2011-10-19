@@ -31,7 +31,7 @@
         "url" : "cart/shortDescription"
       }
    }
-   % if c.tab == 'cart' or c.tab == 'form':
+   % if c.tab == 'cart':
    ,"active" : "true"
    % endif
   },

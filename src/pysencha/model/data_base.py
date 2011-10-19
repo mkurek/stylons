@@ -6,6 +6,8 @@ from pysencha.model import meta
 t_dish = sa.Table("dish", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key=True),
                    sa.Column("name", sa.types.String, nullable=False),
+                   sa.Column("picture", sa.types.String, nullable=False),
+                   sa.Column("description", sa.types.Text, nullable = False)
     )
 
 t_ingredients = sa.Table("ingredients", meta.metadata,

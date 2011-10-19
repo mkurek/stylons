@@ -30,6 +30,8 @@ def make_map(config):
     map.connect('/menu/dishes/special/*url/buttonOrder', controller='menu', action='buttonOrder')
     map.connect('/dishes/shortDescription/{dishId}', controller = 'dishes', action='shortDescription')
     map.connect('/dishes/ingredients/{dishId}', controller = 'dishes', action='ingredients')
+    map.connect('/dishes/description/{dishId}', controller = 'dishes', action='description')
+    map.connect('/dishes/picture/{dishId}', controller = 'dishes', action='picture')
     map.connect('/dishes/title/{dishId}', controller = 'dishes', action='title')
     map.connect('/menu/list', controller='menu', action='list', group=1)
     map.connect('/menu/dishes/0/list', controller='menu', action='list', group=2)
