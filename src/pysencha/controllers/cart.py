@@ -24,7 +24,7 @@ class CartController(BaseController):
         c.id = hashlib.sha256(str(session['cart'])).hexdigest()
         c.cost = sum(dish_size.price for (dish, dish_size, size) in itemsList)
         return render('/cart/toolbar.mako')
-            
+        
     def list(self):
         if not 'cart' in session:
             session['cart'] = []
