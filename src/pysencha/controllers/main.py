@@ -8,6 +8,10 @@ from pysencha.lib.base import BaseController, render
 class MainController(BaseController):
     def tabbar(self, tab):
         c.tab = tab
-        if 'cart' in session and session.cart:
-            c.badge = len(session.cart)
+        # do usunięcia:
+        session['cart'] = [1,4,6,2,9,13,12]
+        session.save()
+        
+        if 'cart' in session and session['cart']:
+            c.badge = len(session['cart'])
         return render('/tabbar.mako')
