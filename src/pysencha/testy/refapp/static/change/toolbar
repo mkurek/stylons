@@ -1,0 +1,6 @@
+{
+    "id" : "changeToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Możliwe zmiany:"
+}

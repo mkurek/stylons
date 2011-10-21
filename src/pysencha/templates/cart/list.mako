@@ -9,7 +9,7 @@
  "action" : {
     "itemtap" : {
         "type" : "specialShow",
-        "url" : "/cart/special/{index}/shortDescription"
+        "url" : "/change/shortDescription/{index}"
     }
  }
 }

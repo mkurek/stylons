@@ -38,5 +38,6 @@ def make_map(config):
     map.connect('/cart/shortDescription', controller='cart', action='shortDescription')
     map.connect('/cart/toolbar', controller='cart', action='toolbar')
     map.connect('/form/submit', controller='form', action='submit')
+    map.connect('/change/{action}/{id}', controller='change')
     map.connect('/*url', controller='handler', action='load')
     return map

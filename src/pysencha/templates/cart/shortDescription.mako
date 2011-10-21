@@ -12,7 +12,7 @@
       "slots" : [
         {
          "id" : "clearButton",
-         "url" : "cart/clearButton"
+         "url" : "static/cart/clearButton"
         },
         {
          "id" : "spacer",

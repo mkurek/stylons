@@ -1,0 +1,13 @@
+{
+ "id" : "changeButtonHide",
+ "type" : "Button",
+ "ui" : "decline",
+ "text" : "Anuluj",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "specialHide"
+   }
+ }
+}

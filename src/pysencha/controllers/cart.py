@@ -16,12 +16,27 @@ class CartController(BaseController):
             return hashlib.sha256(str(session['cart'])).hexdigest()[0:5]
         else:
             return ''
-
-    def __checkSession(self):
+    @staticmethod
+    def __checkSession():
         """Create cart list in session if doesn't exist"""
         if not 'cart' in session:
             session['cart'] = []
             session.save()
+
+    @staticmethod
+    def getDishes():
+        """Get dishes from database
+        
+        Return:
+        list of (dish, dish_size, size)
+        """
+        CartController.__checkSession()
+        items = []
+        for i in session['cart']:
+            items.append(meta.Session.query(Dish, Dish_Sizes, Sizes).\
+                        join(Dish_Sizes, Sizes).\
+                        filter(Dish_Sizes.id == i).one())
+        return items
 
     def shortDescription(self):
         """Render short description with unique toolbar and list""" 
@@ -30,20 +45,28 @@ class CartController(BaseController):
     
     def toolbar(self):
         """Render cart toolbar with summary cost of ordered dishes"""
-        self.__checkSession()
-        itemsList = meta.Session.query(Dish, Dish_Sizes, Sizes).join(Dish_Sizes, Sizes).\
-            filter(Dish_Sizes.id.in_(session['cart'])).all()
         c.id = self.__getId()
-        c.cost = sum(dish_size.price for (dish, dish_size, size) in itemsList)
+        c.cost = sum((dish_size.price for (dish, dish_size, size)\
+                    in self.getDishes()))
         return render('/cart/toolbar.mako')
         
     def list(self):
         """Render ordered list"""
-        self.__checkSession()
-        itemsList = meta.Session.query(Dish, Dish_Sizes, Sizes).join(Dish_Sizes, Sizes).\
-            filter(Dish_Sizes.id.in_(session['cart'])).all()
-        c.items = ",\n".join((u'{ "dish" : "%s", "price" : "%.2f zł", "id" : "%d" }'\
-            % (dish.name, dish_size.price, dish_size.id)\
-            for (dish, dish_size, size) in itemsList))
+        c.items = ",\n".join((u'{ "dish" : "%s", "price" :'\
+                    u'"%.2f zł", "id" : "%d" }'\
+                    % (dish.name, dish_size.price, dish_size.id)\
+                    for (dish, dish_size, size) in self.getDishes()))
         c.id = self.__getId()
         return render('/cart/list.mako')
+    
+    def clear(self):
+        """Clear list"""
+        print "\n\njestem tu\n\n"
+        session['cart'] = []
+        action = """
+        {
+         "type" : "load",
+         "url" : "cart/shortDescription"
+        }
+        """
+        return action

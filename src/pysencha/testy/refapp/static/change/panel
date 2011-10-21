@@ -1,0 +1,7 @@
+{
+   "id" : "changePanel",
+   "layout" :
+   {
+    "type" : "hbox"
+   }
+}

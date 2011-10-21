@@ -1,5 +1,5 @@
 {
- "id" : "${c.tab}Tabbar",
+ "id" : "${c.tab}Tabbar${c.badge}",
  "type" : "TabBar",
  "dock" : "bottom",
  "list" : 

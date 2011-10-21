@@ -1,0 +1,15 @@
+{
+ "id" : "clearButton",
+ "type" : "Button",
+ "ui" : "decline",
+ "text" : "Wyczyść",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "send",
+    "url" : "cart/clear",
+    "dataId" : "clearButton"
+   }
+ }
+}
