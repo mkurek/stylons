@@ -40,3 +40,14 @@ class DishesController(BaseController):
         c.title = title.name
         return render('/dishes/toolbar.mako')
     
+    def description(self, dishId):
+        c.dishId = dishId
+        desc = meta.Session.query(Dish).filter(Dish.id == dishId).one()
+        c.desc = desc.description
+        return render('/dishes/description.mako')
+    
+    def picture(self, dishId):
+        c.dishId = dishId
+        picture = meta.Session.query(Dish).filter(Dish.id == dishId).one()
+        c.picture = picture.picture
+        return render('/dishes/picture.mako')
