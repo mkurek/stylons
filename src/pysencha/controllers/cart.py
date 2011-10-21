@@ -25,25 +25,25 @@ class CartController(BaseController):
 
     def shortDescription(self):
         """Render short description with unique toolbar and list""" 
-        c.id = __getId()
+        c.id = self.__getId()
         return render('/cart/shortDescription.mako')
     
     def toolbar(self):
         """Render cart toolbar with summary cost of ordered dishes"""
-        __checkSession()
+        self.__checkSession()
         itemsList = meta.Session.query(Dish, Dish_Sizes, Sizes).join(Dish_Sizes, Sizes).\
             filter(Dish_Sizes.id.in_(session['cart'])).all()
-        c.id = __getId()
+        c.id = self.__getId()
         c.cost = sum(dish_size.price for (dish, dish_size, size) in itemsList)
         return render('/cart/toolbar.mako')
         
     def list(self):
         """Render ordered list"""
-        __checkSession()
+        self.__checkSession()
         itemsList = meta.Session.query(Dish, Dish_Sizes, Sizes).join(Dish_Sizes, Sizes).\
             filter(Dish_Sizes.id.in_(session['cart'])).all()
         c.items = ",\n".join((u'{ "dish" : "%s", "price" : "%.2f zł", "id" : "%d" }'\
             % (dish.name, dish_size.price, dish_size.id)\
             for (dish, dish_size, size) in itemsList))
-        c.id = hashlib.sha256(str(session['cart'])).hexdigest()
+        c.id = self.__getId()
         return render('/cart/list.mako')
