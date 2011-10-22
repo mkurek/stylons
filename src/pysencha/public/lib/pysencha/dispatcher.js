@@ -227,7 +227,7 @@ var Dispatcher = (function() {
 
 		// hide loading mask
 		//loadMask.hide();
-
+		
 		return container;
 	}
 
@@ -247,7 +247,7 @@ var Dispatcher = (function() {
 		containerRemodel(screen, shortDescription);
 
 		// screen refresh
-		SenchaAdapter.refresh(screen);
+		SenchaAdapter.refreshAll(screen);
 
 		// show screen
 		SenchaAdapter.show(screen);

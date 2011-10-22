@@ -56,12 +56,17 @@ class MenuController(BaseController):
     def shortDescription(self, id):
         """Render short Description for menu depended of choosen group"""
         c.group = int(id)
+       
         if c.group > 1:
             (c.parent, ) = meta.Session.query(Menu.parentGroup).filter(Menu.childGroup == c.group).one()
+        else:
+            c.parent = None
+        
         if 'cart' in session:
             c.badge = len(session['cart'])
         else:
             c.badge = None
+        
         return render('/menu/shortDescription.mako')
     
     def toolbar(self, id):
