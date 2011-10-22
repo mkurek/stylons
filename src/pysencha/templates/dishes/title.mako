@@ -1,4 +1,4 @@
 {
- "id" : "dishesTitle${c.dishId}",
+ "id" : "dishTitle${c.dishId}",
  "html" : "<h2>${c.title}</h2>"
 }

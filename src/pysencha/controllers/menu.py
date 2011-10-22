@@ -29,6 +29,12 @@ class MenuController(BaseController):
         c.hash = url
         return render('/menu/buttonOrder.mako')
     
+    def backButton(self, id):
+        """Render back-button to specified group"""
+        c.id = id
+        (c.name,) = meta.Session.query(Group.name).filter(Group.id == id).one()
+        return render('/menu/backButton.mako')
+    
     def add(self, id, size, pizza):
         """Add selected dish to session.cart"""
         #if 'cart' in session:
@@ -46,6 +52,7 @@ class MenuController(BaseController):
     
     def list(self, group):
         """Generate menu list JSON"""
+        c.group = group
         "Select groups:"
         g1 = aliased(Group)
         g2 = aliased(Group)

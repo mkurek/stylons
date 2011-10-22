@@ -6,40 +6,42 @@ from pysencha.model import meta
 t_dish = sa.Table("dish", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key=True),
                    sa.Column("name", sa.types.String, nullable=False),
+                   sa.Column("picture", sa.types.String, nullable=False),
+                   sa.Column("description", sa.types.Text, nullable=False)
     )
 
 t_ingredients = sa.Table("ingredients", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key=True),
-                   sa.Column("name", sa.types.String, nullable=False),
+                   sa.Column("name", sa.types.String, nullable=False)
     )
 
 t_dish_ingredients = sa.Table("dish_ingredients", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key=True),
                    sa.Column("idDish", sa.types.Integer, sa.ForeignKey('dish.id')),
-                   sa.Column("idIngredients", sa.types.String, sa.ForeignKey('ingredients.id')),
+                   sa.Column("idIngredients", sa.types.String, sa.ForeignKey('ingredients.id'))
     )
 
 t_sizes = sa.Table("sizes", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key =True),
-                   sa.Column("name", sa.types.String, nullable=False),
+                   sa.Column("name", sa.types.String, nullable=False)
     )
 
 t_groups = sa.Table("groups", meta.metadata,
                    sa.Column("id", sa.types.Integer, primary_key =True),
-                   sa.Column("name", sa.types.String, nullable=False),
+                   sa.Column("name", sa.types.String, nullable=False)
     )
 
 t_dish_sizes = sa.Table("dish_sizes", meta.metadata,
                     sa.Column("id", sa.types.Integer, primary_key=True),
                     sa.Column("sizeId", sa.types.Integer, sa.ForeignKey('sizes.id')),
                     sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish.id')),
-                    sa.Column("price", sa.types.Integer, nullable=False),
+                    sa.Column("price", sa.types.Integer, nullable=False)
     )
 
 t_menu = sa.Table("menu", meta.metadata,
                   sa.Column("id", sa.types.Integer, primary_key = True),
                   sa.Column("parentGroup", sa.types.Integer, sa.ForeignKey('groups.id')),
-                  sa.Column("childGroup", sa.types.Integer, sa.ForeignKey('groups.id')),
+                  sa.Column("childGroup", sa.types.Integer, sa.ForeignKey('groups.id'))
     )
 
 t_menu_leaves = sa.Table("menu_leaves", meta.metadata,

@@ -19,36 +19,23 @@
       },
       {
        "id" : "dishPanel",
-       "url" : "static/menu/dishes/panel",
+       "url" : "static/dishes/panel",
        "slots" : [
         {
-         "id" : "dishesTitle${c.id}",
+         "id" : "dishTitle${c.id}",
          "url" : "dishes/title/${c.id}"
         },
         {
-         "id" : "dishesPicture${c.id}",
+         "id" : "dishPicture${c.id}",
          "url" : "dishes/picture/${c.id}"
         },
         {
-         "id" : "dishesDesc",
-         "url" : "static/dishes/desc"
+         "id" : "dishDesc${c.id}",
+         "url" : "dishes/description/${c.id}"
         },
         {
-         "id" : "dishesIngr${c.id}",
-         "url" : "dishes/ingr/${c.id}"
-        },
-        {
-         "id" : "Sizes",
-         "url" : "static/menu/dishes/sizes",
-         "slots" : [
-          % for i in c.sizes:
-          {
-           "id" : "sizeButton${i}",
-           "url" : "dishes/sizeButton/${i}"
-          },
-          % endfor
-          {}
-         ]
+         "id" : "dishIngr${c.id}",
+         "url" : "dishes/ingredients/${c.id}"
         }
        ]
       }

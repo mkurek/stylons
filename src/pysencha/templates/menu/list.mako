@@ -9,7 +9,7 @@
  "action" : {
     "itemtap" : {
         "type" : "load",
-        "url" : "menu/dishes/{index}/shortDescription"
+        "url" : "dishes/shortDescription/${c.group}/{index}"
     }
  }
 }

@@ -1,4 +1,4 @@
 {
- "id" : "dishesIngr${c.dishId}",
+ "id" : "dishIngr${c.dishId}",
  "html" : "</br><b>Składniki:</b></br>${c.ingr}</br></br><b>Rozmiar:</b></br>"
 }
