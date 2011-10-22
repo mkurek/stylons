@@ -52,10 +52,11 @@ class CartController(BaseController):
         
     def list(self):
         """Render ordered list"""
-        c.items = ",\n".join((u'{ "dish" : "%s", "price" :'\
-                    u'"%.2f zł", "id" : "%d" }'\
-                    % (dish.name, dish_size.price, dish_size.id)\
-                    for (dish, dish_size, size) in self.getDishes()))
+        items = [{"dish" : dish.name, "size" : size.name, 
+                  "price" : ' '.join((str(dish_size.price), u'zł')),
+                  "id" : dish_size.id} for (dish, dish_size,
+                  size) in self.getDishes()]
+        c.items = json.dumps(items)
         c.id = self.__getId()
         return render('/cart/list.mako')
     

@@ -21,6 +21,14 @@ class ChangeController(BaseController):
         if 'cart' in session and int(id) < len(session['cart']):    
             c.id = session['cart'][int(id)]
             return render('/change/shortDescription.mako')
+        else:
+            pass
+#        
+#    def changeSize(self, id):
+#        """Render special with change size buttons"""
+#        if 'cart' in session and int(id) < len(session['cart']):
+#            c.id = session['cart'][int(id)]
+#            return render('/change/changeSize.mako')
         
     def buttonSize(self, id):
         """Render button redirecting to popup with available sizes"""
