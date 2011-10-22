@@ -4,6 +4,7 @@ import logging, sys, os, json
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
 from handler import HandlerController
+from dishes import DishesController
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
@@ -11,6 +12,47 @@ from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
 class MenuController(BaseController):
+    
+    def __getList(self, id):
+        """Get groups and dishes, which parent is 'id' and make list of dictionaries."""
+        g1 = aliased(Group)
+        g2 = aliased(Group)
+        groups = meta.Session.query(Menu, g1, g2).\
+                                    join(g1, Menu.parentGroup == g1.id).\
+                                    join(g2, Menu.childGroup == g2.id).\
+                                    filter(Menu.parentGroup == id).\
+                                    all()
+        list = [{ 'dish' : childGroup.name, 'id' : childGroup.id,
+                                    'group' : True } for (menu, 
+                                    parentGroup, childGroup) in groups]
+        dishes = meta.Session.query(Dish.name, Dish.id,
+                                    func.min(Dish_Sizes.price)).\
+                                    join(Dish_Sizes).\
+                                    join(Menu_Leaves).\
+                                    filter(Menu_Leaves.groupId == id).\
+                                    group_by(Dish.id).\
+                                    all()
+        for (name, id, price) in dishes:
+            ingredients = meta.Session.query(Ingredients.name).\
+                                    join(Dish_Ingredients, Dish).\
+                                    filter(Dish.id == id).\
+                                    all()
+            ingredientsStr = ', '.join((x[0] for x in ingredients))
+            list.append({ 'dish' : name , 'price' : ' '.join((str(round(price,
+                                    2)), 'zł')), 'id' : id, 'group' : False,
+                                    'ingredients' : ingredientsStr})
+        return list
+    
+    def listItem(self, group, id):
+        """Route item tap to group or dish"""
+        id = int(id)
+        list = self.__getList(group)
+        if list[id]['group']:
+            return self.shortDescription(list[id]['id'])
+        else:
+            d = DishesController()
+            return d.shortDescription(group, list[id]['id'])
+        
     def shortDescription(self, id):
         """Render short Description for menu depended of choosen group"""
         c.group = int(id)
@@ -65,57 +107,10 @@ class MenuController(BaseController):
     
     def list(self, id):
         """Generate menu list JSON"""
-        group = id
-        c.group = group
-        "Select groups:"
-        g1 = aliased(Group)
-        g2 = aliased(Group)
-        
+        c.group = id
         #TO DO do usunięcia:
         session['cart'] = [1,4,4,1,1,4,1]
         session.save()
         #end
-        
-        groups = meta.Session.query(Menu, g1, g2).\
-                                    join(g1, Menu.parentGroup == g1.id).\
-                                    join(g2, Menu.childGroup == g2.id).\
-                                    filter(Menu.parentGroup == group).\
-                                    all()
-        
-        groupsString = ',\n'.join(u'{ "dish" : "%s", "id" : "%s" }'\
-                                    % (childGroup.name, childGroup.id)\
-                                    for (Menu, parentGroup, childGroup)\
-                                    in groups)
-        
-        "Select dishes (leafs):"
-        dishes = meta.Session.query(Dish.name, func.min(Dish_Sizes.price),
-                                    Dish.id, Menu_Leaves.groupId).\
-                                    join(Dish_Sizes).\
-                                    join(Menu_Leaves).\
-                                    filter(Menu_Leaves.groupId == group).\
-                                    group_by(Dish.id).\
-                                    all()
-        
-        "Join name, price, id and ingredients into list item string"
-        "then join it into list data string"
-        dishesString = ''
-        for (name, price, id, group) in dishes:
-            ingredients = meta.Session.query(Ingredients.name).\
-                                    join(Dish_Ingredients, Dish).\
-                                    filter(Dish.id == id).\
-                                    all()
-            ingredientsStr = ', '.join((x[0] for x in ingredients))
-            item = ''.join((u'{ "dish" : "%s",' % (name,),
-                            u'"price" : "%.2f zł",' % (price, ),
-                            u' "id" : "%s",' % (id, ),
-                            u' "ingredients" : "%s"}' % (ingredientsStr)))
-            if dishesString:
-                dishesString = ', '.join((dishesString,item))
-            else:
-                dishesString = item
-        
-        "Join groups and dishes:"
-        c.listString = groupsString and ',\n'.join((groupsString,\
-                                    dishesString)) or dishesString
-        c.listString = dishesString and c.listString or groupsString
+        c.listString = json.dumps(self.__getList(id), separators=(',',':'))
         return render('/menu/list.mako')
