@@ -338,6 +338,7 @@ var Parser = (function() {
 		// for every description in table
 		// notice des.length make on purpose - des array could be extended!
 		for (i = 0; i < reactions.length; i++) {
+			//console.log("reaction, ", reactions);
 			result = false;
 
 			// make copy of this reaction description
@@ -349,13 +350,20 @@ var Parser = (function() {
 			// in case of reaction type
 			// Send data to server, wait for JSON-reaction
 			if (reaction.type === 'send') {
-				if (reaction.url && reaction.dataId) {
-					data = Ext.getCmp(reaction.dataId);
-
-					if (data && data.getValues) {
-						data = data.getValues();
-						result = Dispatcher.send(reaction.url, data);
+				if (reaction.url){
+					// get data from component/container if dataId != null
+					if(reaction.dataId) {
+						data = Ext.getCmp(reaction.dataId);
 					}
+					
+					if (reaction.dataId && data && data.getValues) {
+							data = data.getValues();
+					} else{
+						data = '';
+					}
+						
+					result = Dispatcher.send(reaction.url, data);
+					
 				}
 			} else if (reaction.type === 'load') {
 				// load new Page - call Dispatcher.load with false to keepHash

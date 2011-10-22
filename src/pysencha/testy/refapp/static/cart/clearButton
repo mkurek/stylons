@@ -8,8 +8,7 @@
   "tap" : 
    {
     "type" : "send",
-    "url" : "cart/clear",
-    "dataId" : "clearButton"
+    "url" : "cart/clear"
    }
  }
 }

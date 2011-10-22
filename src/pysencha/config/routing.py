@@ -35,6 +35,7 @@ def make_map(config):
     map.connect('/menu/dishes/0/list', controller='menu', action='list', group=2)
     map.connect('/{tab}/tabbar', controller='main', action='tabbar')
     map.connect('/cart/list', controller='cart', action='list')
+    map.connect('/cart/clear', controller='cart', action='clear')
     map.connect('/cart/shortDescription', controller='cart', action='shortDescription')
     map.connect('/cart/toolbar', controller='cart', action='toolbar')
     map.connect('/form/submit', controller='form', action='submit')
