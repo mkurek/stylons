@@ -63,5 +63,6 @@ class CartController(BaseController):
         """Clear list"""
         print "\n\njestem tu\n\n"
         session['cart'] = []
+        session.save()
         action = '{"type" : "load","url" : "cart/shortDescription"}'
         return action
