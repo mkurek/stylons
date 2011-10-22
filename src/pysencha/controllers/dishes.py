@@ -51,7 +51,6 @@ class DishesController(BaseController):
         c.dishId = dishId
         title = meta.Session.query(Dish).filter(Dish.id == dishId).one()
         c.title = title.name
-        print 'Danie: ' + c.title
         return render('/dishes/title.mako')
     
     def toolbar(self, dishId):
@@ -65,15 +64,10 @@ class DishesController(BaseController):
         """Generate panel with dish description"""
         c.dishId = int(dishId)
         (c.desc,) = meta.Session.query(Dish.description).filter(Dish.id == dishId).one()
-        print 'Opis: ' + c.desc
-        #TODO do usunięcia:
-        c.desc = c.desc.replace('\n', '')
         return render('/dishes/description.mako')
     
     def picture(self, dishId):
         """Generate panel with url to dish's picture"""
         c.dishId = int(dishId)
         (c.picture,) = meta.Session.query(Dish.picture).filter(Dish.id == dishId).one()
-        print 'Picture: ' + c.picture
-        c.picture = c.picture.replace('\n', '')
         return render('/dishes/picture.mako')
