@@ -1,4 +1,9 @@
 {
  "id" : "Sizes",
- "layout" : "hbox"
+ "width" : 140,
+ "layout" : 
+ {
+    "type" : "vbox",
+    "align" : "left"
+ }
 }

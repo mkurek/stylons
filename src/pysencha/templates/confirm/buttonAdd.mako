@@ -6,14 +6,15 @@
  "text" : "Dodaj",
  "action" : 
  {
-  "tap" : [
+  "tap" :
+  [
     {
-     "type" : "load",
+     "type" : "send",
      "url" : "confirm/add/${c.id}"
     },
     {
      "type" : "specialHide"
     }
-   ]
+  ]
  }
 }

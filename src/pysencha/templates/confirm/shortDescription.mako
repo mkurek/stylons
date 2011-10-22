@@ -1,6 +1,6 @@
 {
  "id" : "popup",
- "url" : "confirm/dishes/special/index",
+ "url" : "static/confirm/index",
  "slots" : [
   {
    "id" : "confirmToolbarTop",
@@ -9,7 +9,7 @@
   },
   {
    "id" : "confirmContent${c.id}",
-   "url" : "static/confirm/content"
+   "url" : "confirm/content/${c.id}"
   },
   {
    "id" : "confirmToolbarBottom",

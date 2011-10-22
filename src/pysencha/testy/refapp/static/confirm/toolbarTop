@@ -1,5 +1,5 @@
 {
-    "id" : "changeToolbar",
+    "id" : "confirmToolbarTop",
     "type" : "Toolbar",
     "dock" : "top",
     "title" : "Możliwe zmiany:"

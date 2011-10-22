@@ -17,23 +17,15 @@ class DishesController(BaseController):
         
         Parameters:
         group -- id of dish's group choosen by user
-        dishId -- position on list (index)
+        id -- position on list (index)
         """
-        dishes = meta.Session.query(Dish.name, func.min(Dish_Sizes.price),\
-                                    Dish.id, Menu_Leaves.groupId).\
-                                    join(Dish_Sizes).\
-                                    join(Menu_Leaves).\
-                                    filter(Menu_Leaves.groupId == group).\
-                                    group_by(Dish.id).\
-                                    all()
-        
         c.id = id
         group = meta.Session.query(Menu_Leaves).\
                                     filter(Menu_Leaves.dishId == id).one()
         c.group = group.groupId
         sizes = meta.Session.query(Dish_Sizes).\
                                     filter(Dish_Sizes.dishId == id).all()
-        c.sizes = [ it.sizeId for it in sizes ]
+        c.sizes = [ it.id for it in sizes ]
         return render('/dishes/shortDescription.mako')
     
     def ingredients(self, id):
@@ -70,3 +62,11 @@ class DishesController(BaseController):
         c.dishId = int(id)
         (c.picture,) = meta.Session.query(Dish.picture).filter(Dish.id == id).one()
         return render('/dishes/picture.mako')
+    
+    def sizeButton(self, id):
+        """Make size button (id is dish_sizes.id)"""
+        c.id = int(id)
+        (c.size, c.price) = meta.Session.query(Sizes.name, Dish_Sizes.price).\
+                                    join(Dish_Sizes, Dish).\
+                                    filter(Dish_Sizes.id == id).one()
+        return render('/dishes/sizeButton.mako')

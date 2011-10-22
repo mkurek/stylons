@@ -26,7 +26,7 @@
     ]
     },
     {
-    "id" : "menuTabbar",
+    "id" : "menuTabbar${c.badge}",
     "url" : "menu/tabbar"
     }
   ]

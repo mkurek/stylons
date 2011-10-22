@@ -36,6 +36,22 @@
         {
          "id" : "dishIngr${c.id}",
          "url" : "dishes/ingredients/${c.id}"
+        },
+        {
+         "id" : "Sizes",
+         "url" : "static/dishes/sizes",
+         "slots" : [
+          {
+           "id" : "sizeButton${c.sizes[0]}",
+           "url" : "dishes/sizeButton/${c.sizes[0]}"
+          }
+         % for i in c.sizes[1:]:
+          ,{
+          "id" : "sizeButton${i}",
+          "url" : "dishes/sizeButton/${i}"
+          }
+         % endfor
+         ]
         }
        ]
       }

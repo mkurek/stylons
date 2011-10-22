@@ -58,6 +58,10 @@ class MenuController(BaseController):
         c.group = int(id)
         if c.group > 1:
             (c.parent, ) = meta.Session.query(Menu.parentGroup).filter(Menu.childGroup == c.group).one()
+        if 'cart' in session:
+            c.badge = len(session['cart'])
+        else:
+            c.badge = None
         return render('/menu/shortDescription.mako')
     
     def toolbar(self, id):
@@ -76,8 +80,8 @@ class MenuController(BaseController):
         """Generate menu list JSON"""
         c.group = id
         #TO DO do usunięcia:
-        session['cart'] = [13,4,8,5,6,2,3]
-        session.save()
+        #session['cart'] = [13,4,8,5,6,2,3]
+        #session.save()
         #end
         "Get list of groups and dishes in this group and jsonify it"
         c.listString = json.dumps(self.__getList(id))

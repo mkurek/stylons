@@ -10,7 +10,7 @@ from pysencha.model.data_base import *
 
 class ConfirmController(BaseController):
     
-    def _add(self, id):
+    def __add(self, id):
         if 'cart' in session:
             session['cart'].append(id)
         else:
@@ -36,8 +36,13 @@ class ConfirmController(BaseController):
     def add(self, id):
         """Add selected dish to session.cart"""
         self.__add(id)
-        handler = HandlerController()
-        return handler.load(url='menu/shortDescription')
+        (group, id) = meta.Session.query(Menu_Leaves.groupId, Dish.id).\
+                                join(Dish, Dish_Sizes).\
+                                filter(Dish_Sizes.id == id).\
+                                one()
+        action = {'type': 'load', 'url' : '/'.join(('/dishes/shortDescription',
+                                                    str(group), str(id)))}
+        return json.dumps(action)
     
     def order(self, id):
         """Add selected dish to session.cart and go to form"""
