@@ -1,0 +1,43 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "info",
+    "url" : "static/info/index",
+    "slots" : [
+      {
+      "id" : "infoToolbar",
+      "url" : "static/info/toolbar",
+      "slots" : []
+      },
+      {
+      "id" : "infoPanel",
+      "url" : "static/info/panel/index",
+      "slots" : [
+       {
+        "id" : "infoTitle",
+        "url" : "static/info/panel/title"
+       },
+       {
+        "id" : "infoMessage",
+        "url" : "static/info/panel/message"
+       },
+       {
+        "id" : "infoPicture",
+        "url" : "static/info/panel/picture"
+       },
+       {
+        "id" : "infoContact",
+        "url" : "static/info/panel/contact"
+       }
+      ]
+      }
+    ]
+    },
+    {
+    "id" : "infoTabbar",
+    "url" : "info/tabbar"
+    }
+  ]
+}

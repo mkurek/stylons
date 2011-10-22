@@ -1,5 +1,5 @@
 {
- "id" : "${c.tab}Tabbar${c.badge}",
+ "id" : "infoTabbar",
  "type" : "TabBar",
  "dock" : "bottom",
  "list" : 
@@ -11,29 +11,21 @@
    "action" : {
       "tap" : {
         "type" : "load",
-        "url" : "menu/shortDescription/1"
+        "url" : "menu/shortDescription"
       }
    }
-   % if c.tab == 'menu':
-   ,"active" : "true"
-   % endif
   },
   {
    "id" : "TabbarButton2",
    "icon" : "cart",
    "text" : "Koszyk",
-   % if c.badge:
-   "badge" : "${c.badge}",
-   % endif
+   "badge" : "2",
    "action" : {
       "tap" : {
         "type" : "load",
         "url" : "cart/shortDescription"
       }
    }
-   % if c.tab == 'cart' or c.tab == 'form':
-   ,"active" : "true"
-   % endif
   },
   {
    "id" : "TabbarButton3",
@@ -42,12 +34,9 @@
    "action" : {
       "tap" : {
         "type" : "load",
-        "url" : "static/promotions/shortDescription"
+        "url" : "promotions/shortDescription"
       }
    }
-   % if c.tab == 'promotions':
-   ,"active" : "true"
-   % endif
   },
   {
    "id" : "TabbarButton4",
@@ -56,12 +45,10 @@
    "action" : {
       "tap" : {
         "type" : "load",
-        "url" : "static/info/shortDescription"
+        "url" : "info/shortDescription"
       }
-   }
-   % if c.tab == 'info':
-   ,"active" : "true"
-   % endif
+   },
+   "active" : "true"
   }
  ]
 }

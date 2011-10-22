@@ -1,5 +1,5 @@
 {
- "id" : "buttonAdd${c.hash}",
+ "id" : "buttonAdd${c.id}",
  "type" : "Button",
  "ui" : "accept",
  "flex" : "1",
@@ -9,7 +9,7 @@
   "tap" : [
     {
      "type" : "load",
-     "url" : "menu/dishes/special/${c.url}/add"
+     "url" : "confirm/add/${c.id}"
     },
     {
      "type" : "specialHide"

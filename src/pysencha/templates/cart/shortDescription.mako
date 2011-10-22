@@ -20,7 +20,7 @@
         },
         {
          "id" : "sendButton",
-         "url" : "cart/sendButton"
+         "url" : "static/cart/sendButton"
         }
       ]
       },

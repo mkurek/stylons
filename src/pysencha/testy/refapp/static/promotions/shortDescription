@@ -1,0 +1,26 @@
+{
+  "id" : "screen",
+  "url" : "static/index",
+  "slots" : [
+    {
+    "id" : "promotions",
+    "url" : "static/promotions/index",
+    "slots" : [
+      {
+      "id" : "promotionsToolbar",
+      "url" : "static/promotions/toolbar",
+      "slots" : []
+      },
+      {
+      "id" : "promotionsPanel",
+      "url" : "static/promotions/panel",
+      "slots" : []
+      }
+    ]
+    },
+    {
+    "id" : "promotionsTabbar",
+    "url" : "promotions/tabbar"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "id" : "sendButton",
+ "type" : "Button",
+ "ui" : "confirm",
+ "text" : "Zamów",
+ "action" : {
+      "tap" : {
+        "type" : "load",
+        "url" : "static/form/shortDescription"
+      }
+   }
+}

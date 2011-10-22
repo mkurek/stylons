@@ -1,0 +1,6 @@
+{
+    "id" : "promotionsToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Promocje"
+}

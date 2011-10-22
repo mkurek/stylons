@@ -1,0 +1,25 @@
+{
+  "id" : "screen",
+  "url" : "index",
+  "slots" : [
+    {
+    "id" : "menu",
+    "url" : "menu/index",
+    "slots" : [
+      {
+      "id" : "menuToolbar1",
+      "url" : "menu/toolbar/1",
+      "slots" : []
+      },
+      {
+      "id" : "menuList1",
+      "url" : "menu/list/1"
+      }
+    ]
+    },
+    {
+    "id" : "menuTabbar",
+    "url" : "menu/tabbar"
+    }
+  ]
+}

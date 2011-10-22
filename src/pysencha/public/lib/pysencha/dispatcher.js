@@ -7,7 +7,7 @@ var Dispatcher = (function() {
 	screen = {};
 	popup = {};
 	Config = {
-		defaultURL : "shortDescription"
+		defaultURL : "static/shortDescription"
 	};
 
 	/**

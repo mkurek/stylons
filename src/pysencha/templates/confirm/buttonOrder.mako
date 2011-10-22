@@ -1,5 +1,5 @@
 {
- "id" : "buttonOrder${c.hash}",
+ "id" : "buttonOrder${c.id}",
  "type" : "Button",
  "ui" : "confirm",
  "flex" : "1",
@@ -9,7 +9,7 @@
   "tap" : [
     {
      "type" : "load",
-     "url" : "menu/dishes/special/${c.url}/order"
+     "url" : "confirm/order/${c.id}"
     },
     {
      "type" : "specialHide"

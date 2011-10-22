@@ -66,51 +66,19 @@ class MenuController(BaseController):
         (c.name, ) = meta.Session.query(Group.name).filter(Group.id == id).one()
         return render('/menu/toolbar.mako')
     
-    def special(self, url):
-        """Render special slot description for all dishes"""
-        c.url = url
-        c.hash = url
-        return render('/menu/special.mako')
-    
-    def buttonAdd(self, url):
-        """Render button to add dish into cart"""
-        c.url = url
-        c.hash = url
-        return render('/menu/buttonAdd.mako')
-    
-    def buttonOrder(self, url):
-        """Render button to order dish"""
-        c.url = url
-        c.hash = url
-        return render('/menu/buttonOrder.mako')
-    
     def backButton(self, id):
         """Render back-button to specified group"""
         c.id = id
         (c.name,) = meta.Session.query(Group.name).filter(Group.id == id).one()
         return render('/menu/backButton.mako')
     
-    def add(self, id, size, pizza):
-        """Add selected dish to session.cart"""
-        #if 'cart' in session:
-        #    session['cart'].append()
-        handler = HandlerController()
-        return handler.load(url='menu/shortDescription')
-    
-    def order(self, id, size, pizza):
-        """Add selected dish to session.cart and go to form"""
-        "First add:"
-        self.add(id, size, pizza)
-        "Then go to form:"
-        handler = HandlerController()
-        return handler.load(url='form/shortDescription')
-    
     def list(self, id):
         """Generate menu list JSON"""
         c.group = id
         #TO DO do usunięcia:
-        session['cart'] = [1,4,4,1,1,4,1]
+        session['cart'] = [13,4,8,5,6,2,3]
         session.save()
         #end
-        c.listString = json.dumps(self.__getList(id), separators=(',',':'))
+        "Get list of groups and dishes in this group and jsonify it"
+        c.listString = json.dumps(self.__getList(id))
         return render('/menu/list.mako')

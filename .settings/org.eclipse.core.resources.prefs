@@ -1,4 +1,4 @@
-#Fri Oct 21 19:48:18 CEST 2011
+#Sat Oct 22 17:07:50 CEST 2011
 eclipse.preferences.version=1
 encoding//eggs/FormAlchemy-1.4.1-py2.6.egg/formalchemy/ext/couchdb.py=utf-8
 encoding//eggs/FormAlchemy-1.4.1-py2.6.egg/formalchemy/ext/fsblob.py=utf-8
@@ -8,6 +8,7 @@ encoding//eggs/FormAlchemy-1.4.1-py2.6.egg/formalchemy/tests/__init__.py=utf-8
 encoding//eggs/FormAlchemy-1.4.1-py2.6.egg/formalchemy/tests/test_aliases.py=utf-8
 encoding//src/pysencha/controllers/cart.py=utf-8
 encoding//src/pysencha/controllers/change.py=utf-8
+encoding//src/pysencha/controllers/confirm.py=utf-8
 encoding//src/pysencha/controllers/dishes.py=utf-8
 encoding//src/pysencha/controllers/form.py=utf-8
 encoding//src/pysencha/controllers/handler.py=utf-8
