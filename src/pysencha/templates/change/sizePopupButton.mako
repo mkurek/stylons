@@ -1,5 +1,5 @@
 {
- "id" : "changeButtonSize${c.id}",
+ "id" : "sizePopupButton${c.id}",
  "type" : "Button",
  "ui" : "confirm",
  "text" : "Zmień rozmiar",
@@ -8,7 +8,7 @@
   "tap" :
   {
    "type" : "specialShow",
-   "url" : "cart/special/size/shortDescription"
+   "url" : "change/changeSize/${c.id}"
   }
  }
 }

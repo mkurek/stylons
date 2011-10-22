@@ -16,8 +16,8 @@
      "url" : "static/change/hide"
     },
     {
-     "id" : "changeButtonSize${c.id}",
-     "url" : "change/buttonSize/${c.id}"
+     "id" : "sizePopupButton${c.index}",
+     "url" : "change/sizePopupButton/${c.index}"
     },
     {
      "id" : "changeButtonDelete${c.index}",

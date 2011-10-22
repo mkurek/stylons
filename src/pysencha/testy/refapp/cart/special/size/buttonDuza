@@ -1,6 +1,0 @@
-{
- "id" : "buttonDuza",
- "type" : "Button",
- "ui" : "confirm",
- "text" : "duża"
-}
