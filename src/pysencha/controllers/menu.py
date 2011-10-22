@@ -11,6 +11,19 @@ from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
 class MenuController(BaseController):
+    def shortDescription(self, id):
+        """Render short Description for menu depended of choosen group"""
+        c.group = int(id)
+        if c.group > 1:
+            (c.parent, ) = meta.Session.query(Menu.parentGroup).filter(Menu.childGroup == c.group).one()
+        return render('/menu/shortDescription.mako')
+    
+    def toolbar(self, id):
+        """Render toolbar for each group"""
+        c.group = id
+        (c.name, ) = meta.Session.query(Group.name).filter(Group.id == id).one()
+        return render('/menu/toolbar.mako')
+    
     def special(self, url):
         """Render special slot description for all dishes"""
         c.url = url
@@ -50,8 +63,9 @@ class MenuController(BaseController):
         handler = HandlerController()
         return handler.load(url='form/shortDescription')
     
-    def list(self, group):
+    def list(self, id):
         """Generate menu list JSON"""
+        group = id
         c.group = group
         "Select groups:"
         g1 = aliased(Group)
