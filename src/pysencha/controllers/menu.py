@@ -75,9 +75,23 @@ class MenuController(BaseController):
                                     group_by(Dish.id).\
                                     all()
         
-        dishesString = ',\n'.join(u'{ "dish" : "%s", "price" : "%.2f zł",'\
-                                    u' "id" : "%s"}' % (x[0], x[1], x[2])\
-                                    for (x) in dishes)
+        "Join name, price, id and ingredients into list item string"
+        "then join it into list data string"
+        dishesString = ''
+        for (name, price, id, group) in dishes:
+            ingredients = meta.Session.query(Ingredients.name).\
+                                    join(Dish_Ingredients, Dish).\
+                                    filter(Dish.id == id).\
+                                    all()
+            ingredientsStr = ', '.join((x[0] for x in ingredients))
+            item = ''.join((u'{ "dish" : "%s",' % (name,),
+                            u'"price" : "%.2f zł",' % (price, ),
+                            u' "id" : "%s",' % (id, ),
+                            u' "ingredients" : "%s"}' % (ingredientsStr)))
+            if dishesString:
+                dishesString = ', '.join((dishesString,item))
+            else:
+                dishesString = item
         
         "Join groups and dishes:"
         c.listString = groupsString and ',\n'.join((groupsString,\
