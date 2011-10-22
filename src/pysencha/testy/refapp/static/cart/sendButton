@@ -6,7 +6,7 @@
  "action" : {
       "tap" : {
         "type" : "load",
-        "url" : "static/form/shortDescription"
+        "url" : "form/shortDescription"
       }
    }
 }

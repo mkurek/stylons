@@ -8,7 +8,7 @@
   "tap" : 
    {
     "type" : "load",
-    "url" : "menu/shortDescription"
+    "url" : "menu/shortDescription/1"
    }
  }
 }

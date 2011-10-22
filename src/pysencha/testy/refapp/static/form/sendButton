@@ -1,0 +1,15 @@
+{
+ "id" : "sendButton",
+ "type" : "Button",
+ "ui" : "confirm",
+ "text" : "Wyślij",
+ "action" : 
+ {
+  "tap" : 
+   {
+    "type" : "send",
+    "url" : "form/submit",
+    "dataId" : "formPanel"
+   }
+ }
+}

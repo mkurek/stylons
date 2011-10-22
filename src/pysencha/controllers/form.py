@@ -20,3 +20,22 @@ class FormController(BaseController):
         f.write(dataStr)
         f.close()
         return x
+    
+    def shortDescription(self):
+        return render('form/shortDescription.mako')
+    
+    def fieldset(self, id):
+        c.id = "name"
+        c.id2 = id
+        c.title = "DANE"
+        
+        return render('form/fieldset.mako')
+    
+    def field(self, group, id):
+        c.id = ''.join(str(group)+str(id))
+        c.name = "name"
+        c.required = "true"
+        c.type = "TextField"
+        c.label = "Imie"
+ 
+        return render('form/field.mako')

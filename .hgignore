@@ -45,3 +45,15 @@ syntax: regexp
 ^src/setup\.cfg$
 syntax: regexp
 ^src/dist$
+syntax: regexp
+^src/pysencha/public/lib/pysencha/sender_new\.js$
+syntax: regexp
+^src/pysencha/public/lib/pysencha/History\.js$
+syntax: regexp
+^src/pysencha/public/lib/pysencha/parser_old\.js$
+syntax: regexp
+^src/pysencha/testy/refapp2$
+syntax: regexp
+^\.hgignore$
+syntax: regexp
+^\.pydevproject$

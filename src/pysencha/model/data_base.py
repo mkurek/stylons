@@ -47,7 +47,25 @@ t_menu = sa.Table("menu", meta.metadata,
 t_menu_leaves = sa.Table("menu_leaves", meta.metadata,
                   sa.Column("id", sa.types.Integer, primary_key = True),
                   sa.Column("groupId",sa.types.Integer, sa.ForeignKey('groups.id')),
-                  sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish.id')),
+                  sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish.id'))
+    )
+
+t_orders = sa.Table("orders", meta.metadata,
+                    sa.Column("id", sa.types.Integer, primary_key = True),
+                    sa.Column("name", sa.types.String, nullable = False),
+                    sa.Column("surname", sa.types.String, nullable = False),
+                    sa.Column("city", sa.types.String, nullable = False),
+                    sa.Column("street", sa.types.String, nullable = False),
+                    sa.Column("homeNumber", sa.types.String, nullable = False),
+                    sa.Column("apartmentNumber", sa.types.String, nullable = True),
+                    sa.Column("email", sa.types.String, nullable = False),
+                    sa.Column("phone", sa.types.Integer, nullable = False)
+    )
+
+t_orders_dishes = sa.Table("orders_dishes", meta.metadata,
+                    sa.Column("id", sa.types.Integer, primary_key = True),
+                    sa.Column("orderId", sa.types.Integer, sa.ForeignKey('orders.id')),
+                    sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish_sizes.id'))
     )
 
 class Dish(object):
@@ -74,6 +92,12 @@ class Menu(object):
 class Menu_Leaves(object):
     pass
 
+class Orders(object):
+    pass
+
+class Orders_Dishes(object):
+    pass
+
 orm.mapper(Dish_Sizes, t_dish_sizes)
 orm.mapper(Menu_Leaves, t_menu_leaves)
 orm.mapper(Menu, t_menu)
@@ -82,6 +106,8 @@ orm.mapper(Dish, t_dish)
 orm.mapper(Ingredients, t_ingredients)
 orm.mapper(Dish_Ingredients, t_dish_ingredients)
 orm.mapper(Sizes, t_sizes)
+orm.mapper(Orders, t_orders)
+orm.mapper(Orders_Dishes, t_orders_dishes)
 
 """orm.mapper(Dish_Sizes, t_dish_sizes)
 orm.mapper(Menu_Leafs, t_menu_leafs)
