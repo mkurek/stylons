@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 log = logging.getLogger(__name__)
-testpath = 'testy/refapp/'
+testpath = 'testy/refapp/static/'
 
 class HandlerController(BaseController):
     """

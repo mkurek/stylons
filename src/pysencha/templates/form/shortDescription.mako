@@ -1,6 +1,6 @@
 {
   "id" : "screen",
-  "url" : "index",
+  "url" : "static/index",
   "slots" : [
     {
     "id" : "form",
@@ -20,7 +20,7 @@
         },
         {
          "id" : "spacer",
-         "url" : "spacer"
+         "url" : "static/spacer"
         },
         {
          "id" : "sendButton",

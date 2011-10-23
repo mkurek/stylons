@@ -1,6 +1,6 @@
 {
   "id" : "screen",
-  "url" : "index",
+  "url" : "static/index",
   "slots" : [
     {
     "id" : "info",

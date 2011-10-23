@@ -19,19 +19,9 @@ def make_map(config):
     map.connect('/error/{action}/{id}', controller='error')
 
     # CUSTOM ROUTES HERE
-    #map.connect('/{controller}/{action}')
-    #map.connect('/{controller}/{action}/{id}')
-    map.connect('/menu/{action}/{id}', controller = 'menu')
-    map.connect('/menu/{action}/{group}/{id}', controller = 'menu')
-    map.connect('/dishes/{action}/{group}/{id}', controller = 'dishes')
-    map.connect('/dishes/{action}/{id}', controller = 'dishes')
-    map.connect('/confirm/{action}/{id}', controller = 'confirm')
-    #map.connect('/menu/list', controller='menu', action='list', id=1)
     map.connect('/{tab}/tabbar', controller='main', action='tabbar')
-    map.connect('/form/{action}', controller='form')
-    map.connect('/form/{action}/{id}', controller='form')
-    map.connect('/cart/{action}', controller='cart')
-    map.connect('/change/{action}/{id}', controller='change')
-    map.connect('/change/{action}/{group}/{id}', controller='change')
-    map.connect('/*url', controller='handler', action='load')
+    map.connect('/{controller}/{action}')
+    map.connect('/{controller}/{action}/{id}')
+    map.connect('/{controller}/{action}/{group}/{id}')
+    map.connect('/static/*url', controller='handler', action='load')
     return map

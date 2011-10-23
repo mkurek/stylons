@@ -1,10 +1,10 @@
 {
   "id" : "screen",
-  "url" : "index",
+  "url" : "static/index",
   "slots" : [
     {
     "id" : "menu",
-    "url" : "menu/index",
+    "url" : "static/menu/index",
     "slots" : [
       {
       "id" : "menuToolbar${c.group}",
