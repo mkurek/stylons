@@ -1,5 +1,5 @@
 {
- "id" : "${c.id}${c.id2}",
+ "id" : "${c.groupName}",
  "type" : "Fieldset",
  "title" : "${c.title}"
 }

@@ -1,5 +1,5 @@
 {
- "id" : "${c.name}${c.id}",
+ "id" : "${c.name}",
  "type" : "${c.type}",
  "label" : "${c.label}",
  "required" : "${c.required}",

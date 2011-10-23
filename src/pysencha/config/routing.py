@@ -30,7 +30,6 @@ def make_map(config):
     map.connect('/{tab}/tabbar', controller='main', action='tabbar')
     map.connect('/form/{action}', controller='form')
     map.connect('/form/{action}/{id}', controller='form')
-    map.connect('/form/{action}/{group}/{id}', controller='form')
     map.connect('/cart/{action}', controller='cart')
     map.connect('/change/{action}/{id}', controller='change')
     map.connect('/change/{action}/{group}/{id}', controller='change')

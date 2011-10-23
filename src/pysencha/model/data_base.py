@@ -68,6 +68,26 @@ t_orders_dishes = sa.Table("orders_dishes", meta.metadata,
                     sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish_sizes.id'))
     )
 
+t_fields = sa.Table("fields", meta.metadata,
+                    sa.Column("id", sa.types.Integer, primary_key = True),
+                    sa.Column("type", sa.types.String, nullable = False),
+                    sa.Column("label", sa.types.String, nullable = False),
+                    sa.Column("required", sa.types.Integer, nullable = False),
+                    sa.Column("name", sa.types.String, nullable = False)
+    )
+
+t_fieldsets = sa.Table("fieldsets", meta.metadata,
+                    sa.Column("id", sa.types.Integer, primary_key = True),
+                    sa.Column("groupName", sa.types.String, nullable = False),
+                    sa.Column("title", sa.types.String, nullable = False)
+    )
+
+t_fields_fieldsets = sa.Table("fields_fieldsets", meta.metadata,
+                    sa.Column("id", sa.types.Integer, primary_key = True),
+                    sa.Column("fieldId", sa.types.Integer, sa.ForeignKey('fields.id')),
+                    sa.Column("fieldsetId", sa.types.Integer, sa.ForeignKey('fieldsets.id'))
+    )
+
 class Dish(object):
     pass
 
@@ -98,6 +118,15 @@ class Orders(object):
 class Orders_Dishes(object):
     pass
 
+class Fields(object):
+    pass
+
+class Fieldsets(object):
+    pass
+
+class Fields_Fieldsets(object):
+    pass
+
 orm.mapper(Dish_Sizes, t_dish_sizes)
 orm.mapper(Menu_Leaves, t_menu_leaves)
 orm.mapper(Menu, t_menu)
@@ -108,6 +137,9 @@ orm.mapper(Dish_Ingredients, t_dish_ingredients)
 orm.mapper(Sizes, t_sizes)
 orm.mapper(Orders, t_orders)
 orm.mapper(Orders_Dishes, t_orders_dishes)
+orm.mapper(Fields, t_fields)
+orm.mapper(Fieldsets, t_fieldsets)
+orm.mapper(Fields_Fieldsets, t_fields_fieldsets)
 
 """orm.mapper(Dish_Sizes, t_dish_sizes)
 orm.mapper(Menu_Leafs, t_menu_leafs)

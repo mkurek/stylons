@@ -38,11 +38,11 @@
       		"slots" : [
       			{
       				"id" : "name",
-      				"url" : "form/field/1/1"
+      				"url" : "form/field/1"
       			},
       			{
       				"id" : "surname",
-      				"url" : "form/field/1/2"
+      				"url" : "form/field/2"
       			}
       		]
       	},
@@ -52,19 +52,19 @@
       		"slots" : [
       			{
       				"id" : "city",
-      				"url" : "form/field/2/1"
+      				"url" : "form/field/3"
       			},
       			{
       				"id" : "street",
-      				"url" : "form/field/2/2"
+      				"url" : "form/field/4"
       			},
       			{
-      				"id" : "housenumber1",
-      				"url" : "form/field/2/3"
+      				"id" : "houseNumber",
+      				"url" : "form/field/5"
       			},
       			{
-      				"id" : "housenumber2",
-      				"url" : "form/field/2/4"
+      				"id" : "apartmentNumber",
+      				"url" : "form/field/6"
       			}
       		]
       	},
@@ -74,11 +74,11 @@
       		"slots" : [
       			{
       				"id" : "email",
-      				"url" : "form/field/3/1"
+      				"url" : "form/field/7"
       			},
       			{
       				"id" : "phonenumber",
-      				"url" : "form/field/3/2"
+      				"url" : "form/field/8"
       			}
       		]
       	}

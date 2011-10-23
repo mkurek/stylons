@@ -3,8 +3,10 @@ import logging, sys, os, json
 
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
-
 from pysencha.lib.base import BaseController, render
+from pysencha.model import meta
+from pysencha.model.data_base import *
+
 
 class FormController(BaseController):
     def submit(self):
@@ -25,17 +27,20 @@ class FormController(BaseController):
         return render('form/shortDescription.mako')
     
     def fieldset(self, id):
-        c.id = "name"
-        c.id2 = id
-        c.title = "DANE"
+        # do poprawy zapytania - docelowo w 1
+        (c.groupName, ) = meta.Session.query(Fieldsets.groupName).filter(Fieldsets.id == int(id)).one()
+        (c.title, ) = meta.Session.query(Fieldsets.title).filter(Fieldsets.id == int(id)).one()
         
         return render('form/fieldset.mako')
     
-    def field(self, group, id):
-        c.id = ''.join(str(group)+str(id))
-        c.name = "name"
-        c.required = "true"
-        c.type = "TextField"
-        c.label = "Imie"
- 
+    def field(self, id):
+        (c.type, ) = meta.Session.query(Fields.type).filter(Fields.id == int(id)).one()
+        (c.label, ) = meta.Session.query(Fields.label).filter(Fields.id == int(id)).one()
+        c.required = meta.Session.query(Fields.required).filter(Fields.id == int(id)).one()
+        if c.required:
+            c.required = "true"
+        else:
+            c.required = "false"
+        
+        (c.name, ) = meta.Session.query(Fields.name).filter(Fields.id == int(id)).one()
         return render('form/field.mako')
