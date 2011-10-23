@@ -49,8 +49,8 @@ class ConfirmController(BaseController):
         "First add:"
         self.__add(id)
         "Then go to form:"
-        handler = HandlerController()
-        return handler.load(url='form/shortDescription')
+        action = {'type': 'load', 'url' : '/form/shortDescription'}
+        return json.dumps(action)
     
     def shortDescription(self, id):
         """Render special slot description for all dishes"""

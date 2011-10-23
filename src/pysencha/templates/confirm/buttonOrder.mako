@@ -8,7 +8,7 @@
  {
   "tap" : [
     {
-     "type" : "load",
+     "type" : "send",
      "url" : "confirm/order/${c.id}"
     },
     {

@@ -16,6 +16,7 @@ class CartController(BaseController):
             return hashlib.sha256(str(session['cart'])).hexdigest()[0:5]
         else:
             return ''
+
     @staticmethod
     def __checkSession():
         """Create cart list in session if doesn't exist"""
