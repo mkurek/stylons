@@ -31,7 +31,7 @@ class DishesController(BaseController):
     def ingredients(self, id):
         """Generate panel with dish's ingredients"""
         c.dishId = id
-        ingr = meta.Session.query(Ingredients).\
+        ingr = meta.Session.query(Ingredients.name).\
                                     join(Dish_Ingredients, Dish).\
                                     filter(Dish.id == id).all()
         c.ingr = ", ".join([ it.name for it in ingr ])

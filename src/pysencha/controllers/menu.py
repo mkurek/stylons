@@ -37,7 +37,7 @@ class MenuController(BaseController):
                                     join(Dish_Ingredients, Dish).\
                                     filter(Dish.id == id).\
                                     all()
-            ingredientsStr = ', '.join((x[0] for x in ingredients))
+            ingredientsStr = ', '.join((it.name for it in ingredients))
             list.append({ 'dish' : name , 'price' : ' '.join((str(round(price,
                                     2)), 'zł')), 'id' : id, 'group' : False,
                                     'ingredients' : ingredientsStr})
@@ -84,10 +84,6 @@ class MenuController(BaseController):
     def list(self, id):
         """Generate menu list JSON"""
         c.group = id
-        #TO DO do usunięcia:
-        #session['cart'] = [13,4,8,5,6,2,3]
-        #session.save()
-        #end
         "Get list of groups and dishes in this group and jsonify it"
         c.listString = json.dumps(self.__getList(id))
         return render('/menu/list.mako')
