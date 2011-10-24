@@ -56,3 +56,5 @@ syntax: regexp
 
 syntax: regexp
 \.hgignore$
+syntax: regexp
+^src/pysencha/templates/form/shortDescription_old\.mako$
