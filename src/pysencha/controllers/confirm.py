@@ -15,6 +15,7 @@ class ConfirmController(BaseController):
             session['cart'].append(id)
         else:
             session['cart']=[id]
+        session.save()
     
     def buttonAdd(self, id):
         """Render button to add dish into cart"""
