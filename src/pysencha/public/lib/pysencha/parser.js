@@ -176,6 +176,14 @@ var Parser = (function() {
 				value : '' // {String} default field value
 			}
 		},
+		"ErrorField" : {
+			fn : makeErrorField,
+			description : {
+				html : '',
+				name : '',
+				cls : 'invalid-field'
+			}
+		},
 		"HiddenField" : {
 			fn : makeHiddenField,
 			description : {},
@@ -631,6 +639,10 @@ var Parser = (function() {
 		return new Ext.form.Field(content);
 	}
 
+	function makeErrorField(content, des) {
+		return new Ext.Component(content);
+	}
+	
 	function makeHiddenField(content, des) {
 		return new Ext.form.Hidden(content);
 	}
@@ -646,6 +658,7 @@ var Parser = (function() {
 	function makeTextareaField(content, des) {
 		return new Ext.form.Textarea(content);
 	}
+	
 
 	obj = {
 		transform : transform,

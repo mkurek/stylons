@@ -40,7 +40,7 @@
       			% for field in c.fields[fieldset['id']]:
       				{
       					"id" : "${field['name']}",
-      					"url" : "form/field/${field['id']}"
+      					"url" : "form/${field['url']}"
       				% if field != c.fields[fieldset['id']][-1]:
       				},
       				% else:

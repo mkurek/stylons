@@ -73,7 +73,9 @@ t_fields = sa.Table("fields", meta.metadata,
                     sa.Column("type", sa.types.String, nullable = False),
                     sa.Column("label", sa.types.String, nullable = False),
                     sa.Column("required", sa.types.Integer, nullable = False),
-                    sa.Column("name", sa.types.String, nullable = False)
+                    sa.Column("name", sa.types.String, nullable = False),
+                    sa.Column("regex", sa.types.String, nullable = False),
+                    sa.Column("errorMessage", sa.types.String, nullable = False)
     )
 
 t_fieldsets = sa.Table("fieldsets", meta.metadata,
