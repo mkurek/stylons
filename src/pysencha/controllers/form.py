@@ -83,15 +83,14 @@ class FormController(BaseController):
         
         # if no errors save order in DB
         if len(errors) == 0:
-            # get max id from Orders - should be done with auto_increment, but...
-            (maxId, ) = meta.Session.query(func.max(Orders.id)).one()
-            id = int(maxId) + 1 if maxId else 1
-            
-            order = Orders(id, d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], 
+            # insert customer info        
+            order = Orders(d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], 
                            d['apartmentNumber'], d['email'], int(d['phonenumber']))
             
             meta.Session.add(order)
             meta.Session.commit()
+        
+            id = order.id
             
             # add dishes
             for dish in session['cart']:

@@ -96,9 +96,7 @@ class Dish(object):
     pass
 
 class Ingredients(object):
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+    pass
 
 class Dish_Ingredients(object):
     pass
@@ -119,8 +117,7 @@ class Menu_Leaves(object):
     pass
 
 class Orders(object):
-    def __init__(self, id, name, surname, city, street, houseNumber, apartmentNumber, email, phone):
-        self.id = id
+    def __init__(self, name, surname, city, street, houseNumber, apartmentNumber, email, phone):
         self.name = name
         self.surname = surname
         self.city = city
