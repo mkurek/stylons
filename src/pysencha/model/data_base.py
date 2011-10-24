@@ -56,16 +56,18 @@ t_orders = sa.Table("orders", meta.metadata,
                     sa.Column("surname", sa.types.String, nullable = False),
                     sa.Column("city", sa.types.String, nullable = False),
                     sa.Column("street", sa.types.String, nullable = False),
-                    sa.Column("homeNumber", sa.types.String, nullable = False),
+                    sa.Column("houseNumber", sa.types.String, nullable = False),
                     sa.Column("apartmentNumber", sa.types.String, nullable = True),
                     sa.Column("email", sa.types.String, nullable = False),
-                    sa.Column("phone", sa.types.Integer, nullable = False)
+                    sa.Column("phone", sa.types.Integer, nullable = False),
+                    sqlite_autoincrement=True
     )
 
 t_orders_dishes = sa.Table("orders_dishes", meta.metadata,
                     sa.Column("id", sa.types.Integer, primary_key = True),
                     sa.Column("orderId", sa.types.Integer, sa.ForeignKey('orders.id')),
-                    sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish_sizes.id'))
+                    sa.Column("dishId", sa.types.Integer, sa.ForeignKey('dish_sizes.id')),
+                    sqlite_autoincrement=True
     )
 
 t_fields = sa.Table("fields", meta.metadata,
@@ -94,7 +96,9 @@ class Dish(object):
     pass
 
 class Ingredients(object):
-    pass
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
 
 class Dish_Ingredients(object):
     pass
@@ -115,10 +119,21 @@ class Menu_Leaves(object):
     pass
 
 class Orders(object):
-    pass
+    def __init__(self, id, name, surname, city, street, houseNumber, apartmentNumber, email, phone):
+        self.id = id
+        self.name = name
+        self.surname = surname
+        self.city = city
+        self.street = street
+        self.houseNumber = houseNumber
+        self.apartmentNumber = apartmentNumber
+        self.email = email
+        self.phone = phone
 
 class Orders_Dishes(object):
-    pass
+    def __init__(self, oId, dId):
+        self.orderId = oId
+        self.dishId = dId
 
 class Fields(object):
     pass

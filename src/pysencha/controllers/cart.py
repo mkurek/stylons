@@ -8,8 +8,6 @@ from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class CartController(BaseController):
-    
-    
     def __getId(self):
         """Create unique id added to list and toolbar id's"""
         if 'cart' in session:
@@ -17,6 +15,11 @@ class CartController(BaseController):
         else:
             return ''
 
+    @staticmethod
+    def clearCart():
+        session['cart'] = []
+        session.save()
+        
     @staticmethod
     def __checkSession():
         """Create cart list in session if doesn't exist"""
@@ -63,7 +66,6 @@ class CartController(BaseController):
     
     def clear(self):
         """Clear list"""
-        session['cart'] = []
-        session.save()
+        CartController.clearCart()
         action = '{"type" : "load","url" : "cart/shortDescription"}'
         return action

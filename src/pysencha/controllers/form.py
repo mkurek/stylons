@@ -6,6 +6,8 @@ from pylons.controllers.util import abort, redirect
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
+from sqlalchemy import func
+from cart import CartController
 
 class FormController(BaseController):
 
@@ -56,16 +58,20 @@ class FormController(BaseController):
     
     def submit(self):
         """Put an order; validate fields and proceed to main page or throws errors"""
+ 
         # clear errors
         session['FieldsErrors'] = []
         errors = session['FieldsErrors']
-        
+           
         # load data
         data = json.loads(request.POST['data'], 'utf-8')
+        
+        d = {}
         
         # validate fields
         for (k, v) in data.items():
             correct = self.validate(k, v)
+            d[str(k)] = str(v)
             if correct != True:
                 errors.append(k)
         
@@ -74,6 +80,28 @@ class FormController(BaseController):
         # if no errors
         if len(errors) == 0:
             x = '{"type" : "specialShow","url" : "static/form/orderMessage/shortDescription"}'
+            
+            # save to DB
+            # get max id from Orders - should be done with auto_increment, but...
+            (maxId, ) = meta.Session.query(func.max(Orders.id)).one()
+            id = int(maxId) + 1 if maxId else 1
+            print d
+            order = Orders(id, d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], d['apartmentNumber'], d['email'], int(d['phonenumber']))
+            print order
+            meta.Session.add(order)
+            meta.Session.commit()
+            
+            # add dishes
+            for dish in session['cart']:
+                order = Orders_Dishes(id, int(dish))            
+                meta.Session.add(order)
+            
+            meta.Session.commit() 
+                
+            # clear cart
+            c = CartController()
+            c.clearCart()
+        
         else:
             x = '{"type" : "load","url" : "form/shortDescription"}'
         return x
@@ -159,3 +187,8 @@ class FormController(BaseController):
         c.name = "error"+c.name[0].capitalize()+c.name[1:]
         
         return render('form/errorField.mako')
+    
+    def testAdd(self):
+        order = Orders_Dishes(1, 1)            
+        meta.Session.add(order)
+        meta.Session.commit()
