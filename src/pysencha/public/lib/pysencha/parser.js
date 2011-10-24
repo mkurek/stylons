@@ -366,11 +366,10 @@ var Parser = (function() {
 					
 				}
 			} else if (reaction.type === 'load') {
-				// load new Page - call Dispatcher.load with false to keepHash
+				// load new Page - call Dispatcher.load
 
-				if (reaction.url) {
-					result = Dispatcher.load(reaction.url);
-				}
+				result = Dispatcher.load(reaction.url);
+				
 			} else if (reaction.type === 'specialShow') {
 				// load special slot content (popup)
 				if (reaction.url) {

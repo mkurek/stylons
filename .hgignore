@@ -53,7 +53,6 @@ syntax: regexp
 ^src/pysencha/public/lib/pysencha/parser_old\.js$
 syntax: regexp
 ^src/pysencha/testy/refapp2$
+
 syntax: regexp
-^\.hgignore$
-syntax: regexp
-^\.pydevproject$
+\.hgignore$

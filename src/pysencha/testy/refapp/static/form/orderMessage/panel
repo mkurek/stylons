@@ -1,0 +1,5 @@
+{
+   "type" : "Panel",
+   "id" : "orderMessagePanel",
+   "html" : "Dziękujemy za złożenie zamówienia. Kurier pojawi się niedługo."
+}

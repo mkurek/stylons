@@ -1,0 +1,5 @@
+{
+    "id" : "orderMessageBottomToolbar",
+    "type" : "Toolbar",
+    "dock" : "bottom"
+}

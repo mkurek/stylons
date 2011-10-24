@@ -1,0 +1,7 @@
+{
+ "id" : "popup",
+ "type" : "SpecialPanel",
+ "width" : "250",
+ "height" : "250",
+ "styleHtmlContent" : "true"
+}

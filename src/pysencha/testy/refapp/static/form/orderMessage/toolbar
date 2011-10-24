@@ -1,0 +1,6 @@
+{
+    "id" : "orderMessageToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Dzięki!"
+}

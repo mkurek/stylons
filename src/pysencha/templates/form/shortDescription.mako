@@ -32,57 +32,28 @@
       "id" : "formPanel",
       "url" : "static/form/panel/index",
       "slots" : [
-      	{
-      		"id" : "surnameandname",
-      		"url" : "form/fieldset/1",
+      	% for fieldset in c.fieldsets:
+      		{
+      		"id" : "${fieldset['groupName']}",
+      		"url" : "form/fieldset/${fieldset['id']}",
       		"slots" : [
-      			{
-      				"id" : "name",
-      				"url" : "form/field/1"
-      			},
-      			{
-      				"id" : "surname",
-      				"url" : "form/field/2"
-      			}
-      		]
-      	},
-      	{
-      		"id" : "location",
-      		"url" : "form/fieldset/2",
-      		"slots" : [
-      			{
-      				"id" : "city",
-      				"url" : "form/field/3"
-      			},
-      			{
-      				"id" : "street",
-      				"url" : "form/field/4"
-      			},
-      			{
-      				"id" : "houseNumber",
-      				"url" : "form/field/5"
-      			},
-      			{
-      				"id" : "apartmentNumber",
-      				"url" : "form/field/6"
-      			}
-      		]
-      	},
-      	{
-      		"id" : "contact",
-      		"url" : "form/fieldset/3",
-      		"slots" : [
-      			{
-      				"id" : "email",
-      				"url" : "form/field/7"
-      			},
-      			{
-      				"id" : "phonenumber",
-      				"url" : "form/field/8"
-      			}
-      		]
-      	}
-      	
+      			% for field in c.fields[fieldset['id']]:
+      				{
+      					"id" : "${field['name']}",
+      					"url" : "form/field/${field['id']}"
+      				% if field != c.fields[fieldset['id']][-1]:
+      				},
+      				% else:
+      				}
+      				% endif
+      			% endfor
+      			]
+      		% if fieldset != c.fieldsets[-1]:
+      		},
+      		% else:
+      		}
+      		% endif
+      	% endfor
       ]
       }
     ]
