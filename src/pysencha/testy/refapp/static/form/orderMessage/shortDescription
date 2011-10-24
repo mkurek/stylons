@@ -1,0 +1,26 @@
+{
+ "id" : "popup",
+ "url" : "static/form/orderMessage/index",
+ "slots" : [
+  {
+   "id" : "orderMessageToolbar",
+   "url" : "static/form/orderMessage/toolbar",
+   "slots" : []
+  },
+  {
+   "id" : "orderMessagePanel",
+   "url" : "static/form/orderMessage/panel",
+   "slots" : []
+  },
+  {
+   "id" : "orderMessageBottomToolbar",
+   "url" : "static/form/orderMessage/bottomToolbar",
+   "slots" : [
+    {
+     "id" : "orderMessageButton",
+     "url" : "static/form/orderMessage/button"
+    }
+  	]
+  }
+  ]
+}

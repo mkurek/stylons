@@ -1,0 +1,18 @@
+{
+ "id" : "orderMessageButton",
+ "type" : "Button",
+ "ui" : "confirm",
+ "text" : "OK",
+ "flex" : 1,
+ "action" : 
+ {
+  "tap" : [
+   {
+    "type" : "load"
+   },
+   {
+    "type" : "specialHide"
+   }
+   ]
+ }
+}
