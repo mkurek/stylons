@@ -373,6 +373,18 @@ var Parser = (function() {
 					result = Dispatcher.send(reaction.url, data);
 					
 				}
+			} else if(reaction.type === 'clear'){
+				// clear data, f.e. form
+				if(reaction.componentId){
+					// get component wit id == componentId
+					com = Ext.getCmp(reaction.componentId);
+					
+					// reset component values
+					if(com.reset){
+						com.reset();
+					}
+				}
+				
 			} else if (reaction.type === 'load') {
 				// load new Page - call Dispatcher.load
 

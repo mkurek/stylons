@@ -2,5 +2,22 @@
  "id" : "clearButton",
  "type" : "Button",
  "ui" : "decline",
- "text" : "Wyczyść"
+ "text" : "Wyczyść",
+  "action" : 
+ {
+  "tap" : [
+   {
+    "type" : "clear",
+    "componentId" : "formPanel"
+   },
+   {
+    "type" : "send",
+    "url" : "form/reset"
+   },
+   {
+    "type" : "load",
+    "url" : "form/shortDescription"
+   }
+   ]
+ }
 }

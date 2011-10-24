@@ -291,7 +291,6 @@ var Dispatcher = (function() {
 	 */
 
 	function specialSlotHide() {
-		console.log("special hide")
 		SenchaAdapter.hide(popup);
 	}
 

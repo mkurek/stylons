@@ -15,7 +15,9 @@ class FormController(BaseController):
         """Returns list of fieldsets (dictionaries)"""
         list = []
 
-        for row in meta.Session.query(Fieldsets).all():
+        result = meta.Session.query(Fieldsets).all()
+
+        for row in result:
             fieldset = {'id' : row.id, 'groupName': row.groupName}
             list.append(fieldset)
         
@@ -26,11 +28,13 @@ class FormController(BaseController):
         """Returns list of fields (dictionaries)"""
         list = []
 
-        for row in meta.Session.query(Fields).\
+        result = meta.Session.query(Fields).\
                     select_from(Fields_Fieldsets).\
                     join(Fields, Fields_Fieldsets.fieldId == Fields.id).\
                     filter(Fields_Fieldsets.fieldsetId == fieldset).\
-                    all():
+                    all()
+
+        for row in result:
             
             field = {'id' : row.id, 'name' : row.name}
             list.append(field)
@@ -60,7 +64,7 @@ class FormController(BaseController):
         """Put an order; validate fields and proceed to main page or throws errors"""
  
         # clear errors
-        session['FieldsErrors'] = []
+        self.reset()
         errors = session['FieldsErrors']
            
         # load data
@@ -71,23 +75,21 @@ class FormController(BaseController):
         # validate fields
         for (k, v) in data.items():
             correct = self.validate(k, v)
-            d[str(k)] = str(v)
+            d[str(k)] = v
             if correct != True:
                 errors.append(k)
         
         session.save()
         
-        # if no errors
+        # if no errors save order in DB
         if len(errors) == 0:
-            x = '{"type" : "specialShow","url" : "static/form/orderMessage/shortDescription"}'
-            
-            # save to DB
             # get max id from Orders - should be done with auto_increment, but...
             (maxId, ) = meta.Session.query(func.max(Orders.id)).one()
             id = int(maxId) + 1 if maxId else 1
-            print d
-            order = Orders(id, d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], d['apartmentNumber'], d['email'], int(d['phonenumber']))
-            print order
+            
+            order = Orders(id, d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], 
+                           d['apartmentNumber'], d['email'], int(d['phonenumber']))
+            
             meta.Session.add(order)
             meta.Session.commit()
             
@@ -102,6 +104,8 @@ class FormController(BaseController):
             c = CartController()
             c.clearCart()
         
+            x = '{"type" : "specialShow","url" : "static/form/orderMessage/shortDescription"}'
+        
         else:
             x = '{"type" : "load","url" : "form/shortDescription"}'
         return x
@@ -111,8 +115,7 @@ class FormController(BaseController):
         
         # (create and) reference session var to errors
         if 'FieldsErrors' not in session:
-            session['FieldsErrors'] = []
-            session.save()
+            self.reset()
             
         errors = session['FieldsErrors']
         
@@ -188,7 +191,7 @@ class FormController(BaseController):
         
         return render('form/errorField.mako')
     
-    def testAdd(self):
-        order = Orders_Dishes(1, 1)            
-        meta.Session.add(order)
-        meta.Session.commit()
+    def reset(self):
+        """Reset error fields"""
+        session['FieldsErrors'] = []
+        session.save()
