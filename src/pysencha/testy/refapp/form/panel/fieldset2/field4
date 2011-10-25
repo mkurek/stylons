@@ -1,6 +1,0 @@
-{
- "id" : "housenumber2",
- "type" : "TextField",
- "label" : "Numer mieszkania",
- "name" : "housenumber2"
-}

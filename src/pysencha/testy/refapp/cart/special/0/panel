@@ -1,8 +1,0 @@
-{
-   "id" : "specialPanel0",
-   "url" : "cart/special/0/panel",
-   "layout" :
-   {
-    "type" : "hbox"
-   }
-}

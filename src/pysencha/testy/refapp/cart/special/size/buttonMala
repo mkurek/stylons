@@ -1,6 +1,0 @@
-{
- "id" : "buttonMala",
- "type" : "Button",
- "ui" : "confirm",
- "text" : "mała"
-}

@@ -1,7 +1,0 @@
-{
- "id" : "pizzaSizes",
- "layout" :
-  {
-   "type" : "hbox"
-  }
-}

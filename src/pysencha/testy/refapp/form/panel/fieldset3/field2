@@ -1,7 +1,0 @@
-{
- "id" : "phonenumber",
- "type" : "TextField",
- "label" : "Telefon",
- "required" : "true",
- "name" : "phonenumber"
-}
