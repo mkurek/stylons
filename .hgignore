@@ -58,3 +58,9 @@ syntax: regexp
 \.hgignore$
 syntax: regexp
 ^src/pysencha/templates/form/shortDescription_old\.mako$
+syntax: regexp
+^pysencha-0\.0\.3\.tar\.gz$
+syntax: regexp
+^pysencha-0\.0\.3-JS\.tar\.gz$
+syntax: regexp
+^pysencha-0\.0\.3-py2\.6\.egg$
