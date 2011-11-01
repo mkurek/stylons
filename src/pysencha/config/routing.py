@@ -15,6 +15,7 @@ def make_map(config):
 
     # The ErrorController route (handles 404/500 error pages); it should
     # likely stay at the top, ensuring it can always be resolved
+    map.connect('/orders', controller='orders', action='shortDescription')
     map.connect('/error/{action}', controller='error')
     map.connect('/error/{action}/{id}', controller='error')
 
