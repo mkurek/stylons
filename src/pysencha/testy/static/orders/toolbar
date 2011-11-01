@@ -1,0 +1,6 @@
+{
+    "id" : "infoToolbar",
+    "type" : "Toolbar",
+    "dock" : "top",
+    "title" : "Info"
+}
