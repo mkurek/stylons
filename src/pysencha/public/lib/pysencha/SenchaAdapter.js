@@ -100,6 +100,10 @@ var SenchaAdapter = (function() {
 	}
 
 
+	function showErrorAlert(title, text){
+		Ext.Msg.alert(title, text, Ext.emptyFn);
+	}
+	
 	
 	/**
 	 * @public check if item is in container
@@ -279,7 +283,8 @@ var SenchaAdapter = (function() {
 		getContainer : getContainer, /* getMixedCollection */
 		removeAll : removeAll,
 		show : show,
-		hide : hide
+		hide : hide,
+		showErrorAlert : showErrorAlert
 	};
 
 	return obj;

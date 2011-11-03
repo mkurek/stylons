@@ -7,7 +7,9 @@ var Dispatcher = (function() {
 	screen = {};
 	popup = {};
 	Config = {
-		defaultURL : "menu/shortDescription/1"
+		defaultURL : "menu/shortDescription/1",
+		errorTitle : "UWAGA!",
+		errorMsg : "Wystąpił błąd. Prosimy spróbować ponownie"
 	};
 
 	/**
@@ -65,7 +67,11 @@ var Dispatcher = (function() {
 	 * @return {object} JSON description - returned value from server
 	 */
 	function getFromURL(url) {
-		return Sender.getFromURL(url);
+		var result = Sender.getFromURL(url);
+		if(result == null){
+			throw "getError";
+		}
+		return result;
 	}
 
 	/**
@@ -92,18 +98,21 @@ var Dispatcher = (function() {
 	 * 
 	 * @return
 	 */
-	function loadURL(url, keepHash) {
+	function loadURL(url) {
 		var shortDescription;
 
 		// if url is empty, replace it with default url value
 		url = url || Config.defaultURL;
 
-		// get short description from passed url (sender request)
-		shortDescription = getFromURL(url);
-		// shortDescription = url;
-
-		Dispatcher.pageReload(shortDescription);
+		try{
+			// get short description from passed url (sender request)
+			shortDescription = getFromURL(url);
+			pageReload(shortDescription);
+		} catch (err){
+			errorAlert();
+		}
 	}
+		
 
 	/**
 	 * @private parse short description and apply changes to container (add new
@@ -269,15 +278,19 @@ var Dispatcher = (function() {
 		if (!Ext.isString(url)) {
 			return false;
 		}
-		// get short description from passed url (sender request)
-		shortDescription = getFromURL(url);
-
-		// apply new properties and components
-		containerRemodel(popup, shortDescription);
-
-		// show popup
-		SenchaAdapter.show(popup, "pop");
-
+		try{
+			// get short description from passed url (sender request)
+			shortDescription = getFromURL(url);
+	
+			// apply new properties and components
+			containerRemodel(popup, shortDescription);
+	
+			// show popup
+			SenchaAdapter.show(popup, "pop");
+		}
+		catch(error){
+			errorAlert();
+		}
 		// refresh popup
 		SenchaAdapter.refreshAll(popup);
 
@@ -292,6 +305,11 @@ var Dispatcher = (function() {
 
 	function specialSlotHide() {
 		SenchaAdapter.hide(popup);
+	}
+	
+	
+	function errorAlert(){
+		SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);
 	}
 
 	/**
