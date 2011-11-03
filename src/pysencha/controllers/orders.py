@@ -98,13 +98,13 @@ class OrdersController(BaseController):
         print '#########'
         (client_order,total,dish_data) = self.__getData(id)
         
-        c.client = ", ".join([str(i) for i in client_order])
+        c.client = "<br>".join([str(i) for i in client_order])
         print dish_data
         
         for i,dish in enumerate(dish_data) :
-            dish_data[i]= ", ".join((dish[0],dish[1],str(round(dish[2],2)),str(dish[3])))
+            dish_data[i]= "<br>".join((dish[0],dish[1],str(round(dish[2],2)),str(dish[3])))
         
-        dish_data = ", ".join([i for i in dish_data])
+        dish_data = "<br>".join([i for i in dish_data])
         print dish_data
         #print dish_data
         c.order = dish_data

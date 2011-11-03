@@ -1,5 +1,5 @@
 {
 	"id" : "panel${c.id}",
-	"html" : "</br><p align='left'> ${c.client}, ${c.order}</br>${c.total} zł</p>"
+	"html" : "</br><p align='left'> ${c.client|n}, ${c.order|n}</br>${c.total} zł</p>"
 }
  
