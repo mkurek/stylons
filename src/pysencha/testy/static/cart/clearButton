@@ -7,8 +7,8 @@
  {
   "tap" : 
    {
-    "type" : "load",
-    "url" : "/orders"
+    "type" : "send",
+    "url" : "cart/clear"
    }
  }
 }
