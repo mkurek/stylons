@@ -39,20 +39,22 @@ var Sender = {
 	 */
 
 	sendToURL : function(url, data) {
-		/*
-		 * var response; response= { type : "load", url :
-		 * "menu/shortDescription" };
-		 */
-		var response, dataForServer, xhr = new XMLHttpRequest();
-		xhr.open("POST", url, false);
-		dataForServer = JSON.stringify(data);
-		xhr.setRequestHeader("Content-Type",
-				"application/x-www-form-urlencoded");
-		xhr.send('data=' + dataForServer);
-		try {
-			response = JSON.parse(xhr.responseText);
-		} catch (err) {
-			response = '';
+		var response = null, xhr = new XMLHttpRequest();
+		try{
+			xhr.open("POST", url, false);
+			dataForServer = JSON.stringify(data);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send('data=' + dataForServer);
+
+			if (xhr.status == 200) {
+				try {
+					response = JSON.parse(xhr.responseText);
+				} catch (err) {
+					;
+				}
+			}
+		} catch (err){
+			;
 		}
 		return response;
 	}

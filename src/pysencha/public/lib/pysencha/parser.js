@@ -46,7 +46,13 @@ var Parser = (function() {
 				height : 'auto',
 				styleHtmlContent : false,
 				ui : 'dark',
-				layout : 'auto'
+				layout : 'auto',
+				 listeners: {
+                    beforeHide: function() {
+							console.log("unmask")
+                            Ext.getBody().unmask();
+                    }       
+            	}
 			}
 		},
 		"Screen" : {
@@ -370,8 +376,13 @@ var Parser = (function() {
 						data = '';
 					}
 						
-					result = Dispatcher.send(reaction.url, data);
-					
+					try{
+						result = Dispatcher.send(reaction.url, data);
+					}
+					catch(err){
+						Dispatcher.errorAlert();
+						return false;
+					}
 				}
 			} else if(reaction.type === 'clear'){
 				// clear data, f.e. form

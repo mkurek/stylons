@@ -94,13 +94,14 @@ var SenchaAdapter = (function() {
 	function hide(obj, anim) {
 
 		if (obj.hide) {
-			obj.hide(anim);
+			obj.hide();
 		}
 
 	}
 
 
 	function showErrorAlert(title, text){
+		//Ext.Msg.on("afterrender", function(){console.log("showEvent"); Ext.getBody().mask();});
 		Ext.Msg.alert(title, text, Ext.emptyFn);
 	}
 	

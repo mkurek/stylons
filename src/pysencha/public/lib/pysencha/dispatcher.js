@@ -85,7 +85,11 @@ var Dispatcher = (function() {
 	 * @return {object} JSON description - returned value from server
 	 */
 	function sendToURL(url, data) {
-		return Sender.sendToURL(url, data);
+		var result = Sender.sendToURL(url, data);
+		if(result == null){
+			throw "sendError";
+		}
+		return result;
 	}
 
 	/**
@@ -309,7 +313,17 @@ var Dispatcher = (function() {
 	
 	
 	function errorAlert(){
-		SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);
+		/*
+		if(!popup.hidden){
+			console.log("error case 1");
+			popup.on("hide", function(){SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);});
+			specialSlotHide();
+		}
+		else{
+			console.log("error case 1");*/
+			specialSlotHide();
+			window.setTimeout(SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg), 100000);
+		//}
 	}
 
 	/**
@@ -369,7 +383,8 @@ var Dispatcher = (function() {
 		setScreen : setScreen,
 		setPopup : setPopup,
 		getPopup : getPopup,
-		init : init
+		init : init,
+		errorAlert : errorAlert
 	};
 
 	return obj;
