@@ -82,7 +82,7 @@ class FormController(BaseController):
         session.save()
         
         # if no errors save order in DB
-        if not len(errors):
+        if not errors:
             # insert customer info        
             order = Orders(d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], 
                            d['apartmentNumber'], d['email'], int(d['phonenumber']))
