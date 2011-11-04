@@ -40,7 +40,7 @@ class OrdersController(BaseController):
 
     def __getData(self, id):
         '''Get data from database where id is Orders.id'''
-        c.id = id
+        c.id = id+1
         client = {}
         "Get client details"
         (client[u"Imię"], client[u"Nazwisko"], client[u"Tel."],
@@ -65,11 +65,13 @@ class OrdersController(BaseController):
         
     def showPanel(self,id):
         '''Render panels with given Order.id'''
-        id = int(id)
+        id = int(id)+1
         (client, cost, dishes) = self.__getData(id)
         c.client = "<br>".join(['<b>%s</b>: %s' % (key, value) for (key, value) in client.items()])
-        c.order = "<br>".join( [ " x ".join((str(amount), ' - '.join((name,
+        print c.client
+        c.order = "<br>".join([ " x ".join((str(amount), ' - '.join((name,
                                         size, str(round(price,2)))))) for (amount, (name,
                                         size, price)) in dishes ])
+        print c.order
         c.cost = cost
         return render('/orders/panel.mako')

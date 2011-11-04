@@ -76,13 +76,13 @@ class FormController(BaseController):
         for (k, v) in data.items():
             correct = self.validate(k, v)
             d[str(k)] = v
-            if correct != True:
+            if not correct:
                 errors.append(k)
         
         session.save()
         
         # if no errors save order in DB
-        if len(errors) == 0:
+        if not len(errors):
             # insert customer info        
             order = Orders(d['name'], d['surname'], d['city'], d['street'], d['houseNumber'], 
                            d['apartmentNumber'], d['email'], int(d['phonenumber']))
