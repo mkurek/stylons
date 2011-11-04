@@ -308,22 +308,14 @@ var Dispatcher = (function() {
 	 */
 
 	function specialSlotHide() {
+		Ext.getBody().unmask();
 		SenchaAdapter.hide(popup);
 	}
 	
 	
 	function errorAlert(){
-		/*
-		if(!popup.hidden){
-			console.log("error case 1");
-			popup.on("hide", function(){SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);});
-			specialSlotHide();
-		}
-		else{
-			console.log("error case 1");*/
-			specialSlotHide();
-			window.setTimeout(SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg), 100000);
-		//}
+		specialSlotHide();
+		SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);
 	}
 
 	/**

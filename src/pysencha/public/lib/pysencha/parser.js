@@ -46,13 +46,7 @@ var Parser = (function() {
 				height : 'auto',
 				styleHtmlContent : false,
 				ui : 'dark',
-				layout : 'auto',
-				 listeners: {
-                    beforeHide: function() {
-							console.log("unmask")
-                            Ext.getBody().unmask();
-                    }       
-            	}
+				layout : 'auto'
 			}
 		},
 		"Screen" : {

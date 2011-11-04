@@ -101,8 +101,8 @@ var SenchaAdapter = (function() {
 
 
 	function showErrorAlert(title, text){
-		//Ext.Msg.on("afterrender", function(){console.log("showEvent"); Ext.getBody().mask();});
 		Ext.Msg.alert(title, text, Ext.emptyFn);
+		window.setTimeout(function(){Ext.getBody().mask();}, 350);
 	}
 	
 	
