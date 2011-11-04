@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
+from pylons import session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 
 class MainController(BaseController):
+    '''The only method of this controller render tabbar'''
     def tabbar(self, tab):
+        '''Make tabbar with highlighted @tab icon'''
         c.tab = tab        
         if 'cart' in session and session['cart']:
             c.badge = len(session['cart'])

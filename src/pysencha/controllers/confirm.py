@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
+import json
 
 from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
 from pysencha.lib.base import BaseController, render
-from handler import HandlerController
 from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class ConfirmController(BaseController):
-    
+    '''Render special slot for tapped size on dish panel and add it to cart'''
     def __add(self, id):
         if 'cart' in session:
             session['cart'].append(id)

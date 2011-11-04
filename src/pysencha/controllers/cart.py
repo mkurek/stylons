@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json, hashlib
+import json, hashlib
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
+from pylons import session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class CartController(BaseController):
+    '''Render cart tab elements'''
     def __getId(self):
         """Create unique id added to list and toolbar id's"""
         if 'cart' in session:
@@ -15,26 +15,15 @@ class CartController(BaseController):
         else:
             return ''
 
-    @staticmethod
-    def clearCart():
-        session['cart'] = []
-        session.save()
-        
-    @staticmethod
-    def __checkSession():
-        """Create cart list in session if doesn't exist"""
-        if not 'cart' in session:
-            session['cart'] = []
-            session.save()
-
-    @staticmethod
-    def getDishes():
+    def getDishes(self):
         """Get dishes from database
         
         Return:
         list of (dish, dish_size, size)
         """
-        CartController.__checkSession()
+        if not 'cart' in session:
+            session['cart'] = []
+            session.save()
         items = []
         for i in session['cart']:
             items.append(meta.Session.query(Dish, Dish_Sizes, Sizes).\
@@ -66,6 +55,7 @@ class CartController(BaseController):
     
     def clear(self):
         """Clear list"""
-        CartController.clearCart()
+        session['cart'] = []
+        session.save()
         action = '{"type" : "load","url" : "cart/shortDescription"}'
         return action

@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
-from handler import HandlerController
+from pylons import session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class ChangeController(BaseController):
     """Render special slot for tapped dish on cart list"""
-    
     def shortDescription(self, id):
         """Render short description
         
@@ -21,7 +17,7 @@ class ChangeController(BaseController):
             c.id = session['cart'][int(id)]
             return render('/change/shortDescription.mako')
         else:
-            pass # or throw 404
+            return ''
         
     def changeSize(self, id):
         """Render popup with change size buttons"""
@@ -30,13 +26,12 @@ class ChangeController(BaseController):
             c.id = session['cart'][int(id)]
             (parent,) = meta.Session.query(Dish_Sizes.dishId).\
                                     filter(Dish_Sizes.id == c.id).one()
-            print parent
             sizes = meta.Session.query(Dish_Sizes).\
                                     filter(Dish_Sizes.dishId == parent).all()
             c.sizes = [ it.id for it in sizes ]
             return render('/change/changeSize.mako')
         else:
-            pass # or throw 404
+            return ''
         
     def sizePopupButton(self, id):
         """Render button redirecting to popup with available sizes"""
@@ -68,8 +63,6 @@ class ChangeController(BaseController):
     
     def delete(self, id):
         """Delete selected item from list"""
-        print '\nusuwam:\n' + id + '\n'
-        print str(session['cart'])
         if 'cart' in session and int(id) < len(session['cart']):
             del session['cart'][int(id)]
         action = """

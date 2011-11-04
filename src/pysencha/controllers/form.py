@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json, unicodedata, re
+import json, unicodedata, re
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
+from pylons import request, session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
-from sqlalchemy import func
-from cart import CartController
 
 class FormController(BaseController):
-
+    '''Render form panel elements'''
     def __getFieldsets(self):
         """Returns list of fieldsets (dictionaries)"""
         list = []
-
         result = meta.Session.query(Fieldsets).all()
 
         for row in result:
@@ -100,8 +96,8 @@ class FormController(BaseController):
             meta.Session.commit() 
                 
             # clear cart
-            c = CartController()
-            c.clearCart()
+            session["cart"]=[]
+            session.save()
         
             x = '{"type" : "specialShow","url" : "static/form/orderMessage/shortDescription"}'
         

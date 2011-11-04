@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
-from handler import HandlerController
-from dishes import DishesController
+from pylons import session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
-from sqlalchemy import func
-from sqlalchemy.orm import aliased
-from cart import CartController 
 
 class OrdersController(BaseController):
     '''Page with all orders list'''

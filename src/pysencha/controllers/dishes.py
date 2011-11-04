@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
+from pylons import session, tmpl_context as c
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
 from pysencha.model.data_base import *
-from sqlalchemy import func
 
 class DishesController(BaseController):
+    '''Render dish panel elements'''
     def shortDescription(self, group, id):
         """Generate short description for dish panel
         

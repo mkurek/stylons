@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-import logging, sys, os, json
+import json
 
-from pylons import request, response, session, tmpl_context as c, url
-from pylons.controllers.util import abort, redirect
-from handler import HandlerController
+from pylons import session, tmpl_context as c
 from dishes import DishesController
 from pysencha.lib.base import BaseController, render
 from pysencha.model import meta
@@ -12,7 +10,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
 class MenuController(BaseController):
-    
+    '''Render menu tab elements'''
     def __getList(self, id):
         """Get groups and dishes, which parent is 'id' and make list of dictionaries."""
         g1 = aliased(Group)
