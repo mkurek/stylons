@@ -16,8 +16,7 @@ class OrdersController(BaseController):
     '''Page with all orders list'''
     def shortDescription(self):
         '''Render shortDescription for orders'''
-        c.orders = meta.Session.query(Orders.id).all() # maybe i should correct it
-        c.orders = [i[0] for i in c.orders] # to one line
+        c.orders = [ i for (i, ) in meta.Session.query(Orders.id).all() ]
         c.size = len(c.orders)
         return render('/orders/shortDescription.mako')
     
