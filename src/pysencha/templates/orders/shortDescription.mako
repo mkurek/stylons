@@ -15,14 +15,16 @@
       "id" : "ordersPanel",
       "url" : "static/orders/panel/index",
       "slots" : [
+      % if c.size:
       {
-      		"id" : "ordersPanel0",
-      		"url" : "orders/showPanel/0"
+      		"id" : "ordersPanel${c.orders[0]}",
+      		"url" : "orders/showPanel/${c.orders[0]}"
       }
+      % endif
       % for i in range(1,c.size):
      	,{
-        	"id" : "ordersPanel${i}",
-      	    "url" : "orders/showPanel/${i}"
+        	"id" : "ordersPanel${c.orders[i]}",
+      	    "url" : "orders/showPanel/${c.orders[i]}"
     	 }
       % endfor
        
