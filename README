@@ -1,0 +1,20 @@
+Installation and Setup
+======================
+
+Install ``pysencha`` using buildout::
+
+    buildout
+
+Make a config file as follows::
+
+    bin/paster make-config pysencha config.ini
+
+Tweak the config file as appropriate and then setup the application::
+
+    bin/paster setup-app config.ini
+
+Then you are ready to go.
+
+To run application, type::
+
+    bin/paster serve config.ini

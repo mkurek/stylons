@@ -2,7 +2,7 @@
 import os
 from pysencha.lib.base import BaseController
 
-testpath = 'testy/static/'
+testpath = 'static/'
 
 class HandlerController(BaseController):
     """

@@ -64,3 +64,11 @@ syntax: regexp
 ^pysencha-0\.0\.3-JS\.tar\.gz$
 syntax: regexp
 ^pysencha-0\.0\.3-py2\.6\.egg$
+syntax: regexp
+^src/pysencha/templates/orders/panel2\.mako$
+syntax: regexp
+^copy$
+syntax: regexp
+^pysencha-0\.0\.4\.tar\.gz$
+syntax: regexp
+^src/PasteScript-1\.7\.5-py2\.6\.egg$

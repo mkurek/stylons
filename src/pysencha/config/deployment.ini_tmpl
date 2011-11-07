@@ -23,6 +23,7 @@ cache_dir = %(here)s/data
 beaker.session.key = pysencha
 beaker.session.secret = ${app_instance_secret}
 app_instance_uuid = ${app_instance_uuid}
+beaker.sessiion.type = file
 
 # If you'd like to fine-tune the individual locations of the cache data dirs
 # for the Cache data, or the Session saves, un-comment the desired settings
@@ -31,33 +32,9 @@ app_instance_uuid = ${app_instance_uuid}
 #beaker.session.data_dir = %(here)s/data/sessions
 
 # SQLAlchemy database URL
-sqlalchemy.url = sqlite:///production.db
+sqlalchemy.url = sqlite:///src/mydatabase.sqlite
 
 # WARNING: *THE LINE BELOW MUST BE UNCOMMENTED ON A PRODUCTION ENVIRONMENT*
 # Debug mode will enable the interactive debugging tool, allowing ANYONE to
 # execute malicious code after an exception is raised.
 set debug = false
-
-
-# Logging configuration
-[loggers]
-keys = root
-
-[handlers]
-keys = console
-
-[formatters]
-keys = generic
-
-[logger_root]
-level = INFO
-handlers = console
-
-[handler_console]
-class = StreamHandler
-args = (sys.stderr,)
-level = NOTSET
-formatter = generic
-
-[formatter_generic]
-format = %(asctime)s %(levelname)-5.5s [%(name)s] [%(threadName)s] %(message)s
