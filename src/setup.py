@@ -8,7 +8,7 @@ except ImportError:
 
 setup(
     name='pysencha',
-    version='0.0.3',
+    version='0.0.4',
     description='',
     author='Mateusz Dembski, Jakub Kedzierski, Mateusz Kurek',
     author_email='',
