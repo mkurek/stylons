@@ -103,8 +103,8 @@ var Parser = (function() {
 				text : '', // {String}
 				flex : null, // how much of the remaining size to take up
 				badgeText : '', // {String} text for badge on the button
-				ui : 'normal' // {'normal' | 'back' | 'round' | 'action' |
-			// 'forward'} button style
+				ui : 'normal', // {'normal' | 'back' | 'round' | 'action' |'forward'} button style
+				disabled: false // disable or enable button
 			},
 			substitute : {
 				icon : 'iconCls',

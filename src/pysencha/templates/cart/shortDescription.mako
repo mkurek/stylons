@@ -19,8 +19,8 @@
          "url" : "static/spacer"
         },
         {
-         "id" : "sendButton",
-         "url" : "static/cart/sendButton"
+         "id" : "sendButton${c.sendDisabled}",
+         "url" : "cart/sendButton"
         }
       ]
       },

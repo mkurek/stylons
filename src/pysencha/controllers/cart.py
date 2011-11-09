@@ -14,7 +14,10 @@ class CartController(BaseController):
             return hashlib.sha256(str(session['cart'])).hexdigest()[0:5]
         else:
             return ''
-
+        
+    def __canSend(self):
+        return True if len(session['cart']) > 0 else False
+    
     def getDishes(self):
         """Get dishes from database
         
@@ -32,7 +35,8 @@ class CartController(BaseController):
         return items
 
     def shortDescription(self):
-        """Render short description with unique toolbar and list""" 
+        """Render short description with unique toolbar and list"""
+        c.sendDisabled = "false" if self.__canSend() else "true"
         c.id = self.__getId()
         return render('/cart/shortDescription.mako')
     
@@ -52,6 +56,11 @@ class CartController(BaseController):
         c.items = json.dumps(items)
         c.id = self.__getId()
         return render('/cart/list.mako')
+    
+    def sendButton(self):
+        """Render clear button"""
+        c.disabled = "false" if self.__canSend() else "true"
+        return render('/cart/sendButton.mako')
     
     def clear(self):
         """Clear list"""
