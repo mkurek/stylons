@@ -16,8 +16,11 @@ class CartController(BaseController):
             return ''
         
     def __canSend(self):
-        return True if len(session['cart']) > 0 else False
-    
+        if 'cart' in session:
+            return True if len(session['cart']) > 0 else False
+        else:
+            return False
+        
     def getDishes(self):
         """Get dishes from database
         
@@ -36,8 +39,8 @@ class CartController(BaseController):
 
     def shortDescription(self):
         """Render short description with unique toolbar and list"""
-        c.sendDisabled = "false" if self.__canSend() else "true"
         c.id = self.__getId()
+        c.sendDisabled = "false" if self.__canSend() else "true"
         return render('/cart/shortDescription.mako')
     
     def toolbar(self):
