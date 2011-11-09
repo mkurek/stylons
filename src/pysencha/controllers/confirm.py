@@ -7,7 +7,7 @@ from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class ConfirmController(BaseController):
-    '''Render special slot for tapped size on dish panel and add it to cart'''
+    """Render special slot for tapped size on dish panel and add it to cart"""
     def __add(self, id):
         if 'cart' in session:
             session['cart'].append(id)
@@ -45,9 +45,9 @@ class ConfirmController(BaseController):
     
     def order(self, id):
         """Add selected dish to session.cart and go to form"""
-        "First add:"
+        #First add:
         self.__add(id)
-        "Then go to form:"
+        #Then go to form:
         action = {'type': 'load', 'url' : '/form/shortDescription'}
         return json.dumps(action)
     

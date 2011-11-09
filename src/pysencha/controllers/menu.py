@@ -10,7 +10,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
 class MenuController(BaseController):
-    '''Render menu tab elements'''
+    """Render menu tab elements"""
     def __getList(self, id):
         """Get groups and dishes, which parent is 'id' and make list of dictionaries."""
         g1 = aliased(Group)
@@ -82,6 +82,6 @@ class MenuController(BaseController):
     def list(self, id):
         """Generate menu list JSON"""
         c.group = id
-        "Get list of groups and dishes in this group and jsonify it"
+        #Get list of groups and dishes in this group and jsonify it
         c.listString = json.dumps(self.__getList(id))
         return render('/menu/list.mako')

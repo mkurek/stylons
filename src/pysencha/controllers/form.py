@@ -7,7 +7,7 @@ from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class FormController(BaseController):
-    '''Render form panel elements'''
+    """Render form panel elements"""
     def __getFieldsets(self):
         """Returns list of fieldsets (dictionaries)"""
         list = []

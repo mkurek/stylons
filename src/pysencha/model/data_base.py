@@ -154,23 +154,3 @@ orm.mapper(Orders_Dishes, t_orders_dishes)
 orm.mapper(Fields, t_fields)
 orm.mapper(Fieldsets, t_fieldsets)
 orm.mapper(Fields_Fieldsets, t_fields_fieldsets)
-
-"""orm.mapper(Dish_Sizes, t_dish_sizes)
-orm.mapper(Menu_Leafs, t_menu_leafs)
-orm.mapper(Menu, t_menu)
-orm.mapper(Group, t_groups, properties = {
-'menu' : orm.relation(Menu, secondary = t_menu),
-'menu_Leafs' : orm.relation(Menu_Leafs, secondary = t_menu_leafs),                                          
-})
-orm.mapper(Dish, t_dish, properties = {
-'dish_ingredients' : orm.relation(Dish_Ingredients, secondary = t_dish_ingredients),
-'dish_sizes' : orm.relation(Dish_Sizes, secondary = t_dish_sizes),
-'menu_leafs' : orm.relation(Menu_Leafs, secondary = t_menu_leafs),
-})
-orm.mapper(Ingredients, t_ingredients, properties = {
-'dish_ingredients' : orm.relation(Dish_Ingredients, secondary = t_dish_ingredients)                                                     
-})
-orm.mapper(Dish_Ingredients, t_dish_ingredients)
-orm.mapper(Sizes, t_sizes, properties = {
-'dish_sizes' : orm.relation(Dish_Sizes, secondary = t_dish_sizes)                                         
-})"""

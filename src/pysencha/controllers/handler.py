@@ -11,7 +11,7 @@ class HandlerController(BaseController):
     Return static files in response to ajax request (POST).
     """
     def load(self, url):
-        '''Open, read and return file %SERVERPATH%/{testpath}/{url}'''
+        """Open, read and return file %SERVERPATH%/{testpath}/{url}"""
         serverpath = os.path.dirname(os.path.dirname(__file__))
         path = os.path.join(serverpath, testpath, url)
         try:

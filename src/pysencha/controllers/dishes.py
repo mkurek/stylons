@@ -6,7 +6,7 @@ from pysencha.model import meta
 from pysencha.model.data_base import *
 
 class DishesController(BaseController):
-    '''Render dish panel elements'''
+    """Render dish panel elements"""
     def shortDescription(self, group, id):
         """Generate short description for dish panel
         
