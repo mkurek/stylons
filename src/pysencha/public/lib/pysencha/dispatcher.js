@@ -68,7 +68,7 @@ var Dispatcher = (function() {
 	 */
 	function getFromURL(url) {
 		var result = Sender.getFromURL(url);
-		if(result == null){
+		if (result == null) {
 			throw "getError";
 		}
 		return result;
@@ -86,7 +86,7 @@ var Dispatcher = (function() {
 	 */
 	function sendToURL(url, data) {
 		var result = Sender.sendToURL(url, data);
-		if(result == null){
+		if (result == null) {
 			throw "sendError";
 		}
 		return result;
@@ -103,20 +103,47 @@ var Dispatcher = (function() {
 	 * @return
 	 */
 	function loadURL(url) {
-		var shortDescription;
+		var shortDescription, missing;
 
 		// if url is empty, replace it with default url value
 		url = url || Config.defaultURL;
 
-		try{
+		try {
 			// get short description from passed url (sender request)
 			shortDescription = getFromURL(url);
+			console.log("sd: ", shortDescription);
+			missing = getMissingComponents(screen, shortDescription);
+			console.log("missing: ", missing);
 			pageReload(shortDescription);
-		} catch (err){
+		} catch (err) {
 			errorAlert();
 		}
 	}
-		
+
+	function getMissingComponents(con, sd) {
+		var item, slots = sd.slots, missing = [], tmp, length, i;
+
+		//console.log("in missing component; id = ", sd.id, "slots: ", sd.slots,
+		//		"; slots.length: ", (slots) ? slots.length : null);
+		if (slots) {
+			for (i = 0, length = slots.length; i < length; i++) {
+				//console.log("slot[", i, "]; id = ", slots[i].id);
+				item = SenchaAdapter.get(con, slots[i].id);
+				if (!item) {
+					//console.log("item not found");
+					missing.push(slots[i].url);
+					item = {};
+				}
+				tmp = getMissingComponents(item, slots[i]);
+				//console.log("tmp(", sd.id, ") after i = ", i, " : ", tmp);
+				missing = missing.concat(tmp);
+				//console.log("missing(", sd.id, ") after i = ", i, " : ",
+				//		missing);
+			}
+		}
+		//console.log("missing(", sd.id, "): ", missing);
+		return missing;
+	}
 
 	/**
 	 * @private parse short description and apply changes to container (add new
@@ -134,76 +161,75 @@ var Dispatcher = (function() {
 		var i = 0, length = 0, slots = sd.slots, tmpCon = [], item = {};
 
 		/*
-		// if there is no slots - break
-		if (!slots) {
-			return;
-		}
-		*/
-		
-		//console.log("in ", con.id)
+		 * // if there is no slots - break if (!slots) { return; }
+		 */
+
+		// console.log("in ", con.id)
 		// create temporary container
 		tmpCon = SenchaAdapter.getContainer();
 
-		if(slots)
-		{
+		if (slots) {
 			// analyze short description and remove founded items from container
 			// (without destroying)
 			for (i = 0, length = slots.length; i < length; i++) {
 				// get item with specified id from container
 				item = SenchaAdapter.get(con, slots[i].id);
-	
+
 				// item found
 				if (item) {
-					//console.log("item ", slots[i].id, " founded in ", con.id);
+					// console.log("item ", slots[i].id, " founded in ",
+					// con.id);
 					// remove from container
 					item = SenchaAdapter.remove(con, item, false);
 					// add to temporary container
 					tmpCon.add(item);
 				}
 			}
-		
-			//console.log("remove all from ", con.id);
+
+			// console.log("remove all from ", con.id);
 			// remove all remained components and destroy them
 			SenchaAdapter.removeAll(con, true);
-		
-			// analyze short description and remove founded items from con (without
+
+			// analyze short description and remove founded items from con
+			// (without
 			// destroying)
 			for (i = 0, length = slots.length; i < length; i++) {
 				// get item with specified id from temporary container
 				item = SenchaAdapter.get(tmpCon, slots[i].id);
-	
-				//console.log("before add: ", slots[i].id, " to ", con.id);
-				
+
+				// console.log("before add: ", slots[i].id, " to ", con.id);
+
 				// item found
 				if (item) {
 					// remove item from container
 					item = SenchaAdapter.remove(tmpCon, item, false);
 				} else {
-					//console.log("new item");
+					// console.log("new item");
 					// get full description from url
 					item = getFromURL(slots[i].url);
-	
-					//console.log("Dispatcher - transform - id = ", item.id, "item", item, "url", slots[i].url)
+
+					// console.log("Dispatcher - transform - id = ", item.id,
+					// "item", item, "url", slots[i].url)
 					// parse description to sencha format
 					item = Parser.transform(item);
 				}
-	
+
 				// go deeper
 				parse(item, slots[i]);
-				
+
 				// add item to container
 				SenchaAdapter.add(con, item);
-	
-				//console.log("after add item ", item.id, " to ", con.id);
+
+				// console.log("after add item ", item.id, " to ", con.id);
 			}
-			
+
 		}
 
 		// destroy temporary container
 		SenchaAdapter.destroy(tmpCon);
 
 		// refresh container
-		//SenchaAdapter.refresh(con);
+		// SenchaAdapter.refresh(con);
 	}
 
 	/**
@@ -221,7 +247,7 @@ var Dispatcher = (function() {
 		var description;
 
 		// set loading mask
-		//loadMask.show();
+		// loadMask.show();
 
 		// remodel screen
 		parse(container, shortDescription);
@@ -239,8 +265,8 @@ var Dispatcher = (function() {
 		}
 
 		// hide loading mask
-		//loadMask.hide();
-		
+		// loadMask.hide();
+
 		return container;
 	}
 
@@ -282,17 +308,16 @@ var Dispatcher = (function() {
 		if (!Ext.isString(url)) {
 			return false;
 		}
-		try{
+		try {
 			// get short description from passed url (sender request)
 			shortDescription = getFromURL(url);
-	
+
 			// apply new properties and components
 			containerRemodel(popup, shortDescription);
-	
+
 			// show popup
 			SenchaAdapter.show(popup, "pop");
-		}
-		catch(error){
+		} catch (error) {
 			errorAlert();
 		}
 		// refresh popup
@@ -311,9 +336,8 @@ var Dispatcher = (function() {
 		Ext.getBody().unmask();
 		SenchaAdapter.hide(popup);
 	}
-	
-	
-	function errorAlert(){
+
+	function errorAlert() {
 		specialSlotHide();
 		SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);
 	}
