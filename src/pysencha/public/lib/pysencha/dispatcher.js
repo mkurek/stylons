@@ -1,15 +1,17 @@
 var Dispatcher = (function() {
 
 	// gobal variables, available in whole class
-	var obj, screen, popup, Config, loadMask;
+	var obj, screen, popup, Config, loadMask, components;
 
 	// set global variables to defaults
 	screen = {};
 	popup = {};
+	components = {};
 	Config = {
 		defaultURL : "menu/shortDescription/1",
 		errorTitle : "UWAGA!",
-		errorMsg : "Wystąpił błąd. Prosimy spróbować ponownie"
+		errorMsg : "Wystąpił błąd. Prosimy spróbować ponownie",
+		defaultComponentsListURL : "getComponents"
 	};
 
 	/**
@@ -92,6 +94,24 @@ var Dispatcher = (function() {
 		return result;
 	}
 
+	function downloadComponents(missingComponents){
+		var i=0, length=0, components = {};
+		for(i=0, length=missingComponents.length; i < length; i++){
+			components[missingComponents[i]] = getFromURL(missingComponents[i]);
+		}
+		// when python ready change to:
+		// components = Sender.getComponentsList(Config.defaultComponentsListURL, missingComponents);
+		
+		return components;
+	}
+	
+	function getComponent(url){
+		if(components[url]){
+			return components[url];
+		}
+		throw "getComponentError";
+	}
+	
 	/**
 	 * @public handling request for new page components; adds record to history
 	 * 
@@ -114,6 +134,8 @@ var Dispatcher = (function() {
 			console.log("sd: ", shortDescription);
 			missing = getMissingComponents(screen, shortDescription);
 			console.log("missing: ", missing);
+			components = downloadComponents(missing);
+			console.log("components: ", components);
 			pageReload(shortDescription);
 		} catch (err) {
 			errorAlert();
@@ -206,7 +228,7 @@ var Dispatcher = (function() {
 				} else {
 					// console.log("new item");
 					// get full description from url
-					item = getFromURL(slots[i].url);
+					item = getComponent(slots[i].url);
 
 					// console.log("Dispatcher - transform - id = ", item.id,
 					// "item", item, "url", slots[i].url)
