@@ -1,0 +1,4 @@
+PasteScript>=1.6.3
+Pylons>=1.0
+SQLAlchemy>=0.5
+Sphinx>=1.0

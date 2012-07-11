@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sencha Touch Components &mdash; Stylons 0.0.7 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Stylons 0.0.7 documentation" href="index.html" />
+    <link rel="prev" title="Short Description" href="shortDescription.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="shortDescription.html" title="Short Description"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Stylons 0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sencha-touch-components">
+<h1>Sencha Touch Components<a class="headerlink" href="#sencha-touch-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="action-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Action</span></tt> Class<a class="headerlink" href="#action-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Action">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Action</tt><big>(</big><em>action=None</em>, <em>url=None</em>, <em>target=None</em><big>)</big><a class="headerlink" href="#stitems.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Action component
+Defines actions performed i.e. after click on the button, click on the
+list and so on</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>action</strong> (<em>String</em>) &#8211; <p>action to be executed. Proper values are:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;load&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;send&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;popupShow&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;popupHide&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;clear&quot;</span></tt></li>
+</ul>
+</li>
+<li><strong>url</strong> (<em>String</em>) &#8211; URL to load/send data</li>
+<li><strong>target</strong> (<em>String</em>) &#8211; url of component, which this action affect. This
+parameter is useful for load action - set as form url, and for clear
+action - form url also.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="button-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Button</span></tt> Class<a class="headerlink" href="#button-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Button">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Button</tt><big>(</big><em>ui=None</em>, <em>text=None</em>, <em>icon=None</em>, <em>badge=None</em>, <em>flex=None</em>, <em>events=None</em>, <em>disabled=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sencha Touch Button component.
+Defines primary button appearance and events.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ui</strong> (<em>String</em>) &#8211; <p>user interface description. Should be a combination of:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;normal&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;back&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;round&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;forward&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;action&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;confirm&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;decline&quot;</span></tt></li>
+</ul>
+<p>and</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;small&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;round&quot;</span></tt></li>
+</ul>
+</li>
+<li><strong>text</strong> (<em>String</em>) &#8211; text displayed on the button</li>
+<li><strong>icon</strong> (<em>String</em>) &#8211; icon of the button</li>
+<li><strong>badge</strong> (<em>String</em>) &#8211; badge (little icon on top) of the button</li>
+<li><strong>flex</strong> (<em>Integer</em>) &#8211; TO DO</li>
+<li><strong>disabled</strong> (<em>Boolean</em>) &#8211; True to make button disabled</li>
+<li><strong>events</strong> (<em>Dictionary</em>) &#8211; dictionary (of lists) of Action instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><pre>Button( ui = "normal-round", 
+        text = "SomeButton", 
+        events = {
+            "tap":[
+                Action(action = "popupHide"), 
+                Action(action = "load", url = "con/act")
+            ]
+        }
+)
+
+Button( ui = "confirm", 
+        text = "SomeOtherButton", 
+        badge = "5",
+        events = {
+            "tap" : Action(action = "send", dataId = "form", url = "u/r/l"
+        }
+)</pre>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="checkbox-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Checkbox</span></tt> Class<a class="headerlink" href="#checkbox-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Checkbox">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Checkbox</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>checked=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Checkbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.field.Field</span></tt></p>
+<p>Sencha Touch Checkbox component.
+Simple Checkbox class. Default inputType for Checkbox is checkbox.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>checked</strong> (<em>Boolean</em>) &#8211; True set checkbox marked at default</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="component-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Component</span></tt> Class<a class="headerlink" href="#component-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Component">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Component</tt><big>(</big><em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Abstract base class of all components, define global params</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>alwaysReload</strong> (<em>Boolean</em>) &#8211; True if element can change and must be always        reload (e.g. list with order in cart)</li>
+<li><strong>cssClass</strong> (<em>String</em>) &#8211; custom CSS class that component will be tagged</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="errorfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Errorfield</span></tt> Class<a class="headerlink" href="#errorfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.ErrorField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">ErrorField</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.ErrorField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.panel.Panel</span></tt></p>
+<p>Predefined panel to be shown as a error message in form.
+Default custom CSS class is invalid-field.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="field-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Field</span></tt> Class<a class="headerlink" href="#field-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Field">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Field</tt><big>(</big><em>disabled=None</em>, <em>inputType=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.component.Component</span></tt></p>
+<p>Sencha Touch Field Component.
+This is only base class. Do not use it throughly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>disabled</strong> (<em>Boolean</em>) &#8211; Inform about accessibility of field</li>
+<li><strong>label</strong> (<em>String</em>) &#8211; Label content (information about field)</li>
+<li><strong>name</strong> (<em>String</em>) &#8211; Name of field or fields group (e.g. radio)</li>
+<li><strong>required</strong> (<em>Boolean</em>) &#8211; Define if field is necessary</li>
+<li><strong>value</strong> (<em>String</em>) &#8211; Default value of field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="fieldset-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Fieldset</span></tt> Class<a class="headerlink" href="#fieldset-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Fieldset">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Fieldset</tt><big>(</big><em>title=None</em>, <em>instructions=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Fieldset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.component.Component</span></tt></p>
+<p>Sencha Touch Fieldset component. Can contain fields as items. FieldSets     do not add any behavior, other than an optional title, and are just used t     o group similar fields together.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>String</em>) &#8211; Fieldset title, rendered above grouped fields</li>
+<li><strong>instructions</strong> (<em>String</em>) &#8211; Fieldset instructions, rendered below grouped fields</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="form-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Form</span></tt> Class<a class="headerlink" href="#form-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Form">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Form</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em>, <em>cssClass=None</em>, <em>alwaysReload=None</em>, <em>itemsList=None</em><big>)</big><a class="headerlink" href="#stitems.Form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.panel.Panel</span></tt></p>
+<p>Sencha Touch Panel component. Form do not have any behavior apart from         containing all fields and fieldsets and returning theirs values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>itemsList</strong> (<em>List</em>) &#8211; List of items (fields and fieldsets).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Never use itemsList and Form hierarchy in short description at the             same time - if You do this, only itemsList will have affect.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="hiddenfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">HiddenField</span></tt> Class<a class="headerlink" href="#hiddenfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.HiddenField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">HiddenField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.HiddenField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.field.Field</span></tt></p>
+<p>Sencha Touch Hidden Field. Act&#8217;s just like normal field, except it&#8217;s         hidden.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="layout-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Layout</span></tt> Class<a class="headerlink" href="#layout-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Layout">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Layout</tt><big>(</big><em>composition=None</em>, <em>align=None</em>, <em>pack=None</em><big>)</big><a class="headerlink" href="#stitems.Layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Sencha Touch Layout.
+Describe composition, align and pack of content.
+Layout is used for screen instances.
+Params align and pack are available only for &#8220;vbox&#8221; and &#8220;hbox&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>composition</strong> (<em>String</em>) &#8211; <p>define composition of elements, you can use:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;auto&quot;</span></tt> - Sencha Touch will choose automatically</li>
+<li><tt class="docutils literal"><span class="pre">&quot;fit&quot;</span></tt> - for one element, fit to all screen</li>
+<li><tt class="docutils literal"><span class="pre">&quot;vbox&quot;</span></tt> - arrange elements vertically down container</li>
+<li><tt class="docutils literal"><span class="pre">&quot;hbox&quot;</span></tt> -arranges items horizontally across container</li>
+</ul>
+</li>
+<li><strong>align</strong> (<em>String</em>) &#8211; <p>dpecifies the alignment of elements, available aligns:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;center&quot;</span></tt> - aligned to the center of container</li>
+<li><tt class="docutils literal"><span class="pre">&quot;end&quot;</span></tt> - aligned to the end of container (right or bottom)</li>
+<li><tt class="docutils literal"><span class="pre">&quot;start&quot;</span></tt> - aligned to the start of container (left or top)</li>
+<li><tt class="docutils literal"><span class="pre">&quot;stretch&quot;</span></tt> - elements are stretched through container</li>
+</ul>
+</li>
+<li><strong>pack</strong> (<em>String</em>) &#8211; <p>also specifies the alignment of elements, available:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;center&quot;</span></tt> - aligned to the center of the container.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;end&quot;</span></tt> - aligned to the right of the container.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;justify&quot;</span></tt> - justified with left and right of the container.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;start&quot;</span></tt> - aligned to the left of the container.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Layout</span><span class="p">(</span><span class="n">composition</span> <span class="o">=</span> <span class="s">&quot;vbox&quot;</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&quot;start&quot;</span><span class="p">,</span> <span class="n">pack</span> <span class="o">=</span> <span class="s">&quot;justify&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">List</span></tt> Class<a class="headerlink" href="#list-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.List">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">List</tt><big>(</big><em>itemTpl=None</em>, <em>items=None</em>, <em>emptyText=None</em>, <em>fullscreen=None</em>, <em>events=None</em><big>)</big><a class="headerlink" href="#stitems.List" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.component.Component</span></tt></p>
+<p>Sencha Touch List component.
+Component displaying data items as list and enabling events.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>itemTpl</strong> (<em>String</em>) &#8211; define how to format data (look at examples)</li>
+<li><strong>items</strong> (<em>List of Dictionaries</em>) &#8211; list of all items</li>
+<li><strong>emptyText</strong> (<em>String</em>) &#8211; html with message if items is empty</li>
+<li><strong>fullscreen</strong> (<em>Boolean</em>) &#8211; set component to fullscreen (even over its container)</li>
+<li><strong>events</strong> (<em>Dictionary</em>) &#8211; <p>define actions for lists events. Available:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;itemtap&quot;</span></tt> - called when item was tapped</li>
+<li><tt class="docutils literal"><span class="pre">&quot;itemdoubletap&quot;</span></tt> - called when item was double tapped</li>
+<li><tt class="docutils literal"><span class="pre">&quot;itemswap&quot;</span></tt> - called when item was swapped</li>
+</ul>
+<p>For each event you can use &#8216;{index}&#8217; in Action declaration.
+It will be replaced by dispatcher with index, which was source
+of event.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><pre>List(itemTpl = "{name} {surname}",
+     items = [{ "name" : "John",
+                "surname" : "Smith" },
+              { "name" : "Jimmy",
+                "surname" : "Wallet" },
+              { "name" : "Jack",
+                "surname" : "Willis" }])
+               
+
+date1 = dict()
+date1['day'] = 5
+date1['month'] = 08
+date1['year'] = 1955
+
+date2 = dict(day=12, month=5, year=1820)
+
+List(itemTpl = "{day}-{month}-{year}",
+     items = [ date1, date2 ])</pre>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="panel-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Panel</span></tt> Class<a class="headerlink" href="#panel-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Panel">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Panel</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em>, <em>ui=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Panel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.screen.Screen</span></tt></p>
+<p>Sencha Touch Panel Component
+One of the main Sencha Touch components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>html</strong> (<em>String</em>) &#8211; HTML code to insert into panel</li>
+<li><strong>scroll</strong> &#8211; <p>Configure the component to be scrollable. Acceptable values are:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">'horizontal'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'vertical'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'both'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">False</span></tt> to explicitly disable scrolling.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="popup-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Popup</span></tt> Class<a class="headerlink" href="#popup-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Popup">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Popup</tt><big>(</big><em>fullscreen=None</em>, <em>layout=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>width=None</em>, <em>height=None</em>, <em>centered=None</em>, <em>modal=None</em>, <em>ui=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Popup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.screen.Screen</span></tt></p>
+<p>Popup component. Provides a possibility to create whole structure of po        pup, like normal page.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>width</strong> (<em>Integer</em>) &#8211; The width of this component in pixels.</li>
+<li><strong>height</strong> (<em>Integer</em>) &#8211; The height of this component in pixels.</li>
+<li><strong>centered</strong> (<em>Boolean</em>) &#8211; Center the component on the page. Defaults to true</li>
+<li><strong>modal</strong> (<em>Boolean</em>) &#8211; True to make the Component modal and mask everything behi        nd it when displayed, false to display it without restricting access to         other UI elements (defaults to false).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Popup</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">modal</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">ui</span><span class="o">=</span><span class="s">&quot;light&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="radio-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Radio</span></tt> Class<a class="headerlink" href="#radio-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Radio">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Radio</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>checked=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Radio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.checkbox.Checkbox</span></tt></p>
+<p>Sencha Touch Radio component.
+Default inputType for Radio is Radio.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To use Radio component properly, You have to give each radio field             the same name.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="screen-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Screen</span></tt> Class<a class="headerlink" href="#screen-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Screen">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Screen</tt><big>(</big><em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>layout=None</em>, <em>ui=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.component.Component</span></tt></p>
+<p>Component defining basic panel properties. Designed to be used as a 
+container for all other components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fullscreen</strong> (<em>Boolean</em>) &#8211; Force the component to take up 100% width and height         available.</li>
+<li><strong>margin</strong> (<em>Integer or String</em>) &#8211; Specifies the margin for this component. Can be a single         integer (applied to all sides) or string with 1-4 numbers (css-style)</li>
+<li><strong>padding</strong> (<em>Integer or String</em>) &#8211; Specifies the padding for this component. Can be a single         integer (applied to all sides) or string with 1-4 numbers (css-style)</li>
+<li><strong>layout</strong> &#8211; Specifies the layout for this component. For more read             <a class="reference internal" href="#layout-class">Layout Class</a> specification</li>
+<li><strong>ui</strong> &#8211; Predefined ui styles for component. Acceptable values are         <tt class="docutils literal"><span class="pre">'dark'</span></tt> and <tt class="docutils literal"><span class="pre">'light'</span></tt></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Screen</span><span class="p">(</span><span class="n">fullscreen</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">composition</span><span class="o">=</span><span class="n">fit</span><span class="p">))</span>
+
+<span class="n">Screen</span><span class="p">(</span><span class="n">fullscreen</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">&quot;1 2 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="selectfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">SelectField</span></tt> Class<a class="headerlink" href="#selectfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.SelectField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">SelectField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>maxLength=None</em>, <em>options=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.SelectField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.textfield.TextField</span></tt></p>
+<p>Sencha Touch Select Field component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>options</strong> (<em>Dictionary</em>) &#8211; Key in this dict is HTML select-field value, value is t        ext</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">SelectField</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;mySelect&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;myValue1&#39;</span> <span class="p">:</span> <span class="s">&#39;myText1&#39;</span><span class="p">,</span> <span class="s">&#39;myValue2&#39;</span> <span class="p">:</span> <span class="s">&#39;myText2&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="spacer-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Spacer</span></tt> Class<a class="headerlink" href="#spacer-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Spacer">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Spacer</tt><a class="headerlink" href="#stitems.Spacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Sencha Touch Spacer component.
+Useful in components containing buttons to separate them.
+Will take up a flex of 1 unless a width is set.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="tab-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Tab</span></tt> Class<a class="headerlink" href="#tab-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Tab">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Tab</tt><big>(</big><em>ui=None</em>, <em>text=None</em>, <em>icon=None</em>, <em>badge=None</em>, <em>flex=None</em>, <em>active=None</em>, <em>events=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.Tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.button.Button</span></tt></p>
+<p>Tab Component.
+Defines elements in TabBar Component</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>active</strong> (<em>Boolean=</em>) &#8211; True to make tab active</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><pre>Tab(ui="confirm", text="SomeOtherButton", badge="5", active=true,
+    events={"tap" : Action(action="send", dataId="form",
+    url="form/send"})</pre>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="tabbar-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Tabbar</span></tt> Class<a class="headerlink" href="#tabbar-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Tabbar">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Tabbar</tt><big>(</big><em>dock=None</em>, <em>ui=None</em>, <em>tabsList=None</em><big>)</big><a class="headerlink" href="#stitems.Tabbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Sencha Touch Tabbar component.
+One of the main Sencha Touch Component, which
+makes the website more easy and user friendly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dock</strong> &#8211; <p>Configure the component location. Acteptables value:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;top&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;bottom&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;left&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;right&quot;</span></tt></li>
+</ul>
+</li>
+<li><strong>ui</strong> (<em>String</em>) &#8211; <p>user interface description. Must be on of:</p>
+<ul>
+<li><tt class="docutils literal"><span class="pre">&quot;dark&quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;light&quot;</span></tt></li>
+</ul>
+</li>
+<li><strong>tabsList</strong> (<em>List</em>) &#8211; Tabs list that defines the elements of Tabbar</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Tabbar</span><span class="p">(</span><span class="n">dock</span><span class="o">=</span><span class="s">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">ui</span><span class="o">=</span><span class="s">&quot;dark&quot;</span><span class="p">,</span> <span class="n">tabsList</span> <span class="o">=</span> <span class="p">(</span><span class="n">firstTabObject</span><span class="p">,</span>
+<span class="n">secondTabObject</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="textareafield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">TextareaField</span></tt> Class<a class="headerlink" href="#textareafield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.TextareaField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">TextareaField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>maxLength=None</em>, <em>maxRows=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.TextareaField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.textfield.TextField</span></tt></p>
+<p>Sencha Touch TextArea Component. Wraps a textarea.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxRows</strong> (<em>Integer</em>) &#8211; The maximum number of lines made visible by the input.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="textfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt> Class<a class="headerlink" href="#textfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.TextField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">TextField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>inputType=None</em>, <em>maxLength=None</em>, <em>alwaysReload=None</em>, <em>cssClass=None</em><big>)</big><a class="headerlink" href="#stitems.TextField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stitems.field.Field</span></tt></p>
+<p>Sencha Touch Text Field Component.
+Simple text input field.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxLength</strong> (<em>Integer</em>) &#8211; Maximum number of character permit by the input.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="toolbar-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Toolbar</span></tt> Class<a class="headerlink" href="#toolbar-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Toolbar">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Toolbar</tt><big>(</big><em>title=None</em>, <em>ui=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>dock=None</em><big>)</big><a class="headerlink" href="#stitems.Toolbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sencha Touch Components</a><ul>
+<li><a class="reference internal" href="#action-class"><tt class="docutils literal"><span class="pre">Action</span></tt> Class</a></li>
+<li><a class="reference internal" href="#button-class"><tt class="docutils literal"><span class="pre">Button</span></tt> Class</a></li>
+<li><a class="reference internal" href="#checkbox-class"><tt class="docutils literal"><span class="pre">Checkbox</span></tt> Class</a></li>
+<li><a class="reference internal" href="#component-class"><tt class="docutils literal"><span class="pre">Component</span></tt> Class</a></li>
+<li><a class="reference internal" href="#errorfield-class"><tt class="docutils literal"><span class="pre">Errorfield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#field-class"><tt class="docutils literal"><span class="pre">Field</span></tt> Class</a></li>
+<li><a class="reference internal" href="#fieldset-class"><tt class="docutils literal"><span class="pre">Fieldset</span></tt> Class</a></li>
+<li><a class="reference internal" href="#form-class"><tt class="docutils literal"><span class="pre">Form</span></tt> Class</a></li>
+<li><a class="reference internal" href="#hiddenfield-class"><tt class="docutils literal"><span class="pre">HiddenField</span></tt> Class</a></li>
+<li><a class="reference internal" href="#layout-class"><tt class="docutils literal"><span class="pre">Layout</span></tt> Class</a></li>
+<li><a class="reference internal" href="#list-class"><tt class="docutils literal"><span class="pre">List</span></tt> Class</a></li>
+<li><a class="reference internal" href="#panel-class"><tt class="docutils literal"><span class="pre">Panel</span></tt> Class</a></li>
+<li><a class="reference internal" href="#popup-class"><tt class="docutils literal"><span class="pre">Popup</span></tt> Class</a></li>
+<li><a class="reference internal" href="#radio-class"><tt class="docutils literal"><span class="pre">Radio</span></tt> Class</a></li>
+<li><a class="reference internal" href="#screen-class"><tt class="docutils literal"><span class="pre">Screen</span></tt> Class</a></li>
+<li><a class="reference internal" href="#selectfield-class"><tt class="docutils literal"><span class="pre">SelectField</span></tt> Class</a></li>
+<li><a class="reference internal" href="#spacer-class"><tt class="docutils literal"><span class="pre">Spacer</span></tt> Class</a></li>
+<li><a class="reference internal" href="#tab-class"><tt class="docutils literal"><span class="pre">Tab</span></tt> Class</a></li>
+<li><a class="reference internal" href="#tabbar-class"><tt class="docutils literal"><span class="pre">Tabbar</span></tt> Class</a></li>
+<li><a class="reference internal" href="#textareafield-class"><tt class="docutils literal"><span class="pre">TextareaField</span></tt> Class</a></li>
+<li><a class="reference internal" href="#textfield-class"><tt class="docutils literal"><span class="pre">TextField</span></tt> Class</a></li>
+<li><a class="reference internal" href="#toolbar-class"><tt class="docutils literal"><span class="pre">Toolbar</span></tt> Class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="shortDescription.html"
+                        title="previous chapter">Short Description</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/stitems.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="shortDescription.html" title="Short Description"
+             >previous</a> |</li>
+        <li><a href="index.html">Stylons 0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Jakub Kedzierski, Mateusz Dembski, Mateusz Kurek.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

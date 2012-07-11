@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sencha Touch Components &mdash; Stylons 0.0.7 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Stylons 0.0.7 documentation" href="../" />
+    <link rel="prev" title="Introduction to Stylons" href="../intro/" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../intro/" title="Introduction to Stylons"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../">Stylons 0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sencha-touch-components">
+<h1>Sencha Touch Components<a class="headerlink" href="#sencha-touch-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="action-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">Action</span></tt> Class<a class="headerlink" href="#action-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Action">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Action</tt><big>(</big><em>action=None</em>, <em>url=None</em>, <em>dataID=None</em>, <em>componentID=None</em><big>)</big><a class="headerlink" href="#stitems.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>Action component
+Defines actions performed i.e. after click on the button, click on the list and so on</p>
+<p>Keyword arguments:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">action</span> <span class="pre">(string)</span></tt> </dt>
+<dd>action to be executed, i.e. load, send, popupShow, popupHide, clear</dd>
+<dt><tt class="docutils literal"><span class="pre">url</span> <span class="pre">(string)</span></tt> </dt>
+<dd>url to load/send data</dd>
+<dt><tt class="docutils literal"><span class="pre">dataID</span> <span class="pre">(string)</span></tt></dt>
+<dd>ID of compontent, from which data will be sended to server</dd>
+<dt><tt class="docutils literal"><span class="pre">componentID</span> <span class="pre">(string)</span></tt></dt>
+<dd>id of component to clear</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="button-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">button</span></tt> Class<a class="headerlink" href="#button-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Button">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Button</tt><big>(</big><em>ui=None</em>, <em>text=None</em>, <em>icon=None</em>, <em>badge=None</em>, <em>flex=None</em>, <em>events=None</em><big>)</big><a class="headerlink" href="#stitems.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="checkbox-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">checkbox</span></tt> Class<a class="headerlink" href="#checkbox-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Checkbox">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Checkbox</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>checked=None</em><big>)</big><a class="headerlink" href="#stitems.Checkbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.field.Field</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="errorfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">errorfield</span></tt> Class<a class="headerlink" href="#errorfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.ErrorField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">ErrorField</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em><big>)</big><a class="headerlink" href="#stitems.ErrorField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="field-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">field</span></tt> Class<a class="headerlink" href="#field-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Field">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Field</tt><big>(</big><em>disabled=None</em>, <em>inputType=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em><big>)</big><a class="headerlink" href="#stitems.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="fieldset-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">fieldset</span></tt> Class<a class="headerlink" href="#fieldset-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Fieldset">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Fieldset</tt><big>(</big><em>title=None</em>, <em>instructions=None</em><big>)</big><a class="headerlink" href="#stitems.Fieldset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="form-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">form</span></tt> Class<a class="headerlink" href="#form-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Form">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Form</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em>, <em>itemsList=None</em><big>)</big><a class="headerlink" href="#stitems.Form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.panel.Panel</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiddenfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">hiddenfield</span></tt> Class<a class="headerlink" href="#hiddenfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.HiddenField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">HiddenField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em><big>)</big><a class="headerlink" href="#stitems.HiddenField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.field.Field</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="layout-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">layout</span></tt> Class<a class="headerlink" href="#layout-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Layout">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Layout</tt><big>(</big><em>composition=None</em>, <em>align=None</em>, <em>padding=None</em><big>)</big><a class="headerlink" href="#stitems.Layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="list-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">list</span></tt> Class<a class="headerlink" href="#list-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.List">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">List</tt><big>(</big><em>itemTpl=None</em>, <em>items=None</em>, <em>emptyText=None</em>, <em>fullscreen=None</em>, <em>indexBar=None</em>, <em>events=None</em><big>)</big><a class="headerlink" href="#stitems.List" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="panel-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">panel</span></tt> Class<a class="headerlink" href="#panel-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Panel">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Panel</tt><big>(</big><em>html=None</em>, <em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>scroll=None</em>, <em>layout=None</em><big>)</big><a class="headerlink" href="#stitems.Panel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.screen.Screen</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="popup-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">popup</span></tt> Class<a class="headerlink" href="#popup-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Popup">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Popup</tt><big>(</big><em>fullscreen=None</em>, <em>layout=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>width=None</em>, <em>height=None</em>, <em>centered=None</em>, <em>modal=None</em>, <em>ui=None</em><big>)</big><a class="headerlink" href="#stitems.Popup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.screen.Screen</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="radio-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">radio</span></tt> Class<a class="headerlink" href="#radio-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Radio">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Radio</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>checked=None</em><big>)</big><a class="headerlink" href="#stitems.Radio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.checkbox.Checkbox</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="screen-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">screen</span></tt> Class<a class="headerlink" href="#screen-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Screen">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Screen</tt><big>(</big><em>fullscreen=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>layout=None</em><big>)</big><a class="headerlink" href="#stitems.Screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="selectfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">selectfield</span></tt> Class<a class="headerlink" href="#selectfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.SelectField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">SelectField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>maxLength=None</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#stitems.SelectField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.textfield.TextField</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="spacer-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">spacer</span></tt> Class<a class="headerlink" href="#spacer-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Spacer">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Spacer</tt><a class="headerlink" href="#stitems.Spacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="tab-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">tab</span></tt> Class<a class="headerlink" href="#tab-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Tab">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Tab</tt><big>(</big><em>ui=None</em>, <em>text=None</em>, <em>icon=None</em>, <em>badge=None</em>, <em>flex=None</em>, <em>active=None</em>, <em>events=None</em><big>)</big><a class="headerlink" href="#stitems.Tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.button.Button</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="tabbar-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">tabbar</span></tt> Class<a class="headerlink" href="#tabbar-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Tabbar">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Tabbar</tt><big>(</big><em>dock=None</em>, <em>ui=None</em>, <em>tabsList=None</em><big>)</big><a class="headerlink" href="#stitems.Tabbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="textareafield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">textareafield</span></tt> Class<a class="headerlink" href="#textareafield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.TextareaField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">TextareaField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>maxLength=None</em>, <em>maxRows=None</em><big>)</big><a class="headerlink" href="#stitems.TextareaField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.textfield.TextField</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="textfield-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">textfield</span></tt> Class<a class="headerlink" href="#textfield-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.TextField">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">TextField</tt><big>(</big><em>disabled=None</em>, <em>label=None</em>, <em>name=None</em>, <em>required=None</em>, <em>value=None</em>, <em>inputType=None</em>, <em>maxLength=None</em><big>)</big><a class="headerlink" href="#stitems.TextField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">stylons.stitems.field.Field</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="toolbar-class">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">toolbar</span></tt> Class<a class="headerlink" href="#toolbar-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stitems.Toolbar">
+<em class="property">class </em><tt class="descclassname">stitems.</tt><tt class="descname">Toolbar</tt><big>(</big><em>title=None</em>, <em>ui=None</em>, <em>margin=None</em>, <em>padding=None</em>, <em>dock=None</em><big>)</big><a class="headerlink" href="#stitems.Toolbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sencha Touch Components</a><ul>
+<li><a class="reference internal" href="#action-class"><tt class="docutils literal"><span class="pre">Action</span></tt> Class</a></li>
+<li><a class="reference internal" href="#button-class"><tt class="docutils literal"><span class="pre">button</span></tt> Class</a></li>
+<li><a class="reference internal" href="#checkbox-class"><tt class="docutils literal"><span class="pre">checkbox</span></tt> Class</a></li>
+<li><a class="reference internal" href="#errorfield-class"><tt class="docutils literal"><span class="pre">errorfield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#field-class"><tt class="docutils literal"><span class="pre">field</span></tt> Class</a></li>
+<li><a class="reference internal" href="#fieldset-class"><tt class="docutils literal"><span class="pre">fieldset</span></tt> Class</a></li>
+<li><a class="reference internal" href="#form-class"><tt class="docutils literal"><span class="pre">form</span></tt> Class</a></li>
+<li><a class="reference internal" href="#hiddenfield-class"><tt class="docutils literal"><span class="pre">hiddenfield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#layout-class"><tt class="docutils literal"><span class="pre">layout</span></tt> Class</a></li>
+<li><a class="reference internal" href="#list-class"><tt class="docutils literal"><span class="pre">list</span></tt> Class</a></li>
+<li><a class="reference internal" href="#panel-class"><tt class="docutils literal"><span class="pre">panel</span></tt> Class</a></li>
+<li><a class="reference internal" href="#popup-class"><tt class="docutils literal"><span class="pre">popup</span></tt> Class</a></li>
+<li><a class="reference internal" href="#radio-class"><tt class="docutils literal"><span class="pre">radio</span></tt> Class</a></li>
+<li><a class="reference internal" href="#screen-class"><tt class="docutils literal"><span class="pre">screen</span></tt> Class</a></li>
+<li><a class="reference internal" href="#selectfield-class"><tt class="docutils literal"><span class="pre">selectfield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#spacer-class"><tt class="docutils literal"><span class="pre">spacer</span></tt> Class</a></li>
+<li><a class="reference internal" href="#tab-class"><tt class="docutils literal"><span class="pre">tab</span></tt> Class</a></li>
+<li><a class="reference internal" href="#tabbar-class"><tt class="docutils literal"><span class="pre">tabbar</span></tt> Class</a></li>
+<li><a class="reference internal" href="#textareafield-class"><tt class="docutils literal"><span class="pre">textareafield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#textfield-class"><tt class="docutils literal"><span class="pre">textfield</span></tt> Class</a></li>
+<li><a class="reference internal" href="#toolbar-class"><tt class="docutils literal"><span class="pre">toolbar</span></tt> Class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../intro/"
+                        title="previous chapter">Introduction to Stylons</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/stitems.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../intro/" title="Introduction to Stylons"
+             >previous</a> |</li>
+        <li><a href="../">Stylons 0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Jakub Kedzierski, Mateusz Dembski, Mateusz Kurek.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
