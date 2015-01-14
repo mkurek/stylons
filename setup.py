@@ -1,9 +1,4 @@
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
+from setuptools import setup, find_packages
 
 setup(
     name='stylons',
@@ -16,10 +11,12 @@ setup(
         "PasteScript>=1.6.3",
         "Pylons>=1.0",
         "SQLAlchemy>=0.5",
-		"Sphinx>=1.0"
+        "Sphinx>=1.0"
     ],
     setup_requires=["PasteScript>=1.6.3"],
-    packages=find_packages(exclude=['ez_setup']),
+    packages=find_packages('src'),
+    include_package_data=True,
+    package_dir={'': 'src'},
     include_package_data=True,
     test_suite='nose.collector',
     package_data={'stylons': ['i18n/*/LC_MESSAGES/*.mo']},
