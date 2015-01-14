@@ -16,7 +16,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public Return page object
-	 * 
+	 *
 	 * @return {object} page object
 	 */
 	function getScreen() {
@@ -25,7 +25,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public Set page object
-	 * 
+	 *
 	 * @return {object} page object
 	 */
 	function setScreen(newScreen) {
@@ -34,7 +34,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public Return popup object
-	 * 
+	 *
 	 * @return {object} popup object
 	 */
 	function getPopup() {
@@ -43,7 +43,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public Set popup object
-	 * 
+	 *
 	 * @return {object} popup object
 	 */
 	function setPopup(newPopup) {
@@ -53,7 +53,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public Return Config object
-	 * 
+	 *
 	 * @return {object} Config object
 	 */
 	function getConfig() {
@@ -62,10 +62,10 @@ var Dispatcher = (function() {
 
 	/**
 	 * @private Adapter to Sender-Receiver Object Get server response from URL
-	 * 
+	 *
 	 * @param {string}
 	 *            url URL to be requested
-	 * 
+	 *
 	 * @return {object} JSON description - returned value from server
 	 */
 	function getFromURL(url) {
@@ -78,12 +78,12 @@ var Dispatcher = (function() {
 
 	/**
 	 * @private Adapter to Sender-Receiver Object Send data to specified URL
-	 * 
+	 *
 	 * @param {string}
 	 *            url URL to be requested
 	 * @param {Object}
 	 *            data Object to be sent
-	 * 
+	 *
 	 * @return {object} JSON description - returned value from server
 	 */
 	function sendToURL(url, data) {
@@ -101,25 +101,25 @@ var Dispatcher = (function() {
 		}
 		// when python ready change to:
 		// components = Sender.getComponentsList(Config.defaultComponentsListURL, missingComponents);
-		
+
 		return components;
 	}
-	
+
 	function getComponent(url){
 		if(components[url]){
 			return components[url];
 		}
 		throw "getComponentError";
 	}
-	
+
 	/**
 	 * @public handling request for new page components; adds record to history
-	 * 
+	 *
 	 * @param {string}
 	 *            url New url of short description
 	 * @param {boolean}
 	 *            keepHash True if window.location.hash won't be overwritten
-	 * 
+	 *
 	 * @return
 	 */
 	function loadURL(url) {
@@ -170,13 +170,13 @@ var Dispatcher = (function() {
 	/**
 	 * @private parse short description and apply changes to container (add new
 	 *          items, remove unnecessary)
-	 * 
+	 *
 	 * @param {object}
 	 *            con Container to remodel
-	 * 
+	 *
 	 * @param {object}
 	 *            sd Short description to parse
-	 * 
+	 *
 	 * @return
 	 */
 	function parse(con, sd) {
@@ -256,13 +256,13 @@ var Dispatcher = (function() {
 
 	/**
 	 * @private remodel container and all it childs
-	 * 
+	 *
 	 * @param {object}
 	 *            con Container to remodel
-	 * 
+	 *
 	 * @param {object}
 	 *            sd Short description to be applied
-	 * 
+	 *
 	 * @return {object} container Container after remodeling
 	 */
 	function containerRemodel(container, shortDescription) {
@@ -294,14 +294,14 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public called to reload the page
-	 * 
+	 *
 	 * @param {object}
 	 *            state New state of page; properties: shortDescription, title,
 	 *            url
 	 * @param {boolean}
 	 *            newPage False if page loaded using back/forward button, true
 	 *            otherwise
-	 * 
+	 *
 	 * @return
 	 */
 	function pageReload(shortDescription, newPage) {
@@ -317,10 +317,10 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public shows popup
-	 * 
+	 *
 	 * @param {string}
 	 *            url URL address with short description of popup
-	 * 
+	 *
 	 * @return false if url was wrong, true otherwise
 	 */
 	function specialSlotShow(url) {
@@ -340,7 +340,7 @@ var Dispatcher = (function() {
 			// show popup
 			SenchaAdapter.show(popup, "pop");
 		} catch (error) {
-			errorAlert();
+			errorAlert(error);
 		}
 		// refresh popup
 		SenchaAdapter.refreshAll(popup);
@@ -350,7 +350,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public hide popup
-	 * 
+	 *
 	 * @return
 	 */
 
@@ -359,14 +359,15 @@ var Dispatcher = (function() {
 		SenchaAdapter.hide(popup);
 	}
 
-	function errorAlert() {
+	function errorAlert(error) {
 		specialSlotHide();
+		console.log(error);
 		SenchaAdapter.showErrorAlert(Config.errorTitle, Config.errorMsg);
 	}
 
 	/**
 	 * @private create new instance of default screen
-	 * 
+	 *
 	 * @return {Object} default screen object
 	 */
 	function defaultScreen() {
@@ -381,7 +382,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @private create new instance of default popup
-	 * 
+	 *
 	 * @return {Object} default popup object
 	 */
 	function defaultPopup() {
@@ -397,7 +398,7 @@ var Dispatcher = (function() {
 
 	/**
 	 * @public init function; initialize screen and popup
-	 * 
+	 *
 	 * @return
 	 */
 	function init() {

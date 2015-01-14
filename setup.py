@@ -1,10 +1,5 @@
 #! -*- coding: utf-8 -*-
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
+from setuptools import setup, find_packages
 
 setup(
     name='pysencha',
@@ -19,12 +14,13 @@ setup(
         "PasteScript",
         "Pylons",
         "SQLAlchemy",
-	"pysqlite",
+        "pysqlite",
         "FormAlchemy"
     ],
     setup_requires=["PasteScript>=1.6.3"],
-    packages=find_packages(exclude=['ez_setup']),
+    packages=find_packages('src'),
     include_package_data=True,
+    package_dir={'': 'src'},
     test_suite='nose.collector',
     package_data={'pysencha': ['i18n/*/LC_MESSAGES/*.mo']},
     #message_extractors={'pysencha': [
